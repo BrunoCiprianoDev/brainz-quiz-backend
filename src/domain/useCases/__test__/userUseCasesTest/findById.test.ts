@@ -1,8 +1,8 @@
-import { IUserRepository } from "@src/domain/interfaces/repositories/userRepository";
-import { UserUseCases } from "../../userUseCases";
-import { IPasswordEncryptor } from "@src/domain/interfaces/adapters/passwordEncryptor";
-import { RoleEnum } from "@src/domain/entities/role";
-import { InternalServerError, NotFoundError } from "@src/domain/util/errors/appErrors";
+import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
+import { UserUseCases } from '../../userUseCases';
+import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
+import { RoleEnum } from '@src/domain/entities/role';
+import { InternalServerError, NotFoundError } from '@src/domain/util/errors/appErrors';
 
 describe('FindById Test', () => {
   let userUseCases: UserUseCases;
@@ -31,8 +31,8 @@ describe('FindById Test', () => {
 
   test('Should return a userById', async () => {
     /**
-    * @Setup
-    */
+     * @Setup
+     */
     jest.spyOn(mockedUserRepository, 'findById').mockResolvedValue({
       id: 'uuid',
       name: 'name',
@@ -58,32 +58,29 @@ describe('FindById Test', () => {
       role: RoleEnum.Admin,
     });
     expect(mockedUserRepository.findById).toHaveBeenCalledWith({ id: 'uuid' });
-
-  })
+  });
 
   test('Should return NotFoundError when not found user by id', async () => {
-
     /**
-    * @Setup
-    */
+     * @Setup
+     */
     jest.spyOn(mockedUserRepository, 'findById').mockResolvedValue(null);
 
     /**
      * @Assert and @Excecution
      */
     await expect(userUseCases.findById({ id: 'uuid' })).rejects.toBeInstanceOf(NotFoundError);
-  })
+  });
 
   test('Shold return InternalServerError when a unexpected ocurr', async () => {
     /**
-    * @Setup
-    */
+     * @Setup
+     */
     jest.spyOn(mockedUserRepository, 'findById').mockRejectedValue(new Error('Any error'));
 
     /**
      * @Assert and @Excecution
      */
     await expect(userUseCases.findById({ id: 'uuid' })).rejects.toBeInstanceOf(InternalServerError);
-  })
-
-})
+  });
+});

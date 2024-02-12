@@ -86,6 +86,8 @@ describe('UpdateName Test', () => {
     /**
      * @Assert and @Excecution
      */
-    await expect(userUseCases.updateAvatar({ id: 'uuid', avatar: 'anyString' })).rejects.toBeInstanceOf(InternalServerError);
+    await expect(userUseCases.updateAvatar({ id: 'uuid', avatar: 'anyString' })).rejects.toBeInstanceOf(
+      InternalServerError,
+    );
   });
 });
