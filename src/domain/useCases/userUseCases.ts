@@ -5,21 +5,21 @@ import { IUserRepository } from '../interfaces/repositories/userRepository';
 import { isValidEmail } from '../util/constraints/emailValidator';
 import { isNotEmpty } from '../util/constraints/notEmptyValidation';
 import { isValidPassword } from '../util/constraints/passwordValidation';
-import { isValidRole } from '../util/constraints/roleValidation';
+import { convertStringToRoleEnum } from '../util/constraints/roleValidation';
 import { AppError, BadRequestError, InternalServerError, NotFoundError } from '../util/errors/appErrors';
 
 export interface IUserUseCases {
   create(user: IUserCreateData): Promise<IUserReadyOnly>;
 
-  updateRole(id: string, role: RoleEnum): Promise<IUserReadyOnly>;
+  updateRole(data: { id: string; role: RoleEnum }): Promise<IUserReadyOnly>;
 
-  updateName(id: string, name: string): Promise<IUserReadyOnly>;
+  updateName(data: { id: string; name: string }): Promise<IUserReadyOnly>;
 
-  updateAvatar(id: string, name: string): Promise<IUserReadyOnly>;
+  updateAvatar(data: { id: string; avatar: string }): Promise<IUserReadyOnly>;
 
-  findById(id: string): Promise<IUserReadyOnly>;
+  findById(data: { id: string }): Promise<IUserReadyOnly>;
 
-  findAll(query: string, page: number, size: number): Promise<IUserReadyOnly[]>;
+  findAll(data: { query: string; page: number; size: number }): Promise<IUserReadyOnly[]>;
 }
 
 export class UserUseCases implements IUserUseCases {
@@ -30,24 +30,24 @@ export class UserUseCases implements IUserUseCases {
 
   public async create({ name, email, password, avatar, role }: IUserCreateData): Promise<IUserReadyOnly> {
     try {
-      if (!isNotEmpty(name)) {
+      if (!isNotEmpty({ value: name })) {
         throw new BadRequestError('The name attribute cannot be empty');
       }
 
-      if (!isValidEmail(email)) {
+      if (!isValidEmail({ email })) {
         throw new BadRequestError('Invalid email');
       }
 
-      if (!isValidPassword(password)) {
+      if (!isValidPassword({ password })) {
         throw new BadRequestError('Invalid password, make sure it is at least 8 characters long');
       }
 
-      const isExists = await this.userRepository.existsByEmail(email);
+      const isExists = await this.userRepository.existsByEmail({ email });
       if (isExists) {
         throw new BadRequestError('There is already another user using this email');
       }
 
-      const passwordHash = await this.passwordEncryptor.encryptor(password);
+      const passwordHash = await this.passwordEncryptor.encryptor({ password });
 
       const result = await this.userRepository.create({
         name,
@@ -72,18 +72,20 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async updateRole(id: string, role: RoleEnum): Promise<IUserReadyOnly> {
+  public async updateRole({ id, role }: { id: string; role: string }): Promise<IUserReadyOnly> {
     try {
-      const isExists = await this.userRepository.existsById(id);
-      if (isExists) {
-        throw new NotFoundError('There is already another user using this email');
+      const isExists = await this.userRepository.existsById({ id });
+      if (!isExists) {
+        throw new NotFoundError('No users found by the given id');
       }
-      if (!isValidRole(role)) {
+
+      const roleEnum = convertStringToRoleEnum({ roleString: role });
+
+      if (!roleEnum) {
         throw new BadRequestError('Invalid role');
       }
 
-      const result = await this.userRepository.updateRole(id, role);
-
+      const result = await this.userRepository.updateRole({ id, role: roleEnum });
       return {
         id: result.id,
         name: result.name,
@@ -99,17 +101,17 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async updateName(id: string, name: string): Promise<IUserReadyOnly> {
+  public async updateName({ id, name }: { id: string; name: string }): Promise<IUserReadyOnly> {
     try {
-      const isExists = await this.userRepository.existsById(id);
-      if (isExists) {
-        throw new NotFoundError('There is already another user using this email');
+      const isExists = await this.userRepository.existsById({ id });
+      if (!isExists) {
+        throw new NotFoundError('No users found by the given id');
       }
-      if (!isNotEmpty(name)) {
+      if (!isNotEmpty({ value: name })) {
         throw new BadRequestError('The name attribute cannot be empty');
       }
 
-      const result = await this.userRepository.updateName(id, name);
+      const result = await this.userRepository.updateName({ id, name });
 
       return {
         id: result.id,
@@ -126,14 +128,14 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async updateAvatar(id: string, avatar: string): Promise<IUserReadyOnly> {
+  public async updateAvatar({ id, avatar }: { id: string; avatar: string }): Promise<IUserReadyOnly> {
     try {
-      const isExists = await this.userRepository.existsById(id);
-      if (isExists) {
-        throw new NotFoundError('There is already another user using this email');
+      const isExists = await this.userRepository.existsById({ id });
+      if (!isExists) {
+        throw new NotFoundError('No users found by the given id');
       }
 
-      const result = await this.userRepository.updateAvatar(id, avatar);
+      const result = await this.userRepository.updateAvatar({ id, avatar });
 
       return {
         id: result.id,
@@ -150,9 +152,12 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async findById(id: string): Promise<IUserReadyOnly> {
+  public async findById({ id }: { id: string }): Promise<IUserReadyOnly> {
     try {
-      const result = await this.userRepository.findById(id);
+      const result = await this.userRepository.findById({ id });
+      if (!result) {
+        throw new NotFoundError('No users found by the given id');
+      }
       return {
         id: result.id,
         name: result.name,
@@ -168,13 +173,24 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async findAll(query: string, page: number, size: number): Promise<IUserReadyOnly[]> {
+  public async findAll({
+    query,
+    page,
+    size,
+  }: {
+    query: string;
+    page: number;
+    size: number;
+  }): Promise<IUserReadyOnly[]> {
     try {
-      return await this.userRepository.findAll(query, page, size);
-    } catch (error) {
-      if (error instanceof AppError) {
-        throw error;
+      if (page < 1) {
+        page = 1;
       }
+      if (size < 1) {
+        size = 1;
+      }
+      return await this.userRepository.findAll({ query, page, size });
+    } catch (error) {
       throw new InternalServerError();
     }
   }

@@ -67,8 +67,8 @@ describe('CreateUser Test', () => {
       avatar: 'avatar',
       role: RoleEnum.Player,
     });
-    expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledWith('anyString');
-    expect(mockedUserRepository.existsByEmail).toHaveBeenCalledWith('email@email.com');
+    expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledWith({ password: 'anyString' });
+    expect(mockedUserRepository.existsByEmail).toHaveBeenCalledWith({ email: 'email@email.com' });
     expect(mockedUserRepository.create).toHaveBeenCalledWith({
       name: 'name',
       email: 'email@email.com',
@@ -116,7 +116,7 @@ describe('CreateUser Test', () => {
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockClear();
 
     /**
-     * @Execution
+     * @Assert and @Execution
      */
     await expect(
       userUseCases.create({
@@ -128,9 +128,6 @@ describe('CreateUser Test', () => {
       }),
     ).rejects.toBeInstanceOf(BadRequestError);
 
-    /**
-     * @Assert
-     */
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.existsByEmail).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.create).toHaveBeenCalledTimes(0);
@@ -145,7 +142,7 @@ describe('CreateUser Test', () => {
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockClear();
 
     /**
-     * @Execution
+     * @Assert and @Execution
      */
     await expect(
       userUseCases.create({
@@ -157,9 +154,6 @@ describe('CreateUser Test', () => {
       }),
     ).rejects.toBeInstanceOf(BadRequestError);
 
-    /**
-     * @Assert
-     */
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.existsByEmail).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.create).toHaveBeenCalledTimes(0);
@@ -174,7 +168,7 @@ describe('CreateUser Test', () => {
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockClear();
 
     /**
-     * @Execution
+     * @Assert and @Execution
      */
     await expect(
       userUseCases.create({
@@ -186,10 +180,7 @@ describe('CreateUser Test', () => {
       }),
     ).rejects.toBeInstanceOf(BadRequestError);
 
-    /**
-     * @Assert
-     */
-    expect(mockedUserRepository.existsByEmail).toHaveBeenCalledWith('email@email.com');
+    expect(mockedUserRepository.existsByEmail).toHaveBeenCalledWith({ email: 'email@email.com' });
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.create).toHaveBeenCalledTimes(0);
   });
@@ -203,7 +194,7 @@ describe('CreateUser Test', () => {
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockClear();
 
     /**
-     * @Execution
+     * @Assert and @Execution
      */
     await expect(
       userUseCases.create({
@@ -215,9 +206,6 @@ describe('CreateUser Test', () => {
       }),
     ).rejects.toBeInstanceOf(InternalServerError);
 
-    /**
-     * @Assert
-     */
     expect(mockedUserRepository.existsByEmail).toHaveBeenCalledTimes(1);
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledTimes(0);
     expect(mockedUserRepository.create).toHaveBeenCalledTimes(0);

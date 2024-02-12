@@ -4,17 +4,17 @@ import { IUser, IUserCreateData, IUserReadyOnly } from '@src/domain/entities/use
 export interface IUserRepository {
   create(user: IUserCreateData): Promise<IUser>;
 
-  updateRole(id: string, role: RoleEnum): Promise<IUser>;
+  updateRole(data: { id: string; role: RoleEnum }): Promise<IUser>;
 
-  updateName(id: string, name: string): Promise<IUser>;
+  updateName(data: { id: string; name: string }): Promise<IUser>;
 
-  updateAvatar(id: string, avatar: string): Promise<IUser>;
+  updateAvatar(data: { id: string; avatar: string }): Promise<IUser>;
 
-  findById(id: string): Promise<IUser>;
+  findById(data: { id: string }): Promise<IUser | null>;
 
-  findAll(query: string, page: number, size: number): Promise<IUserReadyOnly[]>;
+  findAll(data: { query: string; page: number; size: number }): Promise<IUserReadyOnly[]>;
 
-  existsByEmail(email: string): Promise<boolean>;
+  existsByEmail(data: { email: string }): Promise<boolean>;
 
-  existsById(id: string): Promise<boolean>;
+  existsById(data: { id: string }): Promise<boolean>;
 }

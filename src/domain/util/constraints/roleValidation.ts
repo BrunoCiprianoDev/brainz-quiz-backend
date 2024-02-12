@@ -1,6 +1,10 @@
 import { RoleEnum } from '@src/domain/entities/role';
 
-export function isValidRole(roleString: string): boolean {
-  const roleValues: string[] = Object.values(RoleEnum);
-  return roleValues.includes(roleString);
+export function convertStringToRoleEnum({ roleString }: { roleString: string }): RoleEnum | undefined {
+  for (const role of Object.values(RoleEnum)) {
+    if (role.toLowerCase() === roleString.toLowerCase()) {
+      return role as RoleEnum;
+    }
+  }
+  return undefined;
 }

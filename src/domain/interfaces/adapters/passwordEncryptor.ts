@@ -1,4 +1,4 @@
 export interface IPasswordEncryptor {
-  encryptor(password: string): Promise<string>;
-  passwordCompare(password: string, passwordEncrypt: string): Promise<boolean>;
+  encryptor(data: { password: string }): Promise<string>;
+  passwordCompare(data: { password: string; passwordEncrypt: string }): Promise<boolean>;
 }

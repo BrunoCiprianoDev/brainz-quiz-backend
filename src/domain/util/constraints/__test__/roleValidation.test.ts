@@ -1,15 +1,28 @@
-import { isValidRole } from '../roleValidation';
+import { RoleEnum } from '@src/domain/entities/role';
+import { convertStringToRoleEnum } from '../roleValidation';
 
-describe('Role converter tests', () => {
-  test('Should return true when roleString is valid', () => {
-    const sut = isValidRole('ADMIN');
-
-    expect(sut).toEqual(true);
+describe('convertStringToRoleEnum', () => {
+  it('should convert the string "PLAYER" to RoleEnum.Player', () => {
+    expect(convertStringToRoleEnum({ roleString: 'PLAYER' })).toBe(RoleEnum.Player);
   });
 
-  test('Should return ValidationError when roleString not matches a enum options', () => {
-    const sut = isValidRole('anyString');
+  it('should convert the string "ADMIN" to RoleEnum.Admin', () => {
+    expect(convertStringToRoleEnum({ roleString: 'ADMIN' })).toBe(RoleEnum.Admin);
+  });
 
-    expect(sut).toEqual(false);
+  it('should convert the string "player" to RoleEnum.Player (ignoring case)', () => {
+    expect(convertStringToRoleEnum({ roleString: 'player' })).toBe(RoleEnum.Player);
+  });
+
+  it('should return undefined for an unrecognized string', () => {
+    expect(convertStringToRoleEnum({ roleString: 'MODERATOR' })).toBeUndefined();
+  });
+
+  it('should return undefined for an empty string', () => {
+    expect(convertStringToRoleEnum({ roleString: '' })).toBeUndefined();
+  });
+
+  it('should return undefined for a string with spaces', () => {
+    expect(convertStringToRoleEnum({ roleString: '  ' })).toBeUndefined();
   });
 });

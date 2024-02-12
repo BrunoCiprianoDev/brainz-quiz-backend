@@ -1,4 +1,4 @@
-export function isNotEmpty(value: string) {
+export function isNotEmpty({ value }: { value: string }) {
   if (!value || value.trim() === '') {
     return false;
   }
