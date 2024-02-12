@@ -6,6 +6,7 @@
   "author": "BrunoCiprianoDev <cipriano990@gmail.com>",
   "license": "MIT",
   "scripts": {
+    "build": "tsc",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check src/**/*.ts test/**/*.ts",
