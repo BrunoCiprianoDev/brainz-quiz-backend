@@ -38,6 +38,7 @@ describe('FindAll tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     },
     {
       id: 'uuid2',
@@ -46,6 +47,7 @@ describe('FindAll tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Player,
+      score: 0
     }];
 
     jest.spyOn(mockedUserUseCases, 'findAll').mockResolvedValue(userExpected);
@@ -90,6 +92,7 @@ describe('FindAll tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     },
     {
       id: 'uuid2',
@@ -98,6 +101,7 @@ describe('FindAll tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Player,
+      score: 0
     }];
 
     jest.spyOn(mockedUserUseCases, 'findAll').mockResolvedValue(userExpected);

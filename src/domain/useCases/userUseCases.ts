@@ -25,7 +25,7 @@ export class UserUseCases implements IUserUseCases {
   constructor(
     private userRepository: IUserRepository,
     private passwordEncryptor: IPasswordEncryptor,
-  ) {}
+  ) { }
 
   public async create({ name, email, password, avatar, role }: IUserCreateData): Promise<IUserReadyOnly> {
     try {
@@ -62,6 +62,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
+        score: result.score
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -91,6 +92,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
+        score: result.score
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -118,6 +120,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
+        score: result.score
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -142,6 +145,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
+        score: result.score
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -163,6 +167,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
+        score: result.score
       };
     } catch (error) {
       if (error instanceof AppError) {

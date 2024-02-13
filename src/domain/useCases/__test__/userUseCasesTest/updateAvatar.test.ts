@@ -42,6 +42,7 @@ describe('UpdateName Test', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     });
 
     /**
@@ -58,6 +59,7 @@ describe('UpdateName Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
+      score: 0
     });
     expect(mockedUserRepository.existsById).toHaveBeenCalledWith({ id: 'uuid' });
   });

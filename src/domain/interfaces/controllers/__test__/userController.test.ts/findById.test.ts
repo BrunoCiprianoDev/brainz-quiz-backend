@@ -38,6 +38,7 @@ describe('FindById tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     };
 
     jest.spyOn(mockedUserUseCases, 'findById').mockResolvedValue(userExpected);

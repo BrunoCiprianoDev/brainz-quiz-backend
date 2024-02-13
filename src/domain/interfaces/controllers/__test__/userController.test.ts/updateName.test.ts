@@ -38,6 +38,7 @@ describe('UpdateName tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Player,
+      score: 0
     };
 
     jest.spyOn(mockedUserUseCases, 'updateName').mockResolvedValue(userExpected);

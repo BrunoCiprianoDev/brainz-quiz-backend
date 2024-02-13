@@ -38,6 +38,7 @@ describe('CreateAdmin tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     };
 
     jest.spyOn(mockedUserUseCases, 'create').mockResolvedValue(userExpected);

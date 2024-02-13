@@ -7,8 +7,9 @@ export interface IUser {
   password: string;
   avatar: string;
   role: RoleEnum;
+  score: number;
 }
 
-export interface IUserCreateData extends Omit<IUser, 'id'> {}
+export interface IUserCreateData extends Omit<IUser, 'id' | 'score'> { }
 
-export interface IUserReadyOnly extends Omit<IUser, 'password'> {}
+export interface IUserReadyOnly extends Omit<IUser, 'password'> { }

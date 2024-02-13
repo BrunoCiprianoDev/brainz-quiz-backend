@@ -42,6 +42,7 @@ describe('CreateUser Test', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
+      score: 0
     });
 
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockResolvedValue('passEncrypt');
@@ -60,6 +61,7 @@ describe('CreateUser Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
+      score: 0
     });
     expect(mockedUserRepository.existsById).toHaveBeenCalledWith({ id: 'uuid' });
   });
