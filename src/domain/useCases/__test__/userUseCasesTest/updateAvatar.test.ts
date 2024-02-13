@@ -15,6 +15,7 @@ describe('UpdateName Test', () => {
       updateRole: jest.fn(),
       updateName: jest.fn(),
       updateAvatar: jest.fn(),
+      updateScore: jest.fn(),
       findById: jest.fn(),
       findAll: jest.fn(),
       existsByEmail: jest.fn(),

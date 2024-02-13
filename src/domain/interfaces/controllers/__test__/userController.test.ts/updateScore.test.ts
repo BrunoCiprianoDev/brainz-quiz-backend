@@ -4,7 +4,7 @@ import { IUserController, UserController } from '../../userController';
 import { RoleEnum } from '@src/domain/entities/role';
 import { BadRequestError } from '@src/domain/util/errors/appErrors';
 
-describe('UpdateAvatar tests', () => {
+describe('UpdateScore tests', () => {
   let mockedUserUseCases: jest.Mocked<IUserUseCases>;
   let mockedHttpContext: jest.Mocked<IHttpContext>;
   let userController: IUserController;
@@ -28,7 +28,7 @@ describe('UpdateAvatar tests', () => {
     userController = new UserController(mockedUserUseCases);
   });
 
-  test('Should return user when update avatar successfully', async () => {
+  test('Should return user when update score successfully', async () => {
     /**
      * @Setup
      */
@@ -42,20 +42,20 @@ describe('UpdateAvatar tests', () => {
       score: 0
     };
 
-    jest.spyOn(mockedUserUseCases, 'updateAvatar').mockResolvedValue(userExpected);
+    jest.spyOn(mockedUserUseCases, 'updateScore').mockResolvedValue(userExpected);
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
       body: {
         id: 'uuid',
-        avatar: 'photo.png',
+        score: 100,
       },
     });
 
     /**
      * @Execution
      */
-    await userController.updateAvatar(mockedHttpContext);
+    await userController.updateScore(mockedHttpContext);
 
     /**
      * @Assert
@@ -65,9 +65,9 @@ describe('UpdateAvatar tests', () => {
       body: userExpected,
     });
 
-    expect(mockedUserUseCases.updateAvatar).toHaveBeenCalledWith({
+    expect(mockedUserUseCases.updateScore).toHaveBeenCalledWith({
       id: 'uuid',
-      avatar: 'photo.png',
+      score: 100,
     });
   });
 
@@ -75,7 +75,7 @@ describe('UpdateAvatar tests', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserUseCases, 'updateAvatar').mockClear();
+    jest.spyOn(mockedUserUseCases, 'updateScore').mockClear();
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
@@ -85,11 +85,11 @@ describe('UpdateAvatar tests', () => {
     /**
      * @Execution
      */
-    await userController.updateAvatar(mockedHttpContext);
+    await userController.updateScore(mockedHttpContext);
 
-    expect(mockedUserUseCases.updateAvatar).toHaveBeenCalledWith({
+    expect(mockedUserUseCases.updateScore).toHaveBeenCalledWith({
       id: '',
-      avatar: '',
+      score: -1,
     });
   });
 
@@ -97,20 +97,20 @@ describe('UpdateAvatar tests', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserUseCases, 'updateAvatar').mockRejectedValue(new BadRequestError('Any string'));
+    jest.spyOn(mockedUserUseCases, 'updateScore').mockRejectedValue(new BadRequestError('Any string'));
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
       body: {
         id: 'uuid',
-        avatar: 'photo.png',
+        score: 100,
       },
     });
 
     /**
      * @Execution
      */
-    await userController.updateAvatar(mockedHttpContext);
+    await userController.updateScore(mockedHttpContext);
 
     /**
      * @Assert
@@ -120,9 +120,9 @@ describe('UpdateAvatar tests', () => {
       body: { message: 'Any string' },
     });
 
-    expect(mockedUserUseCases.updateAvatar).toHaveBeenCalledWith({
+    expect(mockedUserUseCases.updateScore).toHaveBeenCalledWith({
       id: 'uuid',
-      avatar: 'photo.png',
+      score: 100,
     });
   });
 
@@ -130,7 +130,7 @@ describe('UpdateAvatar tests', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserUseCases, 'updateAvatar').mockRejectedValue(new Error('Any message'));
+    jest.spyOn(mockedUserUseCases, 'updateScore').mockRejectedValue(new Error('Any message'));
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
@@ -140,7 +140,7 @@ describe('UpdateAvatar tests', () => {
     /**
      * @Execution
      */
-    await userController.updateAvatar(mockedHttpContext);
+    await userController.updateScore(mockedHttpContext);
 
     /**
      * @Assert

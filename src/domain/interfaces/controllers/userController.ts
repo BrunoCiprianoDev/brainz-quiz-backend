@@ -15,6 +15,8 @@ export interface IUserController {
 
   updateAvatar(httpContext: IHttpContext): Promise<void>;
 
+  updateScore(httpContext: IHttpContext): Promise<void>;
+
   findById(httpContext: IHttpContext): Promise<void>;
 
   findAll(httpContext: IHttpContext): Promise<void>;
@@ -110,6 +112,23 @@ export class UserController extends BaseController implements IUserController {
         avatar: (body.avatar as string) ?? '',
       };
       const result = await this.userUseCase.updateAvatar(data);
+      httpContext.send({ statusCode: 200, body: result });
+    } catch (error) {
+      httpContext.send(this.handleClientErrors(error));
+    }
+  }
+
+  /**
+ * @PATCH
+ */
+  async updateScore(httpContext: IHttpContext): Promise<void> {
+    try {
+      const body = httpContext.getRequest().body as { id: string; score: number };
+      const data = {
+        id: (body.id as string) ?? '',
+        score: (body.score as number) ?? -1,
+      };
+      const result = await this.userUseCase.updateScore(data);
       httpContext.send({ statusCode: 200, body: result });
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));

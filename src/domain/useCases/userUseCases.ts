@@ -16,6 +16,8 @@ export interface IUserUseCases {
 
   updateAvatar(data: { id: string; avatar: string }): Promise<IUserReadyOnly>;
 
+  updateScore({ id, score }: { id: string, score: number }): Promise<IUserReadyOnly>;
+
   findById(data: { id: string }): Promise<IUserReadyOnly>;
 
   findAll(data: { query: string; page: number; size: number }): Promise<IUserReadyOnly[]>;
@@ -147,6 +149,24 @@ export class UserUseCases implements IUserUseCases {
         role: result.role,
         score: result.score
       };
+    } catch (error) {
+      if (error instanceof AppError) {
+        throw error;
+      }
+      throw new InternalServerError();
+    }
+  }
+
+  public async updateScore({ id, score }: { id: string, score: number }): Promise<IUserReadyOnly> {
+    try {
+      const isExists = await this.userRepository.existsById({ id });
+      if (!isExists) {
+        throw new NotFoundError('No user found by the given id');
+      }
+      if (score < 0) {
+        throw new BadRequestError('Invalid score');
+      }
+      return await this.userRepository.updateScore({ id, score });
     } catch (error) {
       if (error instanceof AppError) {
         throw error;

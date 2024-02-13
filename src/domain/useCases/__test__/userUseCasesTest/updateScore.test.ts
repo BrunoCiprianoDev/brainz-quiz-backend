@@ -4,7 +4,7 @@ import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncr
 import { RoleEnum } from '@src/domain/entities/role';
 import { BadRequestError, InternalServerError, NotFoundError } from '@src/domain/util/errors/appErrors';
 
-describe('UpdateRole Test', () => {
+describe('UpdateScore Test', () => {
   let userUseCases: UserUseCases;
   let mockedUserRepository: jest.Mocked<IUserRepository>;
   let mockedPasswordEncryptor: jest.Mocked<IPasswordEncryptor>;
@@ -30,26 +30,25 @@ describe('UpdateRole Test', () => {
     userUseCases = new UserUseCases(mockedUserRepository, mockedPasswordEncryptor);
   });
 
-  test('Should update user role successfully', async () => {
+  test('Should update user score successfully', async () => {
     /**
      * @Setup
      */
     jest.spyOn(mockedUserRepository, 'existsById').mockResolvedValue(true);
 
-    jest.spyOn(mockedUserRepository, 'updateRole').mockResolvedValue({
+    jest.spyOn(mockedUserRepository, 'updateScore').mockResolvedValue({
       id: 'uuid',
       name: 'name',
       email: 'email@email.com',
       avatar: 'avatar',
-      password: 'passEncrypt',
       role: RoleEnum.Admin,
-      score: 0
+      score: 120
     });
 
     /**
      * @Execution
      */
-    const sut = await userUseCases.updateRole({ id: 'uuid', role: RoleEnum.Admin });
+    const sut = await userUseCases.updateScore({ id: 'uuid', score: 120 });
 
     /**
      * @Assert
@@ -60,7 +59,7 @@ describe('UpdateRole Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
-      score: 0
+      score: 120
     });
     expect(mockedUserRepository.existsById).toHaveBeenCalledWith({ id: 'uuid' });
   });
@@ -69,40 +68,40 @@ describe('UpdateRole Test', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserRepository, 'updateRole').mockClear();
+    jest.spyOn(mockedUserRepository, 'updateScore').mockClear();
     jest.spyOn(mockedUserRepository, 'existsById').mockResolvedValue(false);
 
     /**
      * @Assert and @Excecution
      */
-    await expect(userUseCases.updateRole({ id: 'uuid', role: RoleEnum.Admin })).rejects.toBeInstanceOf(NotFoundError);
-    expect(mockedUserRepository.updateRole).toHaveBeenCalledTimes(0);
+    await expect(userUseCases.updateScore({ id: 'uuid', score: 120 })).rejects.toBeInstanceOf(NotFoundError);
+    expect(mockedUserRepository.updateScore).toHaveBeenCalledTimes(0);
   });
 
-  test('Should return BadRequestError when invalid role', async () => {
+  test('Should return BadRequestError when invalid score', async () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserRepository, 'updateRole').mockClear();
+    jest.spyOn(mockedUserRepository, 'updateScore').mockClear();
     jest.spyOn(mockedUserRepository, 'existsById').mockResolvedValue(true);
 
     /**
      * @Assert and @Excecution
      */
-    await expect(userUseCases.updateRole({ id: 'uuid', role: 'anyString' })).rejects.toBeInstanceOf(BadRequestError);
-    expect(mockedUserRepository.updateRole).toHaveBeenCalledTimes(0);
+    await expect(userUseCases.updateScore({ id: 'uuid', score: -1 })).rejects.toBeInstanceOf(BadRequestError);
+    expect(mockedUserRepository.updateScore).toHaveBeenCalledTimes(0);
   });
 
   test('Shold return InternalServerError when a unexpected ocurr', async () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserRepository, 'updateRole').mockRejectedValue(new Error('Any Error'));
+    jest.spyOn(mockedUserRepository, 'updateScore').mockRejectedValue(new Error('Any Error'));
     jest.spyOn(mockedUserRepository, 'existsById').mockResolvedValue(true);
 
     /**
      * @Assert and @Excecution
      */
-    await expect(userUseCases.updateRole({ id: 'uuid', role: 'ADMIN' })).rejects.toBeInstanceOf(InternalServerError);
+    await expect(userUseCases.updateScore({ id: 'uuid', score: 120 })).rejects.toBeInstanceOf(InternalServerError);
   });
 });
