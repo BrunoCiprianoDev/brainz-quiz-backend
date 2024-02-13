@@ -1,4 +1,3 @@
-import { RoleEnum } from '../entities/role';
 import { IUserCreateData, IUserReadyOnly } from '../entities/user';
 import { IPasswordEncryptor } from '../interfaces/adapters/passwordEncryptor';
 import { IUserRepository } from '../interfaces/repositories/userRepository';
@@ -11,7 +10,7 @@ import { AppError, BadRequestError, InternalServerError, NotFoundError } from '.
 export interface IUserUseCases {
   create(user: IUserCreateData): Promise<IUserReadyOnly>;
 
-  updateRole(data: { id: string; role: RoleEnum }): Promise<IUserReadyOnly>;
+  updateRole(data: { id: string; role: string }): Promise<IUserReadyOnly>;
 
   updateName(data: { id: string; name: string }): Promise<IUserReadyOnly>;
 
