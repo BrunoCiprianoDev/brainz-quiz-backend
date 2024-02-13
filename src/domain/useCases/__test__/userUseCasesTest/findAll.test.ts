@@ -42,7 +42,7 @@ describe('CreateUser Test', () => {
         avatar: 'avatar',
         password: 'passEncrypt',
         role: RoleEnum.Player,
-        score: 0
+        score: 0,
       },
       {
         id: 'uuid2',
@@ -51,7 +51,7 @@ describe('CreateUser Test', () => {
         avatar: 'avatar',
         password: 'passEncrypt',
         role: RoleEnum.Player,
-        score: 0
+        score: 0,
       },
     ];
 

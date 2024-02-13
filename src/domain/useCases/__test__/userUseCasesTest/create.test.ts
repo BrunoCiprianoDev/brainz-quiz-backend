@@ -43,7 +43,7 @@ describe('CreateUser Test', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Player,
-      score: 0
+      score: 0,
     });
 
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockResolvedValue('passEncrypt');
@@ -68,7 +68,7 @@ describe('CreateUser Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Player,
-      score: 0
+      score: 0,
     });
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledWith({ password: 'anyString' });
     expect(mockedUserRepository.existsByEmail).toHaveBeenCalledWith({ email: 'email@email.com' });

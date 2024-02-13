@@ -39,14 +39,14 @@ describe('FindById tests', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
-      score: 0
+      score: 0,
     };
 
     jest.spyOn(mockedUserUseCases, 'findById').mockResolvedValue(userExpected);
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
-      params: { id: 'uuid' }
+      params: { id: 'uuid' },
     });
 
     /**
@@ -63,7 +63,7 @@ describe('FindById tests', () => {
     });
 
     expect(mockedUserUseCases.findById).toHaveBeenCalledWith({
-      id: 'uuid'
+      id: 'uuid',
     });
   });
 
@@ -89,7 +89,6 @@ describe('FindById tests', () => {
       id: '',
     });
   });
-
 
   test('Should return error message when AppError to occur', async () => {
     /**
@@ -140,5 +139,4 @@ describe('FindById tests', () => {
       body: { message: 'Unexpected error occurred' },
     });
   });
-
-})
+});

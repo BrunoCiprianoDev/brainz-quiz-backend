@@ -27,29 +27,30 @@ describe('FindAll tests', () => {
     userController = new UserController(mockedUserUseCases);
   });
 
-
   test('Should return a list user successfully', async () => {
     /**
      * @Setup
      */
-    const userExpected = [{
-      id: 'uuid1',
-      name: 'name',
-      email: 'email@email.com',
-      avatar: 'avatar',
-      password: 'passEncrypt',
-      role: RoleEnum.Admin,
-      score: 0
-    },
-    {
-      id: 'uuid2',
-      name: 'name',
-      email: 'email@email.com',
-      avatar: 'avatar',
-      password: 'passEncrypt',
-      role: RoleEnum.Player,
-      score: 0
-    }];
+    const userExpected = [
+      {
+        id: 'uuid1',
+        name: 'name',
+        email: 'email@email.com',
+        avatar: 'avatar',
+        password: 'passEncrypt',
+        role: RoleEnum.Admin,
+        score: 0,
+      },
+      {
+        id: 'uuid2',
+        name: 'name',
+        email: 'email@email.com',
+        avatar: 'avatar',
+        password: 'passEncrypt',
+        role: RoleEnum.Player,
+        score: 0,
+      },
+    ];
 
     jest.spyOn(mockedUserUseCases, 'findAll').mockResolvedValue(userExpected);
 
@@ -58,8 +59,8 @@ describe('FindAll tests', () => {
       query: {
         query: 'anyString',
         page: 1,
-        size: 10
-      }
+        size: 10,
+      },
     });
 
     /**
@@ -78,7 +79,7 @@ describe('FindAll tests', () => {
     expect(mockedUserUseCases.findAll).toHaveBeenCalledWith({
       query: 'anyString',
       page: 1,
-      size: 10
+      size: 10,
     });
   });
 
@@ -86,24 +87,26 @@ describe('FindAll tests', () => {
     /**
      * @Setup
      */
-    const userExpected = [{
-      id: 'uuid1',
-      name: 'name',
-      email: 'email@email.com',
-      avatar: 'avatar',
-      password: 'passEncrypt',
-      role: RoleEnum.Admin,
-      score: 0
-    },
-    {
-      id: 'uuid2',
-      name: 'name',
-      email: 'email@email.com',
-      avatar: 'avatar',
-      password: 'passEncrypt',
-      role: RoleEnum.Player,
-      score: 0
-    }];
+    const userExpected = [
+      {
+        id: 'uuid1',
+        name: 'name',
+        email: 'email@email.com',
+        avatar: 'avatar',
+        password: 'passEncrypt',
+        role: RoleEnum.Admin,
+        score: 0,
+      },
+      {
+        id: 'uuid2',
+        name: 'name',
+        email: 'email@email.com',
+        avatar: 'avatar',
+        password: 'passEncrypt',
+        role: RoleEnum.Player,
+        score: 0,
+      },
+    ];
 
     jest.spyOn(mockedUserUseCases, 'findAll').mockResolvedValue(userExpected);
 
@@ -127,7 +130,7 @@ describe('FindAll tests', () => {
     expect(mockedUserUseCases.findAll).toHaveBeenCalledWith({
       query: '',
       page: 0,
-      size: 0
+      size: 0,
     });
   });
 
@@ -154,4 +157,4 @@ describe('FindAll tests', () => {
       body: { message: 'Unexpected error occurred' },
     });
   });
-})
+});

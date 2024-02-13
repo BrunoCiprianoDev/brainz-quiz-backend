@@ -41,7 +41,7 @@ describe('FindById Test', () => {
       avatar: 'avatar',
       password: 'passEncrypt',
       role: RoleEnum.Admin,
-      score: 0
+      score: 0,
     });
 
     /**
@@ -58,7 +58,7 @@ describe('FindById Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
-      score: 0
+      score: 0,
     });
     expect(mockedUserRepository.findById).toHaveBeenCalledWith({ id: 'uuid' });
   });

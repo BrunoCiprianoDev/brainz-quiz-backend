@@ -10,7 +10,7 @@ export interface IUserRepository {
 
   updateAvatar(data: { id: string; avatar: string }): Promise<IUser>;
 
-  updateScore(data: { id: string, score: number }): Promise<IUserReadyOnly>;
+  updateScore(data: { id: string; score: number }): Promise<IUserReadyOnly>;
 
   findById(data: { id: string }): Promise<IUser | null>;
 

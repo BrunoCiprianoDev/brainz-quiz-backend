@@ -42,7 +42,7 @@ describe('UpdateScore Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
-      score: 120
+      score: 120,
     });
 
     /**
@@ -59,7 +59,7 @@ describe('UpdateScore Test', () => {
       email: 'email@email.com',
       avatar: 'avatar',
       role: RoleEnum.Admin,
-      score: 120
+      score: 120,
     });
     expect(mockedUserRepository.existsById).toHaveBeenCalledWith({ id: 'uuid' });
   });

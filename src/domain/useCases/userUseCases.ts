@@ -16,7 +16,7 @@ export interface IUserUseCases {
 
   updateAvatar(data: { id: string; avatar: string }): Promise<IUserReadyOnly>;
 
-  updateScore({ id, score }: { id: string, score: number }): Promise<IUserReadyOnly>;
+  updateScore({ id, score }: { id: string; score: number }): Promise<IUserReadyOnly>;
 
   findById(data: { id: string }): Promise<IUserReadyOnly>;
 
@@ -27,7 +27,7 @@ export class UserUseCases implements IUserUseCases {
   constructor(
     private userRepository: IUserRepository,
     private passwordEncryptor: IPasswordEncryptor,
-  ) { }
+  ) {}
 
   public async create({ name, email, password, avatar, role }: IUserCreateData): Promise<IUserReadyOnly> {
     try {
@@ -64,7 +64,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
-        score: result.score
+        score: result.score,
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -94,7 +94,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
-        score: result.score
+        score: result.score,
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -122,7 +122,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
-        score: result.score
+        score: result.score,
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -147,7 +147,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
-        score: result.score
+        score: result.score,
       };
     } catch (error) {
       if (error instanceof AppError) {
@@ -157,7 +157,7 @@ export class UserUseCases implements IUserUseCases {
     }
   }
 
-  public async updateScore({ id, score }: { id: string, score: number }): Promise<IUserReadyOnly> {
+  public async updateScore({ id, score }: { id: string; score: number }): Promise<IUserReadyOnly> {
     try {
       const isExists = await this.userRepository.existsById({ id });
       if (!isExists) {
@@ -187,7 +187,7 @@ export class UserUseCases implements IUserUseCases {
         email: result.email,
         avatar: result.avatar,
         role: result.role,
-        score: result.score
+        score: result.score,
       };
     } catch (error) {
       if (error instanceof AppError) {

@@ -119,8 +119,8 @@ export class UserController extends BaseController implements IUserController {
   }
 
   /**
- * @PATCH
- */
+   * @PATCH
+   */
   async updateScore(httpContext: IHttpContext): Promise<void> {
     try {
       const body = httpContext.getRequest().body as { id: string; score: number };
@@ -153,7 +153,7 @@ export class UserController extends BaseController implements IUserController {
    */
   public async findAll(httpContext: IHttpContext): Promise<void> {
     try {
-      const query = httpContext.getRequest().query as { query: string; page: number; size: number } ?? {};
+      const query = (httpContext.getRequest().query as { query: string; page: number; size: number }) ?? {};
       const data = {
         query: (query.query as string) ?? '',
         size: (query.size as number) ?? 0,
