@@ -10,6 +10,6 @@ export interface IUser {
   score: number;
 }
 
-export interface IUserCreateData extends Omit<IUser, 'id' | 'score'> {}
+export interface IUserCreateData extends Omit<IUser, 'id' | 'score'> { }
 
-export interface IUserReadyOnly extends Omit<IUser, 'password'> {}
+export interface IUserReadyOnly extends Omit<IUser, 'password'> { }

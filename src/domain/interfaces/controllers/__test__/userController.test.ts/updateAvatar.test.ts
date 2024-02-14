@@ -5,19 +5,13 @@ import { RoleEnum } from '@src/domain/entities/role';
 import { BadRequestError } from '@src/domain/util/errors/appErrors';
 
 describe('UpdateAvatar tests', () => {
-  let mockedUserUseCases: jest.Mocked<IUserUseCases>;
+  let mockedUserUseCases: Partial<IUserUseCases>;
   let mockedHttpContext: jest.Mocked<IHttpContext>;
   let userController: IUserController;
 
   beforeAll(() => {
     mockedUserUseCases = {
-      create: jest.fn(),
-      updateRole: jest.fn(),
-      updateName: jest.fn(),
       updateAvatar: jest.fn(),
-      updateScore: jest.fn(),
-      findById: jest.fn(),
-      findAll: jest.fn(),
     };
 
     mockedHttpContext = {
@@ -25,7 +19,7 @@ describe('UpdateAvatar tests', () => {
       send: jest.fn(),
     };
 
-    userController = new UserController(mockedUserUseCases);
+    userController = new UserController(mockedUserUseCases as IUserUseCases);
   });
 
   test('Should return user when update avatar successfully', async () => {

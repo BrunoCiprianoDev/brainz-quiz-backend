@@ -5,19 +5,13 @@ import { RoleEnum } from '@src/domain/entities/role';
 import { BadRequestError } from '@src/domain/util/errors/appErrors';
 
 describe('CreateAdmin tests', () => {
-  let mockedUserUseCases: jest.Mocked<IUserUseCases>;
+  let mockedUserUseCases: Partial<IUserUseCases>;
   let mockedHttpContext: jest.Mocked<IHttpContext>;
   let userController: IUserController;
 
   beforeAll(() => {
     mockedUserUseCases = {
       create: jest.fn(),
-      updateRole: jest.fn(),
-      updateName: jest.fn(),
-      updateAvatar: jest.fn(),
-      updateScore: jest.fn(),
-      findById: jest.fn(),
-      findAll: jest.fn(),
     };
 
     mockedHttpContext = {
@@ -25,7 +19,7 @@ describe('CreateAdmin tests', () => {
       send: jest.fn(),
     };
 
-    userController = new UserController(mockedUserUseCases);
+    userController = new UserController(mockedUserUseCases as IUserUseCases);
   });
 
   test('Should return admin created successfully', async () => {

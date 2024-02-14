@@ -5,19 +5,13 @@ import { RoleEnum } from '@src/domain/entities/role';
 import { NotFoundError } from '@src/domain/util/errors/appErrors';
 
 describe('FindById tests', () => {
-  let mockedUserUseCases: jest.Mocked<IUserUseCases>;
+  let mockedUserUseCases: Partial<IUserUseCases>;
   let mockedHttpContext: jest.Mocked<IHttpContext>;
   let userController: IUserController;
 
   beforeAll(() => {
     mockedUserUseCases = {
-      create: jest.fn(),
-      updateRole: jest.fn(),
-      updateName: jest.fn(),
-      updateAvatar: jest.fn(),
-      updateScore: jest.fn(),
       findById: jest.fn(),
-      findAll: jest.fn(),
     };
 
     mockedHttpContext = {
@@ -25,7 +19,7 @@ describe('FindById tests', () => {
       send: jest.fn(),
     };
 
-    userController = new UserController(mockedUserUseCases);
+    userController = new UserController(mockedUserUseCases as IUserUseCases);
   });
 
   test('Should return a user by id successfully', async () => {
@@ -71,7 +65,7 @@ describe('FindById tests', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedUserUseCases, 'create').mockClear();
+    jest.spyOn(mockedUserUseCases, 'findById').mockClear();
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },

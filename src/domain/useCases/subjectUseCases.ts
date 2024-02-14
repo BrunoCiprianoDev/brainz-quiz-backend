@@ -16,7 +16,7 @@ export interface ISubjectUseCases {
 }
 
 export class SubjectUseCases implements ISubjectUseCases {
-  constructor(private subjectRepository: ISubjectRepository) {}
+  constructor(private subjectRepository: ISubjectRepository) { }
 
   public async create({ description }: ISubjectCreateData): Promise<ISubject> {
     try {

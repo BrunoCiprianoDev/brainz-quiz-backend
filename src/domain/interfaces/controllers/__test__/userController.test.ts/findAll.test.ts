@@ -4,18 +4,12 @@ import { IUserController, UserController } from '../../userController';
 import { RoleEnum } from '@src/domain/entities/role';
 
 describe('FindAll tests', () => {
-  let mockedUserUseCases: jest.Mocked<IUserUseCases>;
+  let mockedUserUseCases: Partial<IUserUseCases>;
   let mockedHttpContext: jest.Mocked<IHttpContext>;
   let userController: IUserController;
 
   beforeAll(() => {
     mockedUserUseCases = {
-      create: jest.fn(),
-      updateRole: jest.fn(),
-      updateName: jest.fn(),
-      updateAvatar: jest.fn(),
-      updateScore: jest.fn(),
-      findById: jest.fn(),
       findAll: jest.fn(),
     };
 
@@ -24,7 +18,7 @@ describe('FindAll tests', () => {
       send: jest.fn(),
     };
 
-    userController = new UserController(mockedUserUseCases);
+    userController = new UserController(mockedUserUseCases as IUserUseCases);
   });
 
   test('Should return a list user successfully', async () => {

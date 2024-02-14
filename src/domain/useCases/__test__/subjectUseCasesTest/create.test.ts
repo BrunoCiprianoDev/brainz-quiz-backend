@@ -3,7 +3,7 @@ import { ISubjectUseCases, SubjectUseCases } from '../../subjectUseCases';
 import { BadRequestError, InternalServerError } from '@src/domain/util/errors/appErrors';
 
 describe('Create subject tests', () => {
-  let mockedSubjectRepository: jest.Mocked<ISubjectRepository>;
+  let mockedSubjectRepository: Partial<ISubjectRepository>;
   let subjectUseCases: ISubjectUseCases;
 
   beforeAll(() => {
@@ -18,7 +18,7 @@ describe('Create subject tests', () => {
       delete: jest.fn(),
     };
 
-    subjectUseCases = new SubjectUseCases(mockedSubjectRepository);
+    subjectUseCases = new SubjectUseCases(mockedSubjectRepository as ISubjectRepository);
   });
 
   test('Should return subject created successfully', async () => {

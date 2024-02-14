@@ -1,5 +1,5 @@
 import { RoleEnum } from '@src/domain/entities/role';
-import { IUser, IUserCreateData, IUserReadyOnly } from '@src/domain/entities/user';
+import { IUser, IUserCreateData, IUserReadyOnly } from '@src/domain/entities/user/user';
 
 export interface IUserRepository {
   create(user: IUserCreateData): Promise<IUser>;

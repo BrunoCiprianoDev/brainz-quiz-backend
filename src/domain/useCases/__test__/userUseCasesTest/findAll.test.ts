@@ -6,28 +6,22 @@ import { InternalServerError } from '@src/domain/util/errors/appErrors';
 
 describe('CreateUser Test', () => {
   let userUseCases: UserUseCases;
-  let mockedUserRepository: jest.Mocked<IUserRepository>;
-  let mockedPasswordEncryptor: jest.Mocked<IPasswordEncryptor>;
+  let mockedUserRepository: Partial<IUserRepository>;
+  let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
 
   beforeAll(() => {
     mockedUserRepository = {
-      create: jest.fn(),
-      updateRole: jest.fn(),
-      updateName: jest.fn(),
-      updateAvatar: jest.fn(),
-      updateScore: jest.fn(),
-      findById: jest.fn(),
       findAll: jest.fn(),
-      existsByEmail: jest.fn(),
-      existsById: jest.fn(),
     };
 
     mockedPasswordEncryptor = {
       encryptor: jest.fn(),
-      passwordCompare: jest.fn(),
     };
 
-    userUseCases = new UserUseCases(mockedUserRepository, mockedPasswordEncryptor);
+    userUseCases = new UserUseCases(
+      mockedUserRepository as IUserRepository,
+      mockedPasswordEncryptor as IPasswordEncryptor
+    );
   });
 
   test('Should return a list user successfully', async () => {
