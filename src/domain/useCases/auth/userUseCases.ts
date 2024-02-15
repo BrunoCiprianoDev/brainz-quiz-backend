@@ -5,8 +5,8 @@ import { IUserRepository } from '@src/domain/interfaces/repositories/userReposit
 import { BadRequestError, NotFoundError } from '@src/domain/util/errors';
 import { ErrorHandlerUseCases } from '@src/domain/util/errors/errorHandler';
 
-export const USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
-export const USER_NOT_FOUND_BY_ID = 'User not found by id';
+export const ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
+export const ERROR_MESSAGE_USER_NOT_FOUND_BY_ID = 'User not found by id';
 
 export interface IUserUseCases {
   create(data: IUserCreateData): Promise<IUserPublicData>;
@@ -30,7 +30,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     try {
       const isExists = await this.userRepository.existsByEmail({ email: userCreateData.email });
       if (isExists) {
-        throw new BadRequestError(USER_EMAIL_ALREADY_EXISTS);
+        throw new BadRequestError(ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS);
       }
 
       const id = await this.uuidGenerator.generate();
@@ -51,7 +51,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     try {
       const currentUser = await this.userRepository.findById({ id });
       if (!currentUser) {
-        throw new NotFoundError(USER_NOT_FOUND_BY_ID);
+        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
       }
 
       const userToUpdate = new User(currentUser);
@@ -69,7 +69,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     try {
       const currentUser = await this.userRepository.findById({ id });
       if (!currentUser) {
-        throw new NotFoundError(USER_NOT_FOUND_BY_ID);
+        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
       }
 
       const userToUpdate = new User(currentUser);
@@ -87,10 +87,11 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     try {
       const result = await this.userRepository.findById({ id });
       if (!result) {
-        throw new NotFoundError(USER_NOT_FOUND_BY_ID);
+        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
       }
 
-      return { id: result.id, email: result.email, role: result.role };
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      return (({ password: _, ...userWithoutPassword }) => userWithoutPassword)(result);
     } catch (error) {
       this.handleError(error);
     }
@@ -100,10 +101,11 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     try {
       const result = await this.userRepository.findByEmail({ email });
       if (!result) {
-        throw new NotFoundError(USER_NOT_FOUND_BY_ID);
+        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
       }
 
-      return { id: result.id, email: result.email, role: result.role };
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      return (({ password: _, ...userWithoutPassword }) => userWithoutPassword)(result);
     } catch (error) {
       this.handleError(error);
     }

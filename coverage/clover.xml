@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708020238348" clover="3.2.0">
-  <project timestamp="1708020238348" name="All files">
-    <metrics statements="159" coveredstatements="159" conditionals="15" coveredconditionals="15" methods="39" coveredmethods="39" elements="213" coveredelements="213" complexity="0" loc="159" ncloc="159" packages="4" files="8" classes="8"/>
+<coverage generated="1708021756867" clover="3.2.0">
+  <project timestamp="1708021756868" name="All files">
+    <metrics statements="159" coveredstatements="159" conditionals="15" coveredconditionals="15" methods="41" coveredmethods="41" elements="215" coveredelements="215" complexity="0" loc="159" ncloc="159" packages="4" files="8" classes="8"/>
     <package name="entities.auth">
       <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="12"/>
       <file name="user.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/entities/auth/user.ts">
@@ -58,9 +58,9 @@
       </file>
     </package>
     <package name="useCases.auth">
-      <metrics statements="53" coveredstatements="53" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7"/>
+      <metrics statements="53" coveredstatements="53" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="9"/>
       <file name="userUseCases.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/useCases/auth/userUseCases.ts">
-        <metrics statements="53" coveredstatements="53" conditionals="5" coveredconditionals="5" methods="7" coveredmethods="7"/>
+        <metrics statements="53" coveredstatements="53" conditionals="5" coveredconditionals="5" methods="9" coveredmethods="9"/>
         <line num="1" count="6" type="stmt"/>
         <line num="5" count="6" type="stmt"/>
         <line num="6" count="6" type="stmt"/>
@@ -103,17 +103,17 @@
         <line num="88" count="3" type="stmt"/>
         <line num="89" count="2" type="cond" truecount="1" falsecount="0"/>
         <line num="90" count="1" type="stmt"/>
-        <line num="93" count="1" type="stmt"/>
-        <line num="95" count="2" type="stmt"/>
-        <line num="100" count="3" type="stmt"/>
+        <line num="94" count="1" type="stmt"/>
+        <line num="96" count="2" type="stmt"/>
         <line num="101" count="3" type="stmt"/>
-        <line num="102" count="2" type="cond" truecount="1" falsecount="0"/>
-        <line num="103" count="1" type="stmt"/>
-        <line num="106" count="1" type="stmt"/>
-        <line num="108" count="2" type="stmt"/>
-        <line num="113" count="2" type="stmt"/>
-        <line num="114" count="2" type="stmt"/>
-        <line num="116" count="1" type="stmt"/>
+        <line num="102" count="3" type="stmt"/>
+        <line num="103" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="104" count="1" type="stmt"/>
+        <line num="108" count="1" type="stmt"/>
+        <line num="110" count="2" type="stmt"/>
+        <line num="115" count="2" type="stmt"/>
+        <line num="116" count="2" type="stmt"/>
+        <line num="118" count="1" type="stmt"/>
       </file>
     </package>
     <package name="util.constraints">

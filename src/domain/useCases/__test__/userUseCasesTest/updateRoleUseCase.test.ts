@@ -1,6 +1,6 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, USER_NOT_FOUND_BY_ID, UserUseCases } from '../../auth/userUseCases';
+import { IUserUseCases, ERROR_MESSAGE_USER_NOT_FOUND_BY_ID, UserUseCases } from '../../auth/userUseCases';
 import { BadRequestError, InternalServerError, NotFoundError } from '@src/domain/util/errors';
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { INVALID_ENUM_MESSAGE } from '@src/domain/util/constraints';
@@ -75,7 +75,9 @@ describe('UpdateRoleUseCase tests', () => {
      * @Execution
      * @Assertion
      */
-    await expect(userUserUseCases.updateRole(input)).rejects.toEqual(new NotFoundError(USER_NOT_FOUND_BY_ID));
+    await expect(userUserUseCases.updateRole(input)).rejects.toEqual(
+      new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID),
+    );
     expect(mockedUserRepository.findById).toHaveBeenCalledWith({ id: input.id });
     expect(mockedUserRepository.update).toHaveBeenCalledTimes(0);
   });

@@ -1,6 +1,6 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, USER_EMAIL_ALREADY_EXISTS, UserUseCases } from '../../auth/userUseCases';
+import { IUserUseCases, ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS, UserUseCases } from '../../auth/userUseCases';
 import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import {
@@ -80,7 +80,7 @@ describe('CreateUserUseCases test', () => {
      * @Assertion
      */
     await expect(userUserUseCases.create(VALID_USER_CREATE_DATA)).rejects.toEqual(
-      new BadRequestError(USER_EMAIL_ALREADY_EXISTS),
+      new BadRequestError(ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS),
     );
     expect(mockedUserRepository.create).toHaveBeenCalledTimes(0);
     expect(mockedUuidGenerator.generate).toHaveBeenCalledTimes(0);
