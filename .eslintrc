@@ -14,5 +14,15 @@
     ],
     "ignorePatterns": [
         "jest.config.js"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "src/domain/util/constraints/*.ts"
+            ],
+            "rules": {
+                "@typescript-eslint/no-explicit-any": "off"
+            }
+        }
     ]
 }

@@ -1,20 +1,15 @@
-import { RoleEnum } from '@src/domain/entities/role';
-import { IUser, IUserCreateData, IUserReadyOnly } from '@src/domain/entities/user/user';
+import { IUser, IUserCreateData, IUserPublicData } from '@src/domain/entities/auth/user';
 
 export interface IUserRepository {
-  create(user: IUserCreateData): Promise<IUser>;
+  create(user: IUserCreateData): Promise<void>;
 
-  updateRole(data: { id: string; role: RoleEnum }): Promise<IUser>;
-
-  updateName(data: { id: string; name: string }): Promise<IUser>;
-
-  updateAvatar(data: { id: string; avatar: string }): Promise<IUser>;
-
-  updateScore(data: { id: string; score: number }): Promise<IUserReadyOnly>;
+  update(user: IUser): Promise<void>;
 
   findById(data: { id: string }): Promise<IUser | null>;
 
-  findAll(data: { query: string; page: number; size: number }): Promise<IUserReadyOnly[]>;
+  findByEmail(data: { email: string }): Promise<IUser | null>;
+
+  findAll(data: { query: string; page: number; size: number }): Promise<IUserPublicData[]>;
 
   existsByEmail(data: { email: string }): Promise<boolean>;
 
