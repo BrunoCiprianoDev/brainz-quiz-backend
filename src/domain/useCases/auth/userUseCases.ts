@@ -7,6 +7,7 @@ import { ErrorHandlerUseCases } from '@src/domain/util/errors/errorHandler';
 
 export const ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
 export const ERROR_MESSAGE_USER_NOT_FOUND_BY_ID = 'User not found by id';
+export const ERROR_MESSAGE_USER_FIND_ALL_PARAMS = 'Error when searching for users. Please ensure that: (page > 0), (size > 0), and (size <= 10).';
 
 export interface IUserUseCases {
   create(data: IUserCreateData): Promise<IUserPublicData>;
@@ -113,6 +114,9 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
 
   public async findAll(data: { query: string; page: number; size: number }): Promise<IUserPublicData[]> {
     try {
+      if (data.page < 1 || data.size < 1 || data.size > 10) {
+        throw new BadRequestError(ERROR_MESSAGE_USER_FIND_ALL_PARAMS);
+      }
       return await this.userRepository.findAll(data);
     } catch (error) {
       this.handleError(error);

@@ -1,8 +1,8 @@
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, UserUseCases } from '../../auth/userUseCases';
-import { InternalServerError } from '@src/domain/util/errors';
+import { ERROR_MESSAGE_USER_FIND_ALL_PARAMS, IUserUseCases, UserUseCases } from '../../auth/userUseCases';
+import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 import { VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
 
 describe('FindAllUseCase tests', () => {
@@ -30,7 +30,7 @@ describe('FindAllUseCase tests', () => {
 
     const input = {
       query: 'any',
-      page: 2,
+      page: 1,
       size: 2,
     };
 
@@ -50,13 +50,33 @@ describe('FindAllUseCase tests', () => {
     expect(mockedUserRepository.findAll).toHaveBeenCalledWith(input);
   });
 
+  test('Must return BadRequestError when the parameters (size, page) are not valid', async () => {
+    /**
+    * @Setup
+    */
+    const input = {
+      query: 'any',
+      page: -1,
+      size: 200,
+    };
+
+    jest.spyOn(mockedUserRepository, 'findAll').mockClear();
+
+    /**
+     * @Execution
+     * @Assertion
+     */
+    await expect(userUserUseCases.findAll(input)).rejects.toEqual(new BadRequestError(ERROR_MESSAGE_USER_FIND_ALL_PARAMS));
+
+  })
+
   test('Should return InternalServerError when an unexpected error occurs', async () => {
     /**
      * @Setup
      */
     const input = {
       query: 'any',
-      page: 2,
+      page: 1,
       size: 2,
     };
 
