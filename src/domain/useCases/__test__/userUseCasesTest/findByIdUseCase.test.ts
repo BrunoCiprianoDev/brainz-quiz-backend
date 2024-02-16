@@ -5,12 +5,14 @@ import { IUserUseCases, UserUseCases } from '../../userUseCases';
 import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 import { VALID_USER_DATA, VALID_USER_PUBLIC_DATA, VALID_USER_UUID } from './testConstantsUserUseCases';
 import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
+import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 
 describe('FindByIdUseCase tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
   let mockedTokenGenerator: Partial<ITokenGenerator>;
+  let mockedEmailSender: Partial<IEmailSender>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -23,6 +25,7 @@ describe('FindByIdUseCase tests', () => {
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
       mockedTokenGenerator as ITokenGenerator,
+      mockedEmailSender as IEmailSender,
     );
   });
 

@@ -50,7 +50,7 @@ describe('Authenticate tests', () => {
      */
     expect(mockedHttpContext.send).toHaveBeenCalledWith({
       statusCode: 200,
-      body: { token: VALID_TOKEN }
+      body: { token: VALID_TOKEN },
     });
     expect(mockedUserUseCases.authenticate).toHaveBeenCalledWith({
       email: VALID_USER_EMAIL,

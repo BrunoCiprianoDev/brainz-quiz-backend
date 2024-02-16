@@ -2,15 +2,17 @@ import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncr
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
 import { IUserUseCases, UserUseCases } from '../../userUseCases';
-import { VALID_TOKEN, VALID_USER_DATA, VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
+import { VALID_TOKEN, VALID_USER_DATA } from './testConstantsUserUseCases';
 import { ForbiddenError } from '@src/domain/util/errors';
 import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
+import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 
-describe('ValidatePassword tests', () => {
+describe('Authenticate tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
   let mockedTokenGenerator: Partial<ITokenGenerator>;
+  let mockedEmailSender: Partial<IEmailSender>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -24,7 +26,7 @@ describe('ValidatePassword tests', () => {
     };
 
     mockedTokenGenerator = {
-      generateToken: jest.fn(),
+      generateAuthToken: jest.fn(),
     };
 
     userUserUseCases = new UserUseCases(
@@ -32,6 +34,7 @@ describe('ValidatePassword tests', () => {
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
       mockedTokenGenerator as ITokenGenerator,
+      mockedEmailSender as IEmailSender,
     );
   });
 
@@ -46,7 +49,7 @@ describe('ValidatePassword tests', () => {
 
     jest.spyOn(mockedUserRepository, 'findByEmail').mockResolvedValue(VALID_USER_DATA);
     jest.spyOn(mockedPasswordEncryptor, 'passwordCompare').mockResolvedValue(true);
-    jest.spyOn(mockedTokenGenerator, 'generateToken').mockResolvedValue({ token: VALID_TOKEN });
+    jest.spyOn(mockedTokenGenerator, 'generateAuthToken').mockResolvedValue({ token: VALID_TOKEN });
 
     /**
      * @Execution
@@ -62,9 +65,8 @@ describe('ValidatePassword tests', () => {
       password: input.password,
       passwordEncrypt: VALID_USER_DATA.password,
     });
-    expect(mockedTokenGenerator.generateToken).toHaveBeenCalledWith({
+    expect(mockedTokenGenerator.generateAuthToken).toHaveBeenCalledWith({
       id: VALID_USER_DATA.id,
-      email: VALID_USER_DATA.email,
       role: VALID_USER_DATA.role,
     });
   });
@@ -80,7 +82,7 @@ describe('ValidatePassword tests', () => {
 
     jest.spyOn(mockedUserRepository, 'findByEmail').mockResolvedValue(null);
     jest.spyOn(mockedPasswordEncryptor, 'passwordCompare').mockClear();
-    jest.spyOn(mockedTokenGenerator, 'generateToken').mockClear();
+    jest.spyOn(mockedTokenGenerator, 'generateAuthToken').mockClear();
 
     /**
      * @Execution
@@ -89,7 +91,7 @@ describe('ValidatePassword tests', () => {
     await expect(userUserUseCases.authenticate(input)).rejects.toBeInstanceOf(ForbiddenError);
     expect(mockedUserRepository.findByEmail).toHaveBeenCalledWith({ email: input.email });
     expect(mockedPasswordEncryptor.passwordCompare).toHaveBeenCalledTimes(0);
-    expect(mockedTokenGenerator.generateToken).toHaveBeenCalledTimes(0);
+    expect(mockedTokenGenerator.generateAuthToken).toHaveBeenCalledTimes(0);
   });
 
   test('Should return ForbiddenError when password is invalid', async () => {
@@ -103,7 +105,7 @@ describe('ValidatePassword tests', () => {
 
     jest.spyOn(mockedUserRepository, 'findByEmail').mockResolvedValue(VALID_USER_DATA);
     jest.spyOn(mockedPasswordEncryptor, 'passwordCompare').mockResolvedValue(false);
-    jest.spyOn(mockedTokenGenerator, 'generateToken').mockClear();
+    jest.spyOn(mockedTokenGenerator, 'generateAuthToken').mockClear();
 
     /**
      * @Execution
@@ -115,6 +117,6 @@ describe('ValidatePassword tests', () => {
       password: input.password,
       passwordEncrypt: VALID_USER_DATA.password,
     });
-    expect(mockedTokenGenerator.generateToken).toHaveBeenCalledTimes(0);
+    expect(mockedTokenGenerator.generateAuthToken).toHaveBeenCalledTimes(0);
   });
 });

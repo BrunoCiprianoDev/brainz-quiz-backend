@@ -17,8 +17,9 @@ export interface IUpdateUserRoleData {
 }
 
 export interface IUpdateUserPasswordData {
-  id: string;
+  token: string;
   password: string;
+  confirmPassword: string;
 }
 
 export interface IFindUserByIdData {
@@ -40,6 +41,10 @@ export interface IAuthenticateData {
   password: string;
 }
 
-export interface ITokenPayload {
+export interface IUpdatePasswordByEmailData {
+  email: string;
+}
+
+export interface IToken {
   token: string;
 }

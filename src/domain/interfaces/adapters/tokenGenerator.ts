@@ -1,7 +1,7 @@
-import { ITokenPayload } from '@src/domain/util/models/authModels';
-import { IUserPublicData } from '@src/domain/util/models/userModels';
+import { IToken, IUserPublicData } from '@src/domain/util/models/userModels';
 
 export interface ITokenGenerator {
-  generateToken(user: IUserPublicData): Promise<ITokenPayload>;
-  getPayload(token: string): Promise<IUserPublicData>;
+  generateAuthToken(data: { id: string; role: string }): Promise<IToken>;
+  generateTokenResetPass(user: IUserPublicData): Promise<IToken>;
+  getPayloadTokenResetPass(token: string): Promise<IUserPublicData>;
 }

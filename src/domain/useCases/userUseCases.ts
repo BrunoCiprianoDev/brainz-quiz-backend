@@ -9,16 +9,19 @@ import {
   IFindAllUsersData,
   IFindUserByEmailData,
   IFindUserByIdData,
-  ITokenPayload,
+  IToken,
+  IUpdatePasswordByEmailData,
   IUpdateUserPasswordData,
   IUpdateUserRoleData,
   IUserCreateData,
   IUserPublicData,
 } from '@src/domain/util/models/userModels';
 import { ITokenGenerator } from '../interfaces/adapters/tokenGenerator';
+import { IEmailSender } from '../interfaces/adapters/emailSender';
 
 export const ERROR_MESSAGE_USER_CONFIRM_PASSWORD = 'Password and confirmPassword must match.';
 export const ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
+export const ERROR_MESSAGE_USER_INVALID_TOKEN = 'The token provided is not valid';
 export const ERROR_MESSAGE_USER_NOT_FOUND_BY_ID = 'User not found by id';
 export const ERROR_MESSAGE_USER_NOT_FOUND_BY_EMAIL = 'User not found by email';
 export const ERROR_MESSAGE_USER_FIND_ALL_PARAMS =
@@ -32,7 +35,8 @@ export interface IUserUseCases {
   findById(data: IFindUserByIdData): Promise<IUserPublicData>;
   findByEmail(data: IFindUserByEmailData): Promise<IUserPublicData>;
   findAll(data: IFindAllUsersData): Promise<IUserPublicData[]>;
-  authenticate(data: IAuthenticateData): Promise<ITokenPayload>;
+  sendTokenUpdatePasswordByEmail({ email }: IUpdatePasswordByEmailData): Promise<void>;
+  authenticate(data: IAuthenticateData): Promise<IToken>;
 }
 
 export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases {
@@ -41,6 +45,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     private uuidGenerator: IuuidGenerator,
     private passwordEncryptor: IPasswordEncryptor,
     private tokenGenerator: ITokenGenerator,
+    private emailSender: IEmailSender,
   ) {
     super();
   }
@@ -88,23 +93,6 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async updatePassword({ id, password }: IUpdateUserPasswordData): Promise<IUserPublicData> {
-    try {
-      const currentUser = await this.userRepository.findById({ id });
-      if (!currentUser) {
-        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
-      }
-
-      const userToUpdate = new User(currentUser);
-      userToUpdate.password = await this.passwordEncryptor.encryptor({ password });
-
-      await this.userRepository.update(userToUpdate.data);
-
-      return userToUpdate.publicData;
-    } catch (error) {
-      this.handleError(error);
-    }
-  }
 
   public async findById({ id }: IFindUserByIdData): Promise<IUserPublicData> {
     try {
@@ -145,7 +133,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async authenticate({ email, password }: IAuthenticateData): Promise<ITokenPayload> {
+  public async authenticate({ email, password }: IAuthenticateData): Promise<IToken> {
     try {
       const user = await this.userRepository.findByEmail({ email });
       if (!user) {
@@ -161,9 +149,50 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
       }
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      return await this.tokenGenerator.generateToken({ id: user.id, email: user.email, role: user.role });
+      return await this.tokenGenerator.generateAuthToken({ id: user.id, role: user.role });
     } catch (error) {
       this.handleError(error);
     }
   }
+
+  public async sendTokenUpdatePasswordByEmail({ email }: IUpdatePasswordByEmailData): Promise<void> {
+    try {
+      const user = await this.findByEmail({ email });
+      const { token } = await this.tokenGenerator.generateTokenResetPass(user);
+      await this.emailSender.sendTokenForgotPass({ email, token });
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  public async updatePassword({ token, password, confirmPassword }: IUpdateUserPasswordData): Promise<IUserPublicData> {
+    try {
+      if (confirmPassword !== password) {
+        throw new BadRequestError(ERROR_MESSAGE_USER_CONFIRM_PASSWORD);
+      }
+
+      const payload = await this.tokenGenerator.getPayloadTokenResetPass(token);
+
+      const currentUser = await this.userRepository.findById({ id: payload.id });
+
+      if (!currentUser) {
+
+        throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
+      }
+
+      if (payload.email !== currentUser.email) {
+        throw new BadRequestError(ERROR_MESSAGE_USER_INVALID_TOKEN);
+      }
+
+      const userToUpdate = new User(currentUser);
+      userToUpdate.password = await this.passwordEncryptor.encryptor({ password });
+
+      await this.userRepository.update(userToUpdate.data);
+
+      return userToUpdate.publicData;
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
 }

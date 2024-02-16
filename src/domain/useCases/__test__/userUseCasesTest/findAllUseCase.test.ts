@@ -5,12 +5,14 @@ import { ERROR_MESSAGE_USER_FIND_ALL_PARAMS, IUserUseCases, UserUseCases } from 
 import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 import { VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
 import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
+import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 
 describe('FindAllUseCase tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
   let mockedTokenGenerator: Partial<ITokenGenerator>;
+  let mockedEmailSender: Partial<IEmailSender>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -23,6 +25,7 @@ describe('FindAllUseCase tests', () => {
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
       mockedTokenGenerator as ITokenGenerator,
+      mockedEmailSender as IEmailSender,
     );
   });
 

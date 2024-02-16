@@ -4,7 +4,6 @@ import { IUserUseCases } from '@src/domain/useCases/userUseCases';
 import {
   IAuthenticateData,
   IFindAllUsersData,
-  IUpdateUserPasswordData,
   IUpdateUserRoleData,
   IUserCreateData,
 } from '@src/domain/util/models/userModels';
@@ -14,7 +13,7 @@ export interface IUserControllers {
   createAdmin(httpContext: IHttpContext): Promise<void>;
   createPlayer(httpContext: IHttpContext): Promise<void>;
   updateRole(httpContext: IHttpContext): Promise<void>;
-  updatePassword(httpContext: IHttpContext): Promise<void>;
+  // updatePassword(httpContext: IHttpContext): Promise<void>;
   findById(httpContext: IHttpContext): Promise<void>;
   findAll(httpContext: IHttpContext): Promise<void>;
   authenticate(httpContext: IHttpContext): Promise<void>;
@@ -71,19 +70,19 @@ export class UserControllers extends ErrorHandlerControllers implements IUserCon
     }
   }
 
-  public async updatePassword(httpContext: IHttpContext): Promise<void> {
-    try {
-      const body = httpContext.getRequest().body as IUpdateUserPasswordData;
-      const updateUserPasswordData = {
-        id: body.id ?? '',
-        password: body.password ?? '',
-      };
-      const result = await this.userUseCases.updatePassword(updateUserPasswordData);
-      httpContext.send({ statusCode: 200, body: result });
-    } catch (error) {
-      httpContext.send(this.handleClientErrors(error));
-    }
-  }
+  // public async updatePassword(httpContext: IHttpContext): Promise<void> {
+  //   try {
+  //     const body = httpContext.getRequest().body as IUpdateUserPasswordData;
+  //     const updateUserPasswordData = {
+  //       id: body.id ?? '',
+  //       password: body.password ?? '',
+  //     };
+  //     const result = await this.userUseCases.updatePassword(updateUserPasswordData);
+  //     httpContext.send({ statusCode: 200, body: result });
+  //   } catch (error) {
+  //     httpContext.send(this.handleClientErrors(error));
+  //   }
+  // }
 
   public async findById(httpContext: IHttpContext): Promise<void> {
     try {

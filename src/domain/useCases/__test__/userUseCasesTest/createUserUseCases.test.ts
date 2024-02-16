@@ -16,12 +16,14 @@ import {
   VALID_USER_UUID,
 } from './testConstantsUserUseCases';
 import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
+import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 
 describe('CreateUserUseCases test', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
   let mockedTokenGenerator: Partial<ITokenGenerator>;
+  let mockedEmailSender: Partial<IEmailSender>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -43,6 +45,7 @@ describe('CreateUserUseCases test', () => {
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
       mockedTokenGenerator as ITokenGenerator,
+      mockedEmailSender as IEmailSender,
     );
   });
 
