@@ -8,7 +8,6 @@ import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator'
 import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 
 describe('SendTokenUpdatePasswordByEmail tests', () => {
-
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
@@ -79,7 +78,6 @@ describe('SendTokenUpdatePasswordByEmail tests', () => {
     jest.spyOn(mockedTokenGenerator, 'generateTokenResetPass').mockClear();
     jest.spyOn(mockedEmailSender, 'sendTokenForgotPass').mockClear();
 
-
     /**
      * @Execution
      * @Assert
@@ -107,5 +105,4 @@ describe('SendTokenUpdatePasswordByEmail tests', () => {
      */
     await expect(userUserUseCases.sendTokenUpdatePasswordByEmail(input)).rejects.toBeInstanceOf(InternalServerError);
   });
-
 });

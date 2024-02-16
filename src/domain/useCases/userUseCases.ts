@@ -93,7 +93,6 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-
   public async findById({ id }: IFindUserByIdData): Promise<IUserPublicData> {
     try {
       const result = await this.userRepository.findById({ id });
@@ -176,7 +175,6 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
       const currentUser = await this.userRepository.findById({ id: payload.id });
 
       if (!currentUser) {
-
         throw new NotFoundError(ERROR_MESSAGE_USER_NOT_FOUND_BY_ID);
       }
 
@@ -194,5 +192,4 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
       this.handleError(error);
     }
   }
-
 }
