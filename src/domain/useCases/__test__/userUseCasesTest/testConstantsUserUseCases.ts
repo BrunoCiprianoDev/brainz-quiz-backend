@@ -1,4 +1,4 @@
-import { RoleEnum } from '@src/domain/entities/auth/user';
+import { RoleEnum } from '@src/domain/entities/user';
 
 /**
  * @ValidAttributes
@@ -26,9 +26,15 @@ export const VALID_USER_PUBLIC_DATA = {
   role: VALID_USER_ROLE,
 };
 
+export const VALID_USER_DATA = {
+  ...VALID_USER_PUBLIC_DATA,
+  password: VALID_USER_PASSWORD_HASH,
+};
+
 export const VALID_USER_CREATE_DATA = {
   email: VALID_USER_EMAIL,
   password: VALID_USER_PASSWORD,
+  confirmPassword: VALID_USER_PASSWORD,
   role: VALID_USER_ROLE,
 };
 
@@ -45,9 +51,4 @@ export const USER_CREATE_DATA_WITH_INVALID_PASSWORD = {
 export const USER_CREATE_DATA_WITH_INVALID_ROLE = {
   ...VALID_USER_CREATE_DATA,
   role: INVALID_USER_ROLE,
-};
-
-export const VALID_USER_DATA = {
-  id: VALID_USER_UUID,
-  ...VALID_USER_CREATE_DATA,
 };

@@ -1,6 +1,6 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, ERROR_MESSAGE_USER_NOT_FOUND_BY_ID, UserUseCases } from '../../auth/userUseCases';
+import { IUserUseCases, ERROR_MESSAGE_USER_NOT_FOUND_BY_ID, UserUseCases } from '../../userUseCases';
 import { BadRequestError, InternalServerError, NotFoundError } from '@src/domain/util/errors';
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { INVALID_ENUM_MESSAGE } from '@src/domain/util/constraints';
@@ -11,7 +11,7 @@ import {
   VALID_USER_ROLE,
   VALID_USER_UUID,
 } from './testConstantsUserUseCases';
-import { RoleEnum } from '@src/domain/entities/auth/user';
+import { RoleEnum } from '@src/domain/entities/user';
 
 describe('UpdateRoleUseCase tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;

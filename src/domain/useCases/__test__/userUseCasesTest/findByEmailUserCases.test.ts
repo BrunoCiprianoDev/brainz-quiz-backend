@@ -1,7 +1,7 @@
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, UserUseCases } from '../../auth/userUseCases';
+import { IUserUseCases, UserUseCases } from '../../userUseCases';
 import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 import { VALID_USER_DATA, VALID_USER_EMAIL, VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
 

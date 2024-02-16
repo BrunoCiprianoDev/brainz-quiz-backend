@@ -1,21 +1,36 @@
-import { IUserCreateData, IUserPublicData, User } from '@src/domain/entities/auth/user';
+import { User } from '@src/domain/entities/user';
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { BadRequestError, NotFoundError } from '@src/domain/util/errors';
+import { BadRequestError, ForbiddenError, NotFoundError } from '@src/domain/util/errors';
 import { ErrorHandlerUseCases } from '@src/domain/util/errors/errorHandler';
+import {
+  IFindAllUsersData,
+  IFindUserByEmailData,
+  IFindUserByIdData,
+  IUpdateUserPasswordData,
+  IUpdateUserRoleData,
+  IUserCreateData,
+  IUserPublicData,
+} from '@src/domain/util/models/userModels';
+import { ICredentials } from '../util/models/authModels';
 
+export const ERROR_MESSAGE_USER_CONFIRM_PASSWORD = 'Password and confirmPassword must match.';
 export const ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
 export const ERROR_MESSAGE_USER_NOT_FOUND_BY_ID = 'User not found by id';
-export const ERROR_MESSAGE_USER_FIND_ALL_PARAMS = 'Error when searching for users. Please ensure that: (page > 0), (size > 0), and (size <= 10).';
+export const ERROR_MESSAGE_USER_NOT_FOUND_BY_EMAIL = 'User not found by email';
+export const ERROR_MESSAGE_USER_FIND_ALL_PARAMS =
+  'Error when searching for users. Please ensure that: (page > 0), (size > 0), and (size <= 10).';
+export const ERROR_MESSAGE_USER_PASSWORD_INVALID = 'Email or password invalid';
 
 export interface IUserUseCases {
   create(data: IUserCreateData): Promise<IUserPublicData>;
-  updateRole(data: { id: string; role: string }): Promise<IUserPublicData>;
-  updatePassword(data: { id: string; password: string }): Promise<IUserPublicData>;
-  findById(data: { id: string }): Promise<IUserPublicData>;
-  findByEmail(data: { email: string }): Promise<IUserPublicData>;
-  findAll(data: { query: string; page: number; size: number }): Promise<IUserPublicData[]>;
+  updateRole(data: IUpdateUserRoleData): Promise<IUserPublicData>;
+  updatePassword(data: IUpdateUserPasswordData): Promise<IUserPublicData>;
+  findById(data: IFindUserByIdData): Promise<IUserPublicData>;
+  findByEmail(data: IFindUserByEmailData): Promise<IUserPublicData>;
+  findAll(data: IFindAllUsersData): Promise<IUserPublicData[]>;
+  validatePassword(data: { email: string; password: string }): Promise<IUserPublicData>;
 }
 
 export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases {
@@ -29,6 +44,10 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
 
   public async create(userCreateData: IUserCreateData): Promise<IUserPublicData> {
     try {
+      if (userCreateData.confirmPassword !== userCreateData.password) {
+        throw new BadRequestError(ERROR_MESSAGE_USER_CONFIRM_PASSWORD);
+      }
+
       const isExists = await this.userRepository.existsByEmail({ email: userCreateData.email });
       if (isExists) {
         throw new BadRequestError(ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS);
@@ -48,7 +67,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async updateRole({ id, role }: { id: string; role: string }): Promise<IUserPublicData> {
+  public async updateRole({ id, role }: IUpdateUserRoleData): Promise<IUserPublicData> {
     try {
       const currentUser = await this.userRepository.findById({ id });
       if (!currentUser) {
@@ -66,7 +85,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async updatePassword({ id, password }: { id: string; password: string }): Promise<IUserPublicData> {
+  public async updatePassword({ id, password }: IUpdateUserPasswordData): Promise<IUserPublicData> {
     try {
       const currentUser = await this.userRepository.findById({ id });
       if (!currentUser) {
@@ -84,7 +103,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async findById({ id }: { id: string }): Promise<IUserPublicData> {
+  public async findById({ id }: IFindUserByIdData): Promise<IUserPublicData> {
     try {
       const result = await this.userRepository.findById({ id });
       if (!result) {
@@ -98,7 +117,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async findByEmail({ email }: { email: string }): Promise<IUserPublicData> {
+  public async findByEmail({ email }: IFindUserByEmailData): Promise<IUserPublicData> {
     try {
       const result = await this.userRepository.findByEmail({ email });
       if (!result) {
@@ -112,12 +131,34 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async findAll(data: { query: string; page: number; size: number }): Promise<IUserPublicData[]> {
+  public async findAll(data: IFindAllUsersData): Promise<IUserPublicData[]> {
     try {
       if (data.page < 1 || data.size < 1 || data.size > 10) {
         throw new BadRequestError(ERROR_MESSAGE_USER_FIND_ALL_PARAMS);
       }
       return await this.userRepository.findAll(data);
+    } catch (error) {
+      this.handleError(error);
+    }
+  }
+
+  public async validatePassword({ email, password }: ICredentials): Promise<IUserPublicData> {
+    try {
+      const user = await this.userRepository.findByEmail({ email });
+      if (!user) {
+        throw new ForbiddenError(ERROR_MESSAGE_USER_NOT_FOUND_BY_EMAIL);
+      }
+
+      const result = await this.passwordEncryptor.passwordCompare({
+        password: password,
+        passwordEncrypt: user.password,
+      });
+      if (!result) {
+        throw new ForbiddenError(ERROR_MESSAGE_USER_PASSWORD_INVALID);
+      }
+
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      return (({ password: _, ...userWithoutPassword }) => userWithoutPassword)(user);
     } catch (error) {
       this.handleError(error);
     }

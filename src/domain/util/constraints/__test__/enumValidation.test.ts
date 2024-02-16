@@ -1,4 +1,4 @@
-import { RoleEnum } from '@src/domain/entities/auth/user';
+import { RoleEnum } from '@src/domain/entities/user';
 import { isValidEnumValue } from '../enumValidation';
 
 describe('IsValidEnumValue tests', () => {

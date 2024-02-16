@@ -1,6 +1,11 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { IUserUseCases, ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS, UserUseCases } from '../../auth/userUseCases';
+import {
+  IUserUseCases,
+  ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS,
+  UserUseCases,
+  ERROR_MESSAGE_USER_CONFIRM_PASSWORD,
+} from '../../userUseCases';
 import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import {
@@ -42,6 +47,8 @@ describe('CreateUserUseCases test', () => {
     /**
      * @Setup
      */
+    const input = VALID_USER_CREATE_DATA;
+
     jest.spyOn(mockedUserRepository, 'existsByEmail').mockResolvedValue(false);
     jest.spyOn(mockedUuidGenerator, 'generate').mockResolvedValue(VALID_USER_UUID);
     jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockResolvedValue(VALID_USER_PASSWORD_HASH);
@@ -50,7 +57,7 @@ describe('CreateUserUseCases test', () => {
     /**
      * @Execution
      */
-    const sut = await userUserUseCases.create(VALID_USER_CREATE_DATA);
+    const sut = await userUserUseCases.create(input);
 
     /**
      * @Assertion
@@ -59,11 +66,37 @@ describe('CreateUserUseCases test', () => {
     expect(sut).not.toHaveProperty('password');
     expect(mockedUserRepository.create).toHaveBeenCalledWith({
       id: VALID_USER_UUID,
-      ...VALID_USER_CREATE_DATA,
+      email: input.email,
       password: VALID_USER_PASSWORD_HASH,
+      role: input.role,
     });
     expect(mockedUuidGenerator.generate).toHaveBeenCalledTimes(1);
     expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledWith({ password: VALID_USER_PASSWORD });
+  });
+
+  test('Should return BadRequestError when password and confirmPassword not matches', async () => {
+    /**
+     * @Setup
+     */
+    const input = {
+      ...VALID_USER_CREATE_DATA,
+      confirmPassword: 'any',
+    };
+
+    jest.spyOn(mockedUserRepository, 'existsByEmail').mockResolvedValue(false);
+    jest.spyOn(mockedUuidGenerator, 'generate').mockResolvedValue(VALID_USER_UUID);
+    jest.spyOn(mockedPasswordEncryptor, 'encryptor').mockResolvedValue(VALID_USER_PASSWORD_HASH);
+    jest.spyOn(mockedUserRepository, 'create').mockClear();
+
+    /**
+     * @Execution
+     * @Assertion
+     */
+    await expect(userUserUseCases.create(input)).rejects.toEqual(
+      new BadRequestError(ERROR_MESSAGE_USER_CONFIRM_PASSWORD),
+    );
+    expect(mockedUuidGenerator.generate).toHaveBeenCalledTimes(0);
+    expect(mockedPasswordEncryptor.encryptor).toHaveBeenCalledTimes(0);
   });
 
   test('Should return BadRequestError when a user with the provided email already exists', async () => {

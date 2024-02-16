@@ -1,7 +1,7 @@
-import { IUser, IUserCreateData, IUserPublicData } from '@src/domain/entities/auth/user';
+import { IUser, IUserPublicData } from '@src/domain/entities/user';
 
 export interface IUserRepository {
-  create(user: IUserCreateData): Promise<void>;
+  create(user: IUser): Promise<void>;
 
   update(user: IUser): Promise<void>;
 

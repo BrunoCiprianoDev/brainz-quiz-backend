@@ -1,24 +1,14 @@
-import { Email } from '../../util/constraints/emailValidator';
-import { Password } from '../../util/constraints/passwordValidation';
-import { EnumType } from '../../util/constraints/enumValidation';
-import { Uuid } from '../../util/constraints/uuidValidator';
+import { Email } from '../util/constraints/emailValidator';
+import { Password } from '../util/constraints/passwordValidation';
+import { EnumType } from '../util/constraints/enumValidation';
+import { Uuid } from '../util/constraints/uuidValidator';
+import { IUser, IUserPublicData } from '@src/domain/util/models/userModels';
 
 export enum RoleEnum {
   Disabled = 'DISABLED',
   Player = 'PLAYER',
   Admin = 'ADMIN',
 }
-
-export interface IUser {
-  id: string;
-  email: string;
-  password: string;
-  role: string;
-}
-
-export interface IUserCreateData extends Omit<IUser, 'id'> {}
-
-export interface IUserPublicData extends Omit<IUser, 'password'> {}
 
 export class User implements IUser {
   @Uuid()

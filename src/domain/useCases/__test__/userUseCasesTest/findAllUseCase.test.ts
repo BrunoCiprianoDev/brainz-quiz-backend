@@ -1,7 +1,7 @@
 import { IPasswordEncryptor } from '@src/domain/interfaces/adapters/passwordEncryptor';
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { IUserRepository } from '@src/domain/interfaces/repositories/userRepository';
-import { ERROR_MESSAGE_USER_FIND_ALL_PARAMS, IUserUseCases, UserUseCases } from '../../auth/userUseCases';
+import { ERROR_MESSAGE_USER_FIND_ALL_PARAMS, IUserUseCases, UserUseCases } from '../../userUseCases';
 import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 import { VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
 
@@ -52,8 +52,8 @@ describe('FindAllUseCase tests', () => {
 
   test('Must return BadRequestError when the parameters (size, page) are not valid', async () => {
     /**
-    * @Setup
-    */
+     * @Setup
+     */
     const input = {
       query: 'any',
       page: -1,
@@ -66,9 +66,10 @@ describe('FindAllUseCase tests', () => {
      * @Execution
      * @Assertion
      */
-    await expect(userUserUseCases.findAll(input)).rejects.toEqual(new BadRequestError(ERROR_MESSAGE_USER_FIND_ALL_PARAMS));
-
-  })
+    await expect(userUserUseCases.findAll(input)).rejects.toEqual(
+      new BadRequestError(ERROR_MESSAGE_USER_FIND_ALL_PARAMS),
+    );
+  });
 
   test('Should return InternalServerError when an unexpected error occurs', async () => {
     /**
