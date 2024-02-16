@@ -5,15 +5,17 @@ import { IUserRepository } from '@src/domain/interfaces/repositories/userReposit
 import { BadRequestError, ForbiddenError, NotFoundError } from '@src/domain/util/errors';
 import { ErrorHandlerUseCases } from '@src/domain/util/errors/errorHandler';
 import {
+  IAuthenticateData,
   IFindAllUsersData,
   IFindUserByEmailData,
   IFindUserByIdData,
+  ITokenPayload,
   IUpdateUserPasswordData,
   IUpdateUserRoleData,
   IUserCreateData,
   IUserPublicData,
 } from '@src/domain/util/models/userModels';
-import { ICredentials } from '../util/models/authModels';
+import { ITokenGenerator } from '../interfaces/adapters/tokenGenerator';
 
 export const ERROR_MESSAGE_USER_CONFIRM_PASSWORD = 'Password and confirmPassword must match.';
 export const ERROR_MESSAGE_USER_EMAIL_ALREADY_EXISTS = 'There is already a user using this email';
@@ -30,7 +32,7 @@ export interface IUserUseCases {
   findById(data: IFindUserByIdData): Promise<IUserPublicData>;
   findByEmail(data: IFindUserByEmailData): Promise<IUserPublicData>;
   findAll(data: IFindAllUsersData): Promise<IUserPublicData[]>;
-  validatePassword(data: { email: string; password: string }): Promise<IUserPublicData>;
+  authenticate(data: IAuthenticateData): Promise<ITokenPayload>;
 }
 
 export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases {
@@ -38,6 +40,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     private userRepository: IUserRepository,
     private uuidGenerator: IuuidGenerator,
     private passwordEncryptor: IPasswordEncryptor,
+    private tokenGenerator: ITokenGenerator,
   ) {
     super();
   }
@@ -142,7 +145,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
     }
   }
 
-  public async validatePassword({ email, password }: ICredentials): Promise<IUserPublicData> {
+  public async authenticate({ email, password }: IAuthenticateData): Promise<ITokenPayload> {
     try {
       const user = await this.userRepository.findByEmail({ email });
       if (!user) {
@@ -158,7 +161,7 @@ export class UserUseCases extends ErrorHandlerUseCases implements IUserUseCases 
       }
 
       // eslint-disable-next-line @typescript-eslint/no-unused-vars
-      return (({ password: _, ...userWithoutPassword }) => userWithoutPassword)(user);
+      return await this.tokenGenerator.generateToken({ id: user.id, email: user.email, role: user.role });
     } catch (error) {
       this.handleError(error);
     }

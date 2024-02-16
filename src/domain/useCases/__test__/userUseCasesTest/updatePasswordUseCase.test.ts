@@ -10,11 +10,13 @@ import {
   VALID_USER_PUBLIC_DATA,
   VALID_USER_UUID,
 } from './testConstantsUserUseCases';
+import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
 
 describe('UpdatePasswordUseCase tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
+  let mockedTokenGenerator: Partial<ITokenGenerator>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -31,6 +33,7 @@ describe('UpdatePasswordUseCase tests', () => {
       mockedUserRepository as IUserRepository,
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
+      mockedTokenGenerator as ITokenGenerator,
     );
   });
 

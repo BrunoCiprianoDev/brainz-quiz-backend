@@ -34,3 +34,12 @@ export interface IFindAllUsersData {
   page: number;
   size: number;
 }
+
+export interface IAuthenticateData {
+  email: string;
+  password: string;
+}
+
+export interface ITokenPayload {
+  token: string;
+}

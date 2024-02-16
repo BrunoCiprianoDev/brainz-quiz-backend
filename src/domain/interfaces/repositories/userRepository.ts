@@ -1,4 +1,4 @@
-import { IUser, IUserPublicData } from '@src/domain/entities/user';
+import { IUser, IUserPublicData } from '@src/domain/util/models/userModels';
 
 export interface IUserRepository {
   create(user: IUser): Promise<void>;

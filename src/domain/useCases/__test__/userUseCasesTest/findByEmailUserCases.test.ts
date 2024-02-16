@@ -4,11 +4,13 @@ import { IUserRepository } from '@src/domain/interfaces/repositories/userReposit
 import { IUserUseCases, UserUseCases } from '../../userUseCases';
 import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 import { VALID_USER_DATA, VALID_USER_EMAIL, VALID_USER_PUBLIC_DATA } from './testConstantsUserUseCases';
+import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
 
 describe('FindByEmailUseCase tests', () => {
   let mockedUserRepository: Partial<IUserRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
   let mockedPasswordEncryptor: Partial<IPasswordEncryptor>;
+  let mockedTokenGenerator: Partial<ITokenGenerator>;
   let userUserUseCases: IUserUseCases;
 
   beforeAll(() => {
@@ -20,6 +22,7 @@ describe('FindByEmailUseCase tests', () => {
       mockedUserRepository as IUserRepository,
       mockedUuidGenerator as IuuidGenerator,
       mockedPasswordEncryptor as IPasswordEncryptor,
+      mockedTokenGenerator as ITokenGenerator,
     );
   });
 

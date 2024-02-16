@@ -8,6 +8,7 @@ export const VALID_USER_EMAIL = 'johnDoe@email.com';
 export const VALID_USER_ROLE = RoleEnum.Disabled;
 export const VALID_USER_PASSWORD = '12345678';
 export const VALID_USER_PASSWORD_HASH = 'PASSWORDHASH';
+export const VALID_TOKEN = '3c0eaa7fbf653b338a468816e65bd109';
 
 /**
  * @InvalidAttributes
