@@ -13,6 +13,10 @@ export interface IQuestionCreateData extends Omit<IQuestion, 'id' | 'level' | 's
   subjectId: string;
 }
 
+export interface IQuestionUpdateData extends IQuestionCreateData {
+  id: string;
+}
+
 export interface IFindByIdQuestionData {
   id: string;
 }
@@ -26,4 +30,8 @@ export interface IFindAllQuestionData {
 export interface IFindQuestionData {
   levelId: string;
   subjectId: string;
+}
+
+export interface IDeleteQuestionData {
+  id: string;
 }

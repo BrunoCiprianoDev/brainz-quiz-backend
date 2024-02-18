@@ -6,3 +6,15 @@ export interface IOption {
 }
 
 export interface IOptionCreateData extends Omit<IOption, 'id' | 'questionId'> {}
+
+export interface IFindOptionById {
+  id: string;
+}
+
+export interface IFindAllOptionsByQuestionIdData {
+  questionId: string;
+}
+
+export interface IDeleteOptionData {
+  id: string;
+}
