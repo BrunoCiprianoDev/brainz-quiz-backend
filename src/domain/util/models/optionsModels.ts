@@ -5,7 +5,10 @@ export interface IOption {
   isCorrect: boolean;
 }
 
-export interface IOptionCreateData extends Omit<IOption, 'id' | 'questionId'> {}
+export interface IOptionCreateData {
+  questionId: string;
+  optionsWithoutId: Omit<IOption, 'id' | 'questionId'>[];
+}
 
 export interface IFindOptionById {
   id: string;
