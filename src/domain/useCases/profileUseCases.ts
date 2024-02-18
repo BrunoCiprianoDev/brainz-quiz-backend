@@ -1,10 +1,17 @@
-import { Profile } from "../entities/profile";
-import { IuuidGenerator } from "../interfaces/adapters/uuidGenerator";
-import { IProfileRepository } from "../interfaces/repositories/profileRepository";
-import { BadRequestError, NotFoundError } from "../util/errors";
-import { ErrorHandlerUseCases } from "../util/errors/errorHandler";
-import { IFindAllProfilesData, IFindProfileByIdData, IFindProfileByUserId, IProfile, IProfileCreateData } from "../util/models/profileModels";
-import { IFindUserByIdData } from "../util/models/userModels";
+import { Profile } from '../entities/profile';
+import { IuuidGenerator } from '../interfaces/adapters/uuidGenerator';
+import { IProfileRepository } from '../interfaces/repositories/profileRepository';
+import { BadRequestError, NotFoundError } from '../util/errors';
+import { ErrorHandlerUseCases } from '../util/errors/errorHandler';
+import {
+  IFindAllProfilesData,
+  IFindProfileByIdData,
+  IFindProfileByUserId,
+  IProfile,
+  IProfileCreateData,
+} from '../util/models/profileModels';
+import { IFindUserByIdData } from '../util/models/userModels';
+import { IUserUseCases } from './userUseCases';
 
 export const ERROR_MESSAGE_NOT_FOUND_PROFILE_BY_ID = 'Profile not found by id';
 export const ERROR_MESSAGE_NOT_FOUND_PROFILE_BY_USER_ID = 'This user does not have a registered profile';
@@ -20,18 +27,20 @@ export interface IProfileUseCases {
 }
 
 export class ProfileUseCases extends ErrorHandlerUseCases implements IProfileUseCases {
-
   constructor(
+    private userUseCases: IUserUseCases,
     private profileRepository: IProfileRepository,
-    private uuidGenerator: IuuidGenerator) {
+    private uuidGenerator: IuuidGenerator,
+  ) {
     super();
   }
 
   public async create(data: IProfileCreateData): Promise<IProfile> {
     try {
+      await this.userUseCases.findById({ id: data.userId });
       const id = await this.uuidGenerator.generate();
       const profile = new Profile({ ...data, id });
-      await this.profileRepository.create(profile);
+      await this.profileRepository.create(profile.data);
       return profile.data;
     } catch (error) {
       this.handleError(error);
@@ -54,7 +63,7 @@ export class ProfileUseCases extends ErrorHandlerUseCases implements IProfileUse
       if (data.page < 1 || data.size < 1 || data.size > 10) {
         throw new BadRequestError(ERROR_MESSAGE_PROFILE_FIND_ALL_PARAMS);
       }
-      return this.profileRepository.findAll(data);
+      return await this.profileRepository.findAll(data);
     } catch (error) {
       this.handleError(error);
     }
@@ -83,5 +92,4 @@ export class ProfileUseCases extends ErrorHandlerUseCases implements IProfileUse
       this.handleError(error);
     }
   }
-
 }

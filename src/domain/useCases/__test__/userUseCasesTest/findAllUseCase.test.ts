@@ -29,7 +29,7 @@ describe('FindAllUseCase tests', () => {
     );
   });
 
-  test('Should return User by Id successfully', async () => {
+  test('Should return a list Users successfully', async () => {
     /**
      * @Setup
      */

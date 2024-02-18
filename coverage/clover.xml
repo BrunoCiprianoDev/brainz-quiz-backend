@@ -1,32 +1,32 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708201887037" clover="3.2.0">
-  <project timestamp="1708201887037" name="All files">
-    <metrics statements="278" coveredstatements="278" conditionals="68" coveredconditionals="68" methods="67" coveredmethods="67" elements="413" coveredelements="413" complexity="0" loc="278" ncloc="278" packages="5" files="11" classes="11"/>
+<coverage generated="1708216712401" clover="3.2.0">
+  <project timestamp="1708216712401" name="All files">
+    <metrics statements="329" coveredstatements="329" conditionals="74" coveredconditionals="74" methods="73" coveredmethods="73" elements="476" coveredelements="476" complexity="0" loc="329" ncloc="329" packages="6" files="13" classes="13"/>
     <package name="entities">
       <metrics statements="46" coveredstatements="46" conditionals="2" coveredconditionals="2" methods="22" coveredmethods="22"/>
-      <file name="profile.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/entities/profile.ts">
+      <file name="profile.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\entities\profile.ts">
         <metrics statements="19" coveredstatements="19" conditionals="0" coveredconditionals="0" methods="10" coveredmethods="10"/>
-        <line num="1" count="1" type="stmt"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="5" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="13" count="1" type="stmt"/>
-        <line num="18" count="5" type="stmt"/>
-        <line num="19" count="4" type="stmt"/>
-        <line num="20" count="4" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="25" count="3" type="stmt"/>
+        <line num="1" count="6" type="stmt"/>
+        <line num="2" count="6" type="stmt"/>
+        <line num="5" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="13" count="6" type="stmt"/>
+        <line num="18" count="7" type="stmt"/>
+        <line num="19" count="6" type="stmt"/>
+        <line num="20" count="6" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="25" count="6" type="stmt"/>
         <line num="29" count="1" type="stmt"/>
-        <line num="33" count="3" type="stmt"/>
+        <line num="33" count="6" type="stmt"/>
         <line num="37" count="1" type="stmt"/>
-        <line num="41" count="3" type="stmt"/>
+        <line num="41" count="6" type="stmt"/>
         <line num="45" count="1" type="stmt"/>
-        <line num="49" count="3" type="stmt"/>
+        <line num="49" count="6" type="stmt"/>
         <line num="53" count="1" type="stmt"/>
-        <line num="57" count="2" type="stmt"/>
+        <line num="57" count="5" type="stmt"/>
       </file>
-      <file name="user.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/entities/user.ts">
+      <file name="user.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\entities\user.ts">
         <metrics statements="27" coveredstatements="27" conditionals="2" coveredconditionals="2" methods="12" coveredmethods="12"/>
         <line num="1" count="18" type="stmt"/>
         <line num="2" count="18" type="stmt"/>
@@ -59,7 +59,7 @@
     </package>
     <package name="interfaces.controllers">
       <metrics statements="53" coveredstatements="53" conditionals="40" coveredconditionals="40" methods="9" coveredmethods="9"/>
-      <file name="userControllers.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/interfaces/controllers/userControllers.ts">
+      <file name="userControllers.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\interfaces\controllers\userControllers.ts">
         <metrics statements="53" coveredstatements="53" conditionals="40" coveredconditionals="40" methods="9" coveredmethods="9"/>
         <line num="1" count="8" type="stmt"/>
         <line num="12" count="8" type="stmt"/>
@@ -117,8 +117,53 @@
       </file>
     </package>
     <package name="useCases">
-      <metrics statements="83" coveredstatements="83" conditionals="14" coveredconditionals="14" methods="11" coveredmethods="11"/>
-      <file name="userUseCases.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/useCases/userUseCases.ts">
+      <metrics statements="125" coveredstatements="125" conditionals="20" coveredconditionals="20" methods="17" coveredmethods="17"/>
+      <file name="profileUseCases.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\useCases\profileUseCases.ts">
+        <metrics statements="42" coveredstatements="42" conditionals="6" coveredconditionals="6" methods="6" coveredmethods="6"/>
+        <line num="1" count="5" type="stmt"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="16" count="5" type="stmt"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="18" count="5" type="stmt"/>
+        <line num="29" count="5" type="stmt"/>
+        <line num="31" count="5" type="stmt"/>
+        <line num="32" count="5" type="stmt"/>
+        <line num="33" count="5" type="stmt"/>
+        <line num="35" count="5" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="40" count="2" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="42" count="1" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="44" count="1" type="stmt"/>
+        <line num="46" count="1" type="stmt"/>
+        <line num="50" count="2" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="52" count="1" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="54" count="1" type="stmt"/>
+        <line num="55" count="1" type="stmt"/>
+        <line num="57" count="1" type="stmt"/>
+        <line num="62" count="3" type="stmt"/>
+        <line num="63" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="64" count="1" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="73" count="5" type="stmt"/>
+        <line num="74" count="5" type="stmt"/>
+        <line num="75" count="4" type="cond" truecount="1" falsecount="0"/>
+        <line num="76" count="2" type="stmt"/>
+        <line num="78" count="2" type="stmt"/>
+        <line num="80" count="3" type="stmt"/>
+        <line num="85" count="3" type="stmt"/>
+        <line num="86" count="3" type="stmt"/>
+        <line num="87" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="88" count="1" type="stmt"/>
+        <line num="90" count="1" type="stmt"/>
+        <line num="92" count="2" type="stmt"/>
+      </file>
+      <file name="userUseCases.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\useCases\userUseCases.ts">
         <metrics statements="83" coveredstatements="83" conditionals="14" coveredconditionals="14" methods="11" coveredmethods="11"/>
         <line num="1" count="16" type="stmt"/>
         <line num="5" count="16" type="stmt"/>
@@ -205,9 +250,24 @@
         <line num="192" count="3" type="stmt"/>
       </file>
     </package>
+    <package name="useCases.__test__.profileUseCasesTest">
+      <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+      <file name="testConstantsProfile.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\useCases\__test__\profileUseCasesTest\testConstantsProfile.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
+        <line num="4" count="5" type="stmt"/>
+        <line num="5" count="5" type="stmt"/>
+        <line num="6" count="5" type="stmt"/>
+        <line num="7" count="5" type="stmt"/>
+        <line num="12" count="5" type="stmt"/>
+        <line num="13" count="5" type="stmt"/>
+        <line num="14" count="5" type="stmt"/>
+        <line num="19" count="5" type="stmt"/>
+        <line num="25" count="5" type="stmt"/>
+      </file>
+    </package>
     <package name="useCases.__test__.userUseCasesTest">
       <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-      <file name="testConstantsUserUseCases.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/useCases/__test__/userUseCasesTest/testConstantsUserUseCases.ts">
+      <file name="testConstantsUserUseCases.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\useCases\__test__\userUseCasesTest\testConstantsUserUseCases.ts">
         <metrics statements="17" coveredstatements="17" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
         <line num="1" count="16" type="stmt"/>
         <line num="6" count="16" type="stmt"/>
@@ -230,11 +290,11 @@
     </package>
     <package name="util.constraints">
       <metrics statements="79" coveredstatements="79" conditionals="12" coveredconditionals="12" methods="25" coveredmethods="25"/>
-      <file name="emailValidator.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/emailValidator.ts">
+      <file name="emailValidator.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\emailValidator.ts">
         <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
-        <line num="1" count="20" type="stmt"/>
-        <line num="3" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="3" count="25" type="stmt"/>
+        <line num="5" count="25" type="stmt"/>
         <line num="6" count="18" type="stmt"/>
         <line num="7" count="18" type="stmt"/>
         <line num="9" count="18" type="stmt"/>
@@ -243,15 +303,15 @@
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="11" type="stmt"/>
         <line num="17" count="18" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
+        <line num="25" count="25" type="stmt"/>
         <line num="26" count="14" type="stmt"/>
         <line num="27" count="14" type="stmt"/>
       </file>
-      <file name="enumValidation.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/enumValidation.ts">
+      <file name="enumValidation.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\enumValidation.ts">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
-        <line num="1" count="19" type="stmt"/>
-        <line num="3" count="19" type="stmt"/>
-        <line num="5" count="19" type="stmt"/>
+        <line num="1" count="24" type="stmt"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="5" count="24" type="stmt"/>
         <line num="6" count="18" type="stmt"/>
         <line num="7" count="18" type="stmt"/>
         <line num="8" count="18" type="stmt"/>
@@ -261,41 +321,41 @@
         <line num="13" count="2" type="stmt"/>
         <line num="15" count="10" type="stmt"/>
         <line num="18" count="18" type="stmt"/>
-        <line num="26" count="19" type="stmt"/>
+        <line num="26" count="24" type="stmt"/>
         <line num="27" count="14" type="stmt"/>
         <line num="28" count="14" type="stmt"/>
       </file>
-      <file name="index.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/index.ts">
+      <file name="index.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\index.ts">
         <metrics statements="4" coveredstatements="4" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="1" count="3" type="stmt"/>
-        <line num="2" count="3" type="stmt"/>
-        <line num="3" count="3" type="stmt"/>
-        <line num="4" count="3" type="stmt"/>
+        <line num="1" count="8" type="stmt"/>
+        <line num="2" count="8" type="stmt"/>
+        <line num="3" count="8" type="stmt"/>
+        <line num="4" count="8" type="stmt"/>
       </file>
-      <file name="notEmpty.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/notEmpty.ts">
+      <file name="notEmpty.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\notEmpty.ts">
         <metrics statements="16" coveredstatements="16" conditionals="4" coveredconditionals="4" methods="5" coveredmethods="5"/>
-        <line num="1" count="2" type="stmt"/>
-        <line num="3" count="2" type="stmt"/>
-        <line num="5" count="2" type="stmt"/>
-        <line num="6" count="1" type="stmt"/>
-        <line num="7" count="1" type="stmt"/>
-        <line num="8" count="1" type="stmt"/>
-        <line num="10" count="3" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="12" count="5" type="cond" truecount="1" falsecount="0"/>
+        <line num="1" count="7" type="stmt"/>
+        <line num="3" count="7" type="stmt"/>
+        <line num="5" count="7" type="stmt"/>
+        <line num="6" count="6" type="stmt"/>
+        <line num="7" count="6" type="stmt"/>
+        <line num="8" count="6" type="stmt"/>
+        <line num="10" count="6" type="stmt"/>
+        <line num="11" count="6" type="stmt"/>
+        <line num="12" count="7" type="cond" truecount="1" falsecount="0"/>
         <line num="13" count="1" type="stmt"/>
-        <line num="15" count="4" type="stmt"/>
-        <line num="18" count="1" type="stmt"/>
-        <line num="26" count="2" type="stmt"/>
-        <line num="27" count="7" type="cond" truecount="3" falsecount="0"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="18" count="6" type="stmt"/>
+        <line num="26" count="7" type="stmt"/>
+        <line num="27" count="9" type="cond" truecount="3" falsecount="0"/>
         <line num="28" count="2" type="stmt"/>
-        <line num="30" count="5" type="stmt"/>
+        <line num="30" count="7" type="stmt"/>
       </file>
-      <file name="passwordValidation.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/passwordValidation.ts">
+      <file name="passwordValidation.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\passwordValidation.ts">
         <metrics statements="15" coveredstatements="15" conditionals="5" coveredconditionals="5" methods="5" coveredmethods="5"/>
-        <line num="1" count="20" type="stmt"/>
-        <line num="3" count="20" type="stmt"/>
-        <line num="5" count="20" type="stmt"/>
+        <line num="1" count="25" type="stmt"/>
+        <line num="3" count="25" type="stmt"/>
+        <line num="5" count="25" type="stmt"/>
         <line num="6" count="18" type="stmt"/>
         <line num="7" count="18" type="stmt"/>
         <line num="9" count="18" type="stmt"/>
@@ -304,28 +364,28 @@
         <line num="12" count="1" type="stmt"/>
         <line num="14" count="12" type="stmt"/>
         <line num="17" count="18" type="stmt"/>
-        <line num="25" count="20" type="stmt"/>
+        <line num="25" count="25" type="stmt"/>
         <line num="26" count="15" type="cond" truecount="4" falsecount="0"/>
         <line num="27" count="2" type="stmt"/>
         <line num="29" count="13" type="stmt"/>
       </file>
-      <file name="uuidValidator.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/constraints/uuidValidator.ts">
+      <file name="uuidValidator.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\constraints\uuidValidator.ts">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="5" coveredmethods="5"/>
-        <line num="1" count="19" type="stmt"/>
-        <line num="3" count="19" type="stmt"/>
-        <line num="5" count="19" type="stmt"/>
-        <line num="6" count="20" type="stmt"/>
-        <line num="7" count="20" type="stmt"/>
-        <line num="8" count="20" type="stmt"/>
-        <line num="10" count="20" type="stmt"/>
-        <line num="11" count="20" type="stmt"/>
-        <line num="12" count="25" type="cond" truecount="1" falsecount="0"/>
+        <line num="1" count="24" type="stmt"/>
+        <line num="3" count="24" type="stmt"/>
+        <line num="5" count="24" type="stmt"/>
+        <line num="6" count="30" type="stmt"/>
+        <line num="7" count="30" type="stmt"/>
+        <line num="8" count="30" type="stmt"/>
+        <line num="10" count="30" type="stmt"/>
+        <line num="11" count="30" type="stmt"/>
+        <line num="12" count="29" type="cond" truecount="1" falsecount="0"/>
         <line num="13" count="3" type="stmt"/>
-        <line num="15" count="22" type="stmt"/>
-        <line num="18" count="20" type="stmt"/>
-        <line num="43" count="19" type="stmt"/>
-        <line num="44" count="25" type="stmt"/>
-        <line num="45" count="25" type="stmt"/>
+        <line num="15" count="26" type="stmt"/>
+        <line num="18" count="30" type="stmt"/>
+        <line num="43" count="24" type="stmt"/>
+        <line num="44" count="29" type="stmt"/>
+        <line num="45" count="29" type="stmt"/>
       </file>
     </package>
   </project>
