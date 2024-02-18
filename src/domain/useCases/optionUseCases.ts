@@ -13,13 +13,12 @@ import {
 import { IQuestionUseCases } from './questionUseCases';
 
 const ERROR_MESSAGE_OPTION_NOT_FOUND_BY_ID = 'Option not found by id';
-const ERROR_MESSAGE_OPTION_NOT_FOUND = 'Option not found';
 
 export interface IOptionUseCases {
   create(data: IOptionCreateData): Promise<IOption[]>;
   update(data: IOption): Promise<IOption>;
   findById(data: IFindOptionById): Promise<IOption>;
-  findAllByQuestionId(data: IFindAllOptionsByQuestionIdData): Promise<IOption>;
+  findAllByQuestionId(data: IFindAllOptionsByQuestionIdData): Promise<IOption[]>;
   delete(data: IDeleteOptionData): Promise<void>;
 }
 
@@ -73,13 +72,9 @@ export class OptionUseCases extends ErrorHandlerUseCases implements IOptionUseCa
       this.handleError(error);
     }
   }
-  public async findAllByQuestionId(data: IFindAllOptionsByQuestionIdData): Promise<IOption> {
+  public async findAllByQuestionId(data: IFindAllOptionsByQuestionIdData): Promise<IOption[]> {
     try {
-      const result = await this.optionRepository.findAllByQuestionId(data);
-      if (!result) {
-        throw new NotFoundError(ERROR_MESSAGE_OPTION_NOT_FOUND);
-      }
-      return result;
+      return await this.optionRepository.findAllByQuestionId(data);
     } catch (error) {
       this.handleError(error);
     }
