@@ -1,8 +1,8 @@
-import { ISubjectRepository } from "@src/domain/interfaces/repositories/subjectRepository";
-import { ISubjectUseCases, SubjectUseCases } from "../../subjectUseCases";
-import { IuuidGenerator } from "@src/domain/interfaces/adapters/uuidGenerator";
-import { VALID_SUBJECT_DATA } from "./testConstantsSubject";
-import { BadRequestError, InternalServerError } from "@src/domain/util/errors";
+import { ISubjectRepository } from '@src/domain/interfaces/repositories/subjectRepository';
+import { ISubjectUseCases, SubjectUseCases } from '../../subjectUseCases';
+import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
+import { VALID_SUBJECT_DATA } from './testConstantsSubject';
+import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 
 describe('FindAllSubjectsUseCase test', () => {
   let mockedSubjectRepository: Partial<ISubjectRepository>;
@@ -28,7 +28,7 @@ describe('FindAllSubjectsUseCase test', () => {
       query: 'any',
       page: 1,
       size: 2,
-      isActive: true
+      isActive: true,
     };
 
     const mockedFindAllReturn = [VALID_SUBJECT_DATA, VALID_SUBJECT_DATA];
@@ -55,7 +55,7 @@ describe('FindAllSubjectsUseCase test', () => {
       query: 'any',
       page: -1,
       size: 200,
-      isActive: true
+      isActive: true,
     };
 
     jest.spyOn(mockedSubjectRepository, 'findAll').mockClear();
@@ -75,7 +75,7 @@ describe('FindAllSubjectsUseCase test', () => {
       query: 'any',
       page: 1,
       size: 2,
-      isActive: true
+      isActive: true,
     };
 
     jest.spyOn(mockedSubjectRepository, 'findAll').mockRejectedValue(new Error('Any'));
@@ -86,5 +86,4 @@ describe('FindAllSubjectsUseCase test', () => {
      */
     await expect(subjectUseCases.findAll(input)).rejects.toBeInstanceOf(InternalServerError);
   });
-
-})
+});

@@ -1,8 +1,8 @@
-import { IuuidGenerator } from "@src/domain/interfaces/adapters/uuidGenerator";
-import { ILeveUseCases, LevelUseCases } from "../../levelUseCases";
-import { ILevelRepository } from "@src/domain/interfaces/repositories/levelRepository";
-import { VALID_LEVEL_DATA } from "./testConstantsLevel";
-import { BadRequestError, InternalServerError } from "@src/domain/util/errors";
+import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
+import { ILeveUseCases, LevelUseCases } from '../../levelUseCases';
+import { ILevelRepository } from '@src/domain/interfaces/repositories/levelRepository';
+import { VALID_LEVEL_DATA } from './testConstantsLevel';
+import { BadRequestError, InternalServerError } from '@src/domain/util/errors';
 
 describe('FindAllLevelsUseCase tests', () => {
   let mockedLevelRepository: Partial<ILevelRepository>;
@@ -10,17 +10,14 @@ describe('FindAllLevelsUseCase tests', () => {
   let levelUseCases: ILeveUseCases;
   beforeAll(() => {
     mockedLevelRepository = {
-      findAll: jest.fn()
+      findAll: jest.fn(),
     };
 
     mockedUuidGenerator = {
       generate: jest.fn(),
     };
 
-    levelUseCases = new LevelUseCases(
-      mockedLevelRepository as ILevelRepository,
-      mockedUuidGenerator as IuuidGenerator,
-    );
+    levelUseCases = new LevelUseCases(mockedLevelRepository as ILevelRepository, mockedUuidGenerator as IuuidGenerator);
   });
 
   test('Should return list Levels successfully', async () => {
@@ -32,7 +29,7 @@ describe('FindAllLevelsUseCase tests', () => {
       query: 'any',
       page: 1,
       size: 2,
-      isActive: true
+      isActive: true,
     };
 
     const mockedFindAllReturn = [VALID_LEVEL_DATA, VALID_LEVEL_DATA];
@@ -59,7 +56,7 @@ describe('FindAllLevelsUseCase tests', () => {
       query: 'any',
       page: -1,
       size: 200,
-      isActive: true
+      isActive: true,
     };
 
     jest.spyOn(mockedLevelRepository, 'findAll').mockClear();
@@ -79,7 +76,7 @@ describe('FindAllLevelsUseCase tests', () => {
       query: 'any',
       page: 1,
       size: 2,
-      isActive: true
+      isActive: true,
     };
 
     jest.spyOn(mockedLevelRepository, 'findAll').mockRejectedValue(new Error('Any'));
@@ -90,5 +87,4 @@ describe('FindAllLevelsUseCase tests', () => {
      */
     await expect(levelUseCases.findAll(input)).rejects.toBeInstanceOf(InternalServerError);
   });
-
-})
+});

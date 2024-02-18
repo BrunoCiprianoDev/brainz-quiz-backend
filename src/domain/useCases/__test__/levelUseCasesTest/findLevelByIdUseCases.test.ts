@@ -1,8 +1,8 @@
-import { IuuidGenerator } from "@src/domain/interfaces/adapters/uuidGenerator";
-import { ILevelRepository } from "@src/domain/interfaces/repositories/levelRepository";
-import { ILeveUseCases, LevelUseCases } from "../../levelUseCases";
-import { VALID_LEVEL_DATA, VALID_LEVEL_UUID } from "./testConstantsLevel";
-import { InternalServerError, NotFoundError } from "@src/domain/util/errors";
+import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
+import { ILevelRepository } from '@src/domain/interfaces/repositories/levelRepository';
+import { ILeveUseCases, LevelUseCases } from '../../levelUseCases';
+import { VALID_LEVEL_DATA, VALID_LEVEL_UUID } from './testConstantsLevel';
+import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 
 describe('FindLevelsByIdUseCase tests', () => {
   let mockedLevelRepository: Partial<ILevelRepository>;
@@ -10,17 +10,14 @@ describe('FindLevelsByIdUseCase tests', () => {
   let levelUseCases: ILeveUseCases;
   beforeAll(() => {
     mockedLevelRepository = {
-      findById: jest.fn()
+      findById: jest.fn(),
     };
 
     mockedUuidGenerator = {
       generate: jest.fn(),
     };
 
-    levelUseCases = new LevelUseCases(
-      mockedLevelRepository as ILevelRepository,
-      mockedUuidGenerator as IuuidGenerator,
-    );
+    levelUseCases = new LevelUseCases(mockedLevelRepository as ILevelRepository, mockedUuidGenerator as IuuidGenerator);
   });
 
   test('Should return Level by Id successfully', async () => {
@@ -79,4 +76,4 @@ describe('FindLevelsByIdUseCase tests', () => {
      */
     await expect(levelUseCases.findById(input)).rejects.toBeInstanceOf(InternalServerError);
   });
-})
+});

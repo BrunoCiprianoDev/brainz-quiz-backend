@@ -17,10 +17,7 @@ describe('CreateLevelUseCase', () => {
       generate: jest.fn(),
     };
 
-    levelUseCases = new LevelUseCases(
-      mockedLevelRepository as ILevelRepository,
-      mockedUuidGenerator as IuuidGenerator,
-    );
+    levelUseCases = new LevelUseCases(mockedLevelRepository as ILevelRepository, mockedUuidGenerator as IuuidGenerator);
   });
 
   test('Should create Level successfully', async () => {

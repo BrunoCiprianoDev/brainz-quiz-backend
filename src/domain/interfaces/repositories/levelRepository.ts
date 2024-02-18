@@ -1,4 +1,4 @@
-import { IFindAllLevelData, IFindLevelByIdData, ILevel, ILevelCreateData } from "@src/domain/util/models/levelModels";
+import { IFindAllLevelData, IFindLevelByIdData, ILevel, ILevelCreateData } from '@src/domain/util/models/levelModels';
 
 export interface ILevelRepository {
   create(data: ILevelCreateData): Promise<void>;

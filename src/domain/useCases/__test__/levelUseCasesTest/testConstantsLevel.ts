@@ -11,7 +11,7 @@ export const VALID_LEVEL_ISACTIVE = true;
  */
 export const VALID_LEVEL_CREATE_DATA = {
   description: VALID_LEVEL_DESCRIPTION,
-  points: VALID_LEVEL_POINTS
+  points: VALID_LEVEL_POINTS,
 };
 
 export const VALID_LEVEL_DATA = {

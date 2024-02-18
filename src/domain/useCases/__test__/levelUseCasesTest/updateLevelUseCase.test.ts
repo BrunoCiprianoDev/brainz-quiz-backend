@@ -11,17 +11,14 @@ describe('UpdateLevelUseCase tests', () => {
   beforeAll(() => {
     mockedLevelRepository = {
       update: jest.fn(),
-      findById: jest.fn()
+      findById: jest.fn(),
     };
 
     mockedUuidGenerator = {
       generate: jest.fn(),
     };
 
-    levelUseCases = new LevelUseCases(
-      mockedLevelRepository as ILevelRepository,
-      mockedUuidGenerator as IuuidGenerator,
-    );
+    levelUseCases = new LevelUseCases(mockedLevelRepository as ILevelRepository, mockedUuidGenerator as IuuidGenerator);
   });
 
   test('Should update Level successfully', async () => {

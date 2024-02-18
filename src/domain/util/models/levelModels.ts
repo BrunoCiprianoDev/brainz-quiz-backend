@@ -5,7 +5,7 @@ export interface ILevel {
   isActive: boolean;
 }
 
-export interface ILevelCreateData extends Omit<ILevel, 'id' | 'isActive'> { }
+export interface ILevelCreateData extends Omit<ILevel, 'id' | 'isActive'> {}
 
 export interface IFindAllLevelData {
   isActive: boolean;

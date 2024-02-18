@@ -1,8 +1,8 @@
-import { ISubjectRepository } from "@src/domain/interfaces/repositories/subjectRepository";
-import { ISubjectUseCases, SubjectUseCases } from "../../subjectUseCases";
-import { IuuidGenerator } from "@src/domain/interfaces/adapters/uuidGenerator";
-import { VALID_SUBJECT_DATA, VALID_SUBJECT_UUID } from "./testConstantsSubject";
-import { InternalServerError, NotFoundError } from "@src/domain/util/errors";
+import { ISubjectRepository } from '@src/domain/interfaces/repositories/subjectRepository';
+import { ISubjectUseCases, SubjectUseCases } from '../../subjectUseCases';
+import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
+import { VALID_SUBJECT_DATA, VALID_SUBJECT_UUID } from './testConstantsSubject';
+import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 
 describe('FindSubjectByIdUseCase test', () => {
   let mockedSubjectRepository: Partial<ISubjectRepository>;
@@ -18,7 +18,6 @@ describe('FindSubjectByIdUseCase test', () => {
       mockedUuidGenerator as IuuidGenerator,
     );
   });
-
 
   test('Should return Subject by Id successfully', async () => {
     /**
@@ -76,4 +75,4 @@ describe('FindSubjectByIdUseCase test', () => {
      */
     await expect(subjectUseCases.findById(input)).rejects.toBeInstanceOf(InternalServerError);
   });
-})
+});
