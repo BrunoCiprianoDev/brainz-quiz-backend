@@ -1,8 +1,8 @@
 import { ValidationError } from '@src/domain/util/errors';
-import { Profile } from '../../profile';
+import { Profile } from '../profile';
 import { ERROR_MESSAGE_STRING_VALIDATOR } from '@src/domain/util/constraints/notEmpty';
 
-describe('Profilee entity tests', () => {
+describe('Profile entity tests', () => {
   test('Should create a new Profile instance successfully', () => {
     /**
      * @Setup

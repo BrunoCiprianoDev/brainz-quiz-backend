@@ -1,5 +1,5 @@
 import { ValidationError } from '@src/domain/util/errors';
-import { RoleEnum, User } from '../../user';
+import { RoleEnum, User } from '../user';
 import {
   INVALID_EMAIL_MESSAGE,
   INVALID_ENUM_MESSAGE,
