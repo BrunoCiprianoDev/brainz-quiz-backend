@@ -4,11 +4,11 @@ export interface ISubject {
   isActive: boolean;
 }
 
-export interface ISubjectCreateData extends Omit<ISubject, 'id' | 'isActive'> {}
+export interface ISubjectCreateData extends Omit<ISubject, 'id' | 'isActive'> { }
 
 export interface IFindAllSubjectData {
   isActive: boolean;
-  query: number;
+  query: string;
   page: number;
   size: number;
 }

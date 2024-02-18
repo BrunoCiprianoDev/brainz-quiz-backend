@@ -1,7 +1,7 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { ISubjectRepository } from '@src/domain/interfaces/repositories/subjectRepository';
 import { ISubjectUseCases, SubjectUseCases } from '../../subjectUseCases';
-import { VALID_SUBJECT_CREATE_DATA, VALID_SUBJECT_DATA, VALID_SUBJECT_UUID } from './testConstantsSubject';
+import { VALID_SUBJECT_DATA } from './testConstantsSubject';
 import { NotFoundError } from '@src/domain/util/errors';
 
 describe('UpdateSubjectUseCase', () => {
@@ -50,7 +50,7 @@ describe('UpdateSubjectUseCase', () => {
     /**
      * @Setup
      */
-    jest.spyOn(mockedSubjectRepository, 'findById').mockRejectedValue(null);
+    jest.spyOn(mockedSubjectRepository, 'findById').mockResolvedValue(null);
 
     /**
      * @Execution
