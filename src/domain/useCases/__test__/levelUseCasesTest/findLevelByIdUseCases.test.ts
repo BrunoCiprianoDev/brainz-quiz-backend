@@ -1,13 +1,13 @@
 import { IuuidGenerator } from '@src/domain/interfaces/adapters/uuidGenerator';
 import { ILevelRepository } from '@src/domain/interfaces/repositories/levelRepository';
-import { ILeveUseCases, LevelUseCases } from '../../levelUseCases';
+import { ILevelUseCases, LevelUseCases } from '../../levelUseCases';
 import { VALID_LEVEL_DATA, VALID_LEVEL_UUID } from './testConstantsLevel';
 import { InternalServerError, NotFoundError } from '@src/domain/util/errors';
 
 describe('FindLevelsByIdUseCase tests', () => {
   let mockedLevelRepository: Partial<ILevelRepository>;
   let mockedUuidGenerator: Partial<IuuidGenerator>;
-  let levelUseCases: ILeveUseCases;
+  let levelUseCases: ILevelUseCases;
   beforeAll(() => {
     mockedLevelRepository = {
       findById: jest.fn(),

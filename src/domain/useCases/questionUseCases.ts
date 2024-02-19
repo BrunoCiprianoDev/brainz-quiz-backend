@@ -7,11 +7,12 @@ import {
   IDeleteQuestionData,
   IFindAllQuestionData,
   IFindByIdQuestionData,
+  IFindQuestionData,
   IQuestion,
   IQuestionCreateData,
   IQuestionUpdateData,
 } from '../util/models/questionModels';
-import { ILeveUseCases } from './levelUseCases';
+import { ILevelUseCases } from './levelUseCases';
 import { ISubjectUseCases } from './subjectUseCases';
 
 const ERROR_MESSAGE_QUESTION_NOT_FOUND_BY_ID = 'Question not found by id';
@@ -24,14 +25,14 @@ export interface IQuestionUseCases {
   update(data: IQuestionUpdateData): Promise<IQuestion>;
   findById(data: IFindByIdQuestionData): Promise<IQuestion | null>;
   findAll(data: IFindAllQuestionData): Promise<IQuestion[]>;
-  findQuestion(data: IFindAllQuestionData): Promise<IQuestion>;
+  findQuestion(data: IFindQuestionData): Promise<IQuestion>;
   delete(data: IDeleteQuestionData): Promise<void>;
 }
 
 export class QuestionUseCases extends ErrorHandlerUseCases implements IQuestionUseCases {
   constructor(
     private questionRepository: IQuestionRepository,
-    private levelUseCases: ILeveUseCases,
+    private levelUseCases: ILevelUseCases,
     private subjectUseCases: ISubjectUseCases,
     private uuidGenerator: IuuidGenerator,
   ) {
@@ -87,7 +88,7 @@ export class QuestionUseCases extends ErrorHandlerUseCases implements IQuestionU
     }
   }
 
-  public async findQuestion(data: IFindAllQuestionData): Promise<IQuestion> {
+  public async findQuestion(data: IFindQuestionData): Promise<IQuestion> {
     try {
       const result = await this.questionRepository.findQuestion(data);
       if (!result) {

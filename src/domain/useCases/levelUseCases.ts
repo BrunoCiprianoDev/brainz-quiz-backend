@@ -9,14 +9,14 @@ export const ERROR_MESSAGE_LEVEL_NOT_FOUND_BY_ID = 'Level not found by id';
 export const ERROR_MESSAGE_LEVEL_FIND_ALL_PARAMS =
   'Error when searching for levels. Please ensure that: (page > 0), (size > 0), and (size <= 10).';
 
-export interface ILeveUseCases {
+export interface ILevelUseCases {
   create(data: ILevelCreateData): Promise<ILevel>;
   update(data: ILevel): Promise<ILevel>;
   findById(data: IFindLevelByIdData): Promise<ILevel>;
   findAll(data: IFindAllLevelData): Promise<ILevel[]>;
 }
 
-export class LevelUseCases extends ErrorHandlerUseCases implements ILeveUseCases {
+export class LevelUseCases extends ErrorHandlerUseCases implements ILevelUseCases {
   constructor(
     private levelRepository: ILevelRepository,
     private uuidGenerator: IuuidGenerator,
