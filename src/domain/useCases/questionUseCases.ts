@@ -92,7 +92,7 @@ export class QuestionUseCases extends ErrorHandlerUseCases implements IQuestionU
     try {
       const result = await this.questionRepository.findQuestion(data);
       if (!result) {
-        throw new BadRequestError(ERROR_MESSAGE_QUESTION_NOT_FOUND);
+        throw new NotFoundError(ERROR_MESSAGE_QUESTION_NOT_FOUND);
       }
       return result;
     } catch (error) {

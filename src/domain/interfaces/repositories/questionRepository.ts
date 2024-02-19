@@ -11,6 +11,6 @@ export interface IQuestionRepository {
   update(data: IQuestion): Promise<void>;
   findById(data: IFindByIdQuestionData): Promise<IQuestion | null>;
   findAll(data: IFindAllQuestionData): Promise<IQuestion[]>;
-  findQuestion(data: IFindQuestionData): Promise<IQuestion>;
+  findQuestion(data: IFindQuestionData): Promise<IQuestion | null>;
   delete(data: IDeleteQuestionData): Promise<void>;
 }
