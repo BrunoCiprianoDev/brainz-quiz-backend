@@ -1,7 +1,7 @@
-import { ErrorHandlerControllers } from "@src/domain/util/errors/errorHandler";
-import { IHttpContext } from "../adapters/httpContext";
-import { IOptionUseCases } from "@src/domain/useCases/optionUseCases";
-import { IOption, IOptionCreateData } from "@src/domain/util/models/optionsModels";
+import { ErrorHandlerControllers } from '@src/domain/util/errors/errorHandler';
+import { IHttpContext } from '../adapters/httpContext';
+import { IOptionUseCases } from '@src/domain/useCases/optionUseCases';
+import { IOption, IOptionCreateData } from '@src/domain/util/models/optionsModels';
 
 export interface IOptionControllers {
   create(httpContext: IHttpContext): Promise<void>;
@@ -20,14 +20,13 @@ export class OptionControllers extends ErrorHandlerControllers implements IOptio
       const body = httpContext.getRequest().body as IOptionCreateData;
       const optionCreateData = {
         questionId: body.questionId ?? '',
-        optionsWithoutId: body.optionsWithoutId ?? []
+        optionsWithoutId: body.optionsWithoutId ?? [],
       };
       const result = await this.optionUseCases.create(optionCreateData);
       httpContext.send({ statusCode: 201, body: result });
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
 
   public async update(httpContext: IHttpContext): Promise<void> {
@@ -44,7 +43,6 @@ export class OptionControllers extends ErrorHandlerControllers implements IOptio
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
 
   public async findById(httpContext: IHttpContext): Promise<void> {
@@ -56,7 +54,6 @@ export class OptionControllers extends ErrorHandlerControllers implements IOptio
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
 
   public async findAllByQuestionId(httpContext: IHttpContext): Promise<void> {
@@ -68,7 +65,6 @@ export class OptionControllers extends ErrorHandlerControllers implements IOptio
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
 
   public async delete(httpContext: IHttpContext): Promise<void> {
@@ -80,7 +76,5 @@ export class OptionControllers extends ErrorHandlerControllers implements IOptio
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
-
 }

@@ -1,9 +1,7 @@
 import { IHttpContext } from '@src/domain/interfaces/adapters/httpContext';
 import { IProfileUseCases } from '@src/domain/useCases/profileUseCases';
 import { IProfileControllers, ProfileControllers } from '../../profileControllers';
-import {
-  VALID_PROFILE_DATA,
-} from '@src/domain/useCases/__test__/profileUseCasesTest/testConstantsProfile';
+import { VALID_PROFILE_DATA } from '@src/domain/useCases/__test__/profileUseCasesTest/testConstantsProfile';
 
 describe('UpdateProfileController tests', () => {
   let mockedProfileUseCases: Partial<IProfileUseCases>;

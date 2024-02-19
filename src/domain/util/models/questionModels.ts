@@ -34,8 +34,8 @@ export interface IFindQuestionData {
 }
 
 export interface IQuestionWithOptionsData {
-  question: IQuestion,
-  options: IOption[]
+  question: IQuestion;
+  options: IOption[];
 }
 
 export interface IDeleteQuestionData {

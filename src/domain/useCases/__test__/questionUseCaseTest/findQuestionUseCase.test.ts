@@ -47,12 +47,14 @@ describe('FindQuestionUseCase Tests', () => {
         level: VALID_LEVEL_DATA,
         subject: VALID_SUBJECT_DATA,
       },
-      options: [{
-        id: 'da8882d6-d77a-4d18-928d-2f1ef8b6b8bd',
-        questionId: 'da8882d6-d77a-4d18-928d-2f1ef8b6b8bd',
-        description: 'Any',
-        isCorrect: true
-      }]
+      options: [
+        {
+          id: 'da8882d6-d77a-4d18-928d-2f1ef8b6b8bd',
+          questionId: 'da8882d6-d77a-4d18-928d-2f1ef8b6b8bd',
+          description: 'Any',
+          isCorrect: true,
+        },
+      ],
     };
 
     jest.spyOn(mockedQuestionRepository, 'findQuestion').mockResolvedValue(currentQuestionExpected);

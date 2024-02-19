@@ -1,7 +1,12 @@
-import { ErrorHandlerControllers } from "@src/domain/util/errors/errorHandler";
-import { IHttpContext } from "../adapters/httpContext";
-import { IQuestionUseCases } from "@src/domain/useCases/questionUseCases";
-import { IFindAllQuestionData, IFindQuestionData, IQuestionCreateData, IQuestionUpdateData } from "@src/domain/util/models/questionModels";
+import { ErrorHandlerControllers } from '@src/domain/util/errors/errorHandler';
+import { IHttpContext } from '../adapters/httpContext';
+import { IQuestionUseCases } from '@src/domain/useCases/questionUseCases';
+import {
+  IFindAllQuestionData,
+  IFindQuestionData,
+  IQuestionCreateData,
+  IQuestionUpdateData,
+} from '@src/domain/util/models/questionModels';
 
 export interface IQuestionControllers {
   create(httpContext: IHttpContext): Promise<void>;
@@ -13,7 +18,6 @@ export interface IQuestionControllers {
 }
 
 export class QuestionControllers extends ErrorHandlerControllers implements IQuestionControllers {
-
   constructor(private questionUseCases: IQuestionUseCases) {
     super();
   }
@@ -40,7 +44,7 @@ export class QuestionControllers extends ErrorHandlerControllers implements IQue
         levelId: body.levelId ?? '',
         subjectId: body.subjectId ?? '',
         description: body.description ?? '',
-        id: body.id ?? ''
+        id: body.id ?? '',
       };
       const result = await this.questionUseCases.update(questionUpdateData);
       httpContext.send({ statusCode: 200, body: result });
@@ -101,5 +105,4 @@ export class QuestionControllers extends ErrorHandlerControllers implements IQue
       httpContext.send(this.handleClientErrors(error));
     }
   }
-
 }

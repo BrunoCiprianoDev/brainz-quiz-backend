@@ -21,7 +21,6 @@ describe('FindAll Subjects controller tests', () => {
     profileControllers = new ProfileControllers(mockedProfileUseCases as IProfileUseCases);
   });
 
-
   test('Should return body when findAll Profiles successfully', async () => {
     /**
      * @Setup

@@ -2,7 +2,8 @@ import { IHttpContext } from '@src/domain/interfaces/adapters/httpContext';
 import { IProfileUseCases } from '@src/domain/useCases/profileUseCases';
 import { IProfileControllers, ProfileControllers } from '../../profileControllers';
 import {
-  VALID_PROFILE_DATA, VALID_PROFILE_UUID,
+  VALID_PROFILE_DATA,
+  VALID_PROFILE_UUID,
 } from '@src/domain/useCases/__test__/profileUseCasesTest/testConstantsProfile';
 
 describe('UpdateProfileController tests', () => {
@@ -31,7 +32,7 @@ describe('UpdateProfileController tests', () => {
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
-      params: { id: VALID_PROFILE_UUID }
+      params: { id: VALID_PROFILE_UUID },
     });
 
     /**
@@ -69,7 +70,7 @@ describe('UpdateProfileController tests', () => {
      * @Assert
      */
     expect(mockedProfileUseCases.findById).toHaveBeenCalledWith({
-      id: ''
+      id: '',
     });
   });
 
