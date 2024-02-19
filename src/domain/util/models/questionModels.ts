@@ -1,4 +1,5 @@
 import { ILevel } from './levelModels';
+import { IOption } from './optionsModels';
 import { ISubject } from './subjectModels';
 
 export interface IQuestion {
@@ -30,6 +31,11 @@ export interface IFindAllQuestionData {
 export interface IFindQuestionData {
   levelId: string;
   subjectId: string;
+}
+
+export interface IQuestionWithOptionsData {
+  question: IQuestion,
+  options: IOption[]
 }
 
 export interface IDeleteQuestionData {

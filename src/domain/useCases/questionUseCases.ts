@@ -11,6 +11,7 @@ import {
   IQuestion,
   IQuestionCreateData,
   IQuestionUpdateData,
+  IQuestionWithOptionsData,
 } from '../util/models/questionModels';
 import { ILevelUseCases } from './levelUseCases';
 import { ISubjectUseCases } from './subjectUseCases';
@@ -25,7 +26,7 @@ export interface IQuestionUseCases {
   update(data: IQuestionUpdateData): Promise<IQuestion>;
   findById(data: IFindByIdQuestionData): Promise<IQuestion | null>;
   findAll(data: IFindAllQuestionData): Promise<IQuestion[]>;
-  findQuestion(data: IFindQuestionData): Promise<IQuestion>;
+  findQuestion(data: IFindQuestionData): Promise<IQuestionWithOptionsData>;
   delete(data: IDeleteQuestionData): Promise<void>;
 }
 
@@ -88,7 +89,7 @@ export class QuestionUseCases extends ErrorHandlerUseCases implements IQuestionU
     }
   }
 
-  public async findQuestion(data: IFindQuestionData): Promise<IQuestion> {
+  public async findQuestion(data: IFindQuestionData): Promise<IQuestionWithOptionsData> {
     try {
       const result = await this.questionRepository.findQuestion(data);
       if (!result) {
