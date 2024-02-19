@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1708344608864" clover="3.2.0">
-  <project timestamp="1708344608864" name="All files">
-    <metrics statements="575" coveredstatements="575" conditionals="91" coveredconditionals="91" methods="135" coveredmethods="135" elements="801" coveredelements="801" complexity="0" loc="575" ncloc="575" packages="9" files="24" classes="24"/>
+<coverage generated="1708350496543" clover="3.2.0">
+  <project timestamp="1708350496543" name="All files">
+    <metrics statements="631" coveredstatements="631" conditionals="135" coveredconditionals="135" methods="145" coveredmethods="145" elements="911" coveredelements="911" complexity="0" loc="631" ncloc="631" packages="9" files="26" classes="26"/>
     <package name="entities">
       <metrics statements="118" coveredstatements="118" conditionals="2" coveredconditionals="2" methods="60" coveredmethods="60"/>
       <file name="level.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/entities/level.ts">
@@ -142,7 +142,69 @@
       </file>
     </package>
     <package name="interfaces.controllers">
-      <metrics statements="53" coveredstatements="53" conditionals="40" coveredconditionals="40" methods="9" coveredmethods="9"/>
+      <metrics statements="109" coveredstatements="109" conditionals="84" coveredconditionals="84" methods="19" coveredmethods="19"/>
+      <file name="levelControllers.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/interfaces/controllers/levelControllers.ts">
+        <metrics statements="28" coveredstatements="28" conditionals="24" coveredconditionals="24" methods="5" coveredmethods="5"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="25" count="3" type="stmt"/>
+        <line num="26" count="2" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="34" count="3" type="stmt"/>
+        <line num="40" count="3" type="stmt"/>
+        <line num="41" count="2" type="stmt"/>
+        <line num="43" count="1" type="stmt"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="48" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="49" count="3" type="stmt"/>
+        <line num="50" count="3" type="stmt"/>
+        <line num="51" count="2" type="stmt"/>
+        <line num="53" count="1" type="stmt"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="58" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="59" count="3" type="stmt"/>
+        <line num="66" count="3" type="stmt"/>
+        <line num="68" count="2" type="stmt"/>
+        <line num="70" count="1" type="stmt"/>
+      </file>
+      <file name="subjectControllers.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/interfaces/controllers/subjectControllers.ts">
+        <metrics statements="28" coveredstatements="28" conditionals="20" coveredconditionals="20" methods="5" coveredmethods="5"/>
+        <line num="1" count="4" type="stmt"/>
+        <line num="13" count="4" type="stmt"/>
+        <line num="14" count="4" type="stmt"/>
+        <line num="15" count="4" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="24" count="3" type="stmt"/>
+        <line num="25" count="2" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="31" count="3" type="stmt"/>
+        <line num="32" count="3" type="stmt"/>
+        <line num="33" count="3" type="stmt"/>
+        <line num="38" count="3" type="stmt"/>
+        <line num="39" count="2" type="stmt"/>
+        <line num="41" count="1" type="stmt"/>
+        <line num="45" count="3" type="stmt"/>
+        <line num="46" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="47" count="3" type="stmt"/>
+        <line num="48" count="3" type="stmt"/>
+        <line num="49" count="2" type="stmt"/>
+        <line num="51" count="1" type="stmt"/>
+        <line num="55" count="3" type="stmt"/>
+        <line num="56" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="57" count="3" type="stmt"/>
+        <line num="64" count="3" type="stmt"/>
+        <line num="66" count="2" type="stmt"/>
+        <line num="68" count="1" type="stmt"/>
+      </file>
       <file name="userControllers.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/interfaces/controllers/userControllers.ts">
         <metrics statements="53" coveredstatements="53" conditionals="40" coveredconditionals="40" methods="9" coveredmethods="9"/>
         <line num="1" count="8" type="stmt"/>
@@ -502,12 +564,12 @@
       <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="testConstantsLevel.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/useCases/__test__/levelUseCasesTest/testConstantsLevel.ts">
         <metrics statements="6" coveredstatements="6" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="4" count="10" type="stmt"/>
-        <line num="5" count="10" type="stmt"/>
-        <line num="6" count="10" type="stmt"/>
-        <line num="7" count="10" type="stmt"/>
-        <line num="12" count="10" type="stmt"/>
-        <line num="17" count="10" type="stmt"/>
+        <line num="4" count="14" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="7" count="14" type="stmt"/>
+        <line num="12" count="14" type="stmt"/>
+        <line num="17" count="14" type="stmt"/>
       </file>
     </package>
     <package name="useCases.__test__.optionUseCasesTest">
@@ -546,11 +608,11 @@
       <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
       <file name="testConstantsSubject.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/useCases/__test__/subjectUseCasesTest/testConstantsSubject.ts">
         <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="0" coveredmethods="0"/>
-        <line num="4" count="10" type="stmt"/>
-        <line num="5" count="10" type="stmt"/>
-        <line num="6" count="10" type="stmt"/>
-        <line num="11" count="10" type="stmt"/>
-        <line num="15" count="10" type="stmt"/>
+        <line num="4" count="14" type="stmt"/>
+        <line num="5" count="14" type="stmt"/>
+        <line num="6" count="14" type="stmt"/>
+        <line num="11" count="14" type="stmt"/>
+        <line num="15" count="14" type="stmt"/>
       </file>
     </package>
     <package name="useCases.__test__.userUseCasesTest">
