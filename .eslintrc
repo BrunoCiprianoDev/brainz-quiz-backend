@@ -1,14 +1,28 @@
 {
-"env": {
-"jest": true
-},
-"root": true,
-"parser": "@typescript-eslint/parser",
-"plugins": ["@typescript-eslint"],
-"extends": [
-"eslint:recommended",
-"plugin:@typescript-eslint/eslint-recommended",
-"plugin:@typescript-eslint/recommended"
-],
-"ignorePatterns": ["jest.config.js"]
+    "env": {
+        "jest": true
+    },
+    "root": true,
+    "parser": "@typescript-eslint/parser",
+    "plugins": [
+        "@typescript-eslint"
+    ],
+    "extends": [
+        "eslint:recommended",
+        "plugin:@typescript-eslint/eslint-recommended",
+        "plugin:@typescript-eslint/recommended"
+    ],
+    "ignorePatterns": [
+        "jest.config.js"
+    ],
+    "overrides": [
+        {
+            "files": [
+                "src/domain/util/constraints/*.ts"
+            ],
+            "rules": {
+                "@typescript-eslint/no-explicit-any": "off"
+            }
+        }
+    ]
 }
