@@ -1,0 +1,14 @@
+{
+  "App": {
+    "port": 8080
+  },
+  "database": {
+    "url": "postgresql://root:root@localhost:5432/app_database?schema=public",
+    "directUrl": "postgresql://root:root@localhost:5432/app_database?schema=public"
+  },
+  "auth": {},
+  "logger": {
+    "enabled": true,
+    "level": "info"
+  }
+}

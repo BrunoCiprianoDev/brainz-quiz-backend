@@ -1,0 +1,14 @@
+{
+  "App": {
+    "port": 3000
+  },
+  "database": {
+    "url": "DATABASE_URL",
+    "schema": "DATABASE_SCHEMA"
+  },
+  "auth": {},
+  "logger": {
+    "enabled": true,
+    "level": "info"
+  }
+}

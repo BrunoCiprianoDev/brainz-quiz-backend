@@ -27,12 +27,6 @@
             "@test/*": [
                 "./test/*"
             ],
-            "@domain/*": [
-                "./src/domain/*"
-            ],
-            "@main/*": [
-                "./src/main/*"
-            ],
         },
         "rootDirs": [
             "./src",
@@ -44,7 +38,8 @@
     "include": [
         "./src/**/*.ts",
         "./test/**/*.ts",
-        "test/jest.config.js"
+        "test/jest.config.js",
+        "src/shared/logger"
     ],
     "exclude": [
         "./node_modules/*",
