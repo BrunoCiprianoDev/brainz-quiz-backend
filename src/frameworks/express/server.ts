@@ -1,9 +1,10 @@
-import { IDbClient } from "@src/infraestructure/adapters/dbClient";
-import express, { Application } from "express";
+import { IDbClient } from '@src/infraestructure/adapters/dbClient';
+import express, { Application } from 'express';
 import * as http from 'http';
 import cors from 'cors';
-import '../../shared/moduleAlias/moduleAlias'
-import logger from "@src/shared/logger/logger";
+import '../../shared/moduleAlias/moduleAlias';
+import logger from '@src/shared/logger/logger';
+import routes from './routes';
 
 export class Server {
   private server?: http.Server;
@@ -12,7 +13,7 @@ export class Server {
   public constructor(
     private port = 3000,
     private dbClient: IDbClient,
-  ) { }
+  ) {}
 
   public async init(): Promise<void> {
     await this.databaseSetup();
@@ -22,7 +23,7 @@ export class Server {
   }
 
   public setupRoutes() {
-    // this.app.use(routes);
+    this.app.use(routes);
     logger.info('Initialized routes');
   }
 
@@ -79,5 +80,4 @@ export class Server {
   public getApp(): Application {
     return this.app;
   }
-
 }

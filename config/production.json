@@ -1,6 +1,9 @@
 {
   "App": {
-    "port": "API_PORT"
+    "port": "API_PORT",
+    "apiSecret": "API_SECRET",
+    "tokenPayloadSecret": "91E414A145E8BAADFDD9C1DEDEE3B",
+    "tokenPayloadExpires": "1d"
   },
   "database": {
     "url": "DATABASE_URL",

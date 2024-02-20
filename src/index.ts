@@ -1,8 +1,8 @@
-import { Server } from "./frameworks/express/server";
-import { DbClientPrisma } from "./infraestructure/prismaORM/ports/dbClientPrisma";
-import { loadEnvVariables } from "./shared/enviroment/loadEnvVariables";
-import logger from "./shared/logger/logger";
-import config from "config";
+import { Server } from './frameworks/express/server';
+import { DbClientPrisma } from './infraestructure/prismaORM/ports/dbClientPrisma';
+import { loadEnvVariables } from './shared/enviroment/loadEnvVariables';
+import logger from './shared/logger/logger';
+import config from 'config';
 
 enum ExitStatus {
   Failure = 1,
