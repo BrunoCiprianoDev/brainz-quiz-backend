@@ -7,15 +7,17 @@
   "license": "MIT",
   "scripts": {
     "build": "tsc",
-    "start": "npm run build && node 'dist/src/index.js'",
-    "start:dev": "dotenv -e .env -- ts-node-dev --transpile-only 'src/index.ts'",
+    "start": "npm run build && node dist/src/index.js",
+    "start:dev": "dotenv -e .env -- ts-node-dev --transpile-only src/index.ts",
     "lint": "eslint ./src ./test --ext .ts",
     "lint:fix": "eslint ./src ./test --ext .ts --fix",
     "style:check": "prettier --check src/**/*.ts test/**/*.ts",
     "style:fix": "prettier --write src/**/*.ts test/**/*.ts",
     "test:unit": "jest",
-    "test:functional": "jest --projects ./test --runInBand",
+    "test:functional": "npm run test:docker:up && jest --projects ./test --runInBand && npm run test:docker:down",
     "test": "npm run test:unit && npm run test:functional",
+    "test:docker:up": "docker compose up -d database_test",
+    "test:docker:down": "docker compose stop database_test",
     "dev:docker:up": "docker compose up -d database",
     "dev:docker:down": "docker compose stop database"
   },
@@ -31,6 +33,7 @@
     "@types/module-alias": "^2.0.4",
     "@types/node": "^20.11.17",
     "@types/nodemailer": "^6.4.14",
+    "@types/pg": "^8.11.0",
     "@types/pino": "^7.0.5",
     "@types/supertest": "^6.0.2",
     "@types/uuid": "^9.0.8",
@@ -56,6 +59,7 @@
     "jsonwebtoken": "^9.0.2",
     "module-alias": "^2.2.3",
     "nodemailer": "^6.9.9",
+    "pg": "^8.11.3",
     "pino": "^8.18.0",
     "uuid": "^9.0.1"
   }

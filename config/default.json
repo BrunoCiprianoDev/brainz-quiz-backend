@@ -9,8 +9,8 @@
     }
   },
   "database": {
-    "url": "postgresql://root:root@localhost:5432/app_database?schema=public",
-    "directUrl": "postgresql://root:root@localhost:5432/app_database?schema=public"
+    "url": "postgresql://root:root@localhost:5433/app_database?schema=public",
+    "directUrl": "postgresql://root:root@localhost:5433/app_database?schema=public"
   },
   "auth": {},
   "logger": {

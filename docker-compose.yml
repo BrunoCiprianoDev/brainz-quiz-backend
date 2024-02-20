@@ -10,7 +10,7 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=app_database
     ports:
-      - '5432:5432'
+      - '5433:5432'
     volumes:
       - ./tmp/data/db:/var/lib/postgresql/data
   database_test:
@@ -21,4 +21,4 @@ services:
       - POSTGRES_PASSWORD=root
       - POSTGRES_DB=app_database_test
     ports:
-      - '5433:5432'
+      - '5434:5432'

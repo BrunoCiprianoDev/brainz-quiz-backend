@@ -1,6 +1,8 @@
 import { config as dotenvConfig } from 'dotenv';
 import config from 'config';
 import logger from '@src/shared/logger/logger';
+import util from 'util';
+import { exec } from 'child_process';
 
 export async function loadEnvVariables(): Promise<void> {
   try {
@@ -11,6 +13,8 @@ export async function loadEnvVariables(): Promise<void> {
       const directUrl = config.get('database.directUrl');
       process.env.DATABASE_URL = `${databaseUrl}`;
       process.env.DATABASE_SCHEMA = `${directUrl}`;
+      const execSync = util.promisify(exec);
+      await execSync(`prisma migrate deploy`);
     }
     logger.info(`Initialized development ${NODE_ENV} environment variables`);
   } catch (error) {
