@@ -34,10 +34,10 @@ async function preparationEnvironmentVariables() {
  */
 async function databasePreparation() {
   try {
-    //const prismaBinary = './node_modules/.bin/prisma';
+    const prismaBinary = './node_modules/.bin/prisma';
     const execSync = util.promisify(exec);
-    //await execSync(`${prismaBinary} migrate deploy`);
-    await execSync(`prisma migrate deploy`);
+    await execSync(`${prismaBinary} migrate deploy`);
+    //await execSync(`prisma migrate deploy`);
     //await execSync(`${prismaBinary} db seed`);
   } catch (error) {
     loggerTests.error(error);

@@ -5,8 +5,9 @@ import cors from 'cors';
 import '../../shared/moduleAlias/moduleAlias';
 import logger from '@src/shared/logger/logger';
 import routes from './routes';
+import { IServer } from '@src/infraestructure/adapters/server';
 
-export class Server {
+export class Server implements IServer {
   private server?: http.Server;
   private app: Application = express();
 
@@ -22,7 +23,7 @@ export class Server {
     this.setupRoutes();
   }
 
-  public setupRoutes() {
+  public setupRoutes(): void {
     this.app.use(routes);
     logger.info('Initialized routes');
   }
@@ -38,7 +39,7 @@ export class Server {
     logger.info('Initialized cors');
   }
 
-  private async databaseSetup(): Promise<void> {
+  public async databaseSetup(): Promise<void> {
     try {
       await this.dbClient.connect();
       logger.info(`Database connection '${this.dbClient.constructor.name}' successfully initialized.`);
@@ -52,7 +53,7 @@ export class Server {
     }
   }
 
-  private async databaseClose(): Promise<void> {
+  public async databaseClose(): Promise<void> {
     await this.dbClient.disconnect();
     logger.info('Database connection closed');
   }
