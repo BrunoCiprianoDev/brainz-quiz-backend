@@ -1,6 +1,6 @@
-import { AppError, ForbiddenError } from "@src/domain/util/errors";
-import { NextFunction, Request, Response } from "express";
-import { TokenGenerator } from "../ports/tokenGenerator";
+import { AppError, ForbiddenError } from '@src/domain/util/errors';
+import { NextFunction, Request, Response } from 'express';
+import { TokenGenerator } from '../ports/tokenGenerator';
 
 export async function authPlayerMiddleware(request: Request, response: Response, nextFunction: NextFunction) {
   try {

@@ -9,7 +9,7 @@ export interface IUserCreateData extends Omit<IUser, 'id'> {
   confirmPassword: string;
 }
 
-export interface IUserPublicData extends Omit<IUser, 'password'> { }
+export interface IUserPublicData extends Omit<IUser, 'password'> {}
 
 export interface IUpdateUserRoleData {
   id: string;

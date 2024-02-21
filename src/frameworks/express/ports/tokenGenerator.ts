@@ -8,7 +8,6 @@ import { verify } from 'jsonwebtoken';
 export const ERROR_MESSAGE_INVALID_TOKEN_RESET_MESSAGE = 'Invalid token reset pass';
 
 export class TokenGenerator implements ITokenGenerator {
-
   public async generateAuthToken({ id, role }: { id: string; role: string }): Promise<IToken> {
     try {
       const token = sign(
@@ -33,7 +32,7 @@ export class TokenGenerator implements ITokenGenerator {
 
   public async getPayloadAuthToken(token: string): Promise<IPayloadAuthToken> {
     try {
-      const payload = verify(token, process.env.TOKEN_PAYLOAD_SECRET as string) as { id: string, role: string };
+      const payload = verify(token, process.env.TOKEN_PAYLOAD_SECRET as string) as { id: string; role: string };
       return payload;
     } catch (error) {
       throw new ValidationError(ERROR_MESSAGE_INVALID_TOKEN_RESET_MESSAGE);
@@ -63,8 +62,7 @@ export class TokenGenerator implements ITokenGenerator {
   }
   public async getPayloadTokenResetPass(token: string): Promise<IUserPublicData> {
     try {
-      const [, tokenLocal] = token.split(' ');
-      const payload = verify(tokenLocal, process.env.TOKEN_PAYLOAD_SECRET as string) as IUserPublicData;
+      const payload = verify(token, process.env.TOKEN_FORGOT_PASS_SECRET as string) as IUserPublicData;
       return payload;
     } catch (error) {
       throw new ValidationError(ERROR_MESSAGE_INVALID_TOKEN_RESET_MESSAGE);
