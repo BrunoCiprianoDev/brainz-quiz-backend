@@ -4,7 +4,6 @@ import nodemailer from 'nodemailer';
 
 export class EmailSender implements IEmailSender {
   public async sendTokenForgotPass({ email, token }: { email: string; token: string }): Promise<void> {
-
     const enviroment = process.env.ENVIROMENT;
     const user = process.env.SERVER_EMAIL;
     const pass = process.env.APP_PASSWORD;

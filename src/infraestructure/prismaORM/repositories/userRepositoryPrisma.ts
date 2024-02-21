@@ -49,8 +49,8 @@ export class UserRepositoryPrisma extends BaseRepositoryPrisma implements IUserR
         select: {
           id: true,
           email: true,
-          role: true
-        }
+          role: true,
+        },
       });
     } catch (error) {
       this.handleError(error);

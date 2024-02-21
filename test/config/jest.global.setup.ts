@@ -15,13 +15,12 @@ export default async function setup() {
  * from the /config/test.json file and adding them to the .env.test file.
  */
 async function preparationEnvironmentVariables() {
-
   dotenvConfig({ path: '.env.test' });
 
   loggerTests.info(
     'Enviroment variables ready:' +
-    `\nDATABASE_URL=${process.env.DATABASE_URL}` +
-    `\nDIRECT_URL=${process.env.DATABASE_URL}`,
+      `\nDATABASE_URL=${process.env.DATABASE_URL}` +
+      `\nDIRECT_URL=${process.env.DATABASE_URL}`,
   );
 }
 
