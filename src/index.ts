@@ -2,7 +2,8 @@ import { Server } from './frameworks/express/server';
 import { DbClientPrisma } from './infraestructure/prismaORM/ports/dbClientPrisma';
 import { loadEnvVariables } from './shared/enviroment/loadEnvVariables';
 import logger from './shared/logger/logger';
-import config from 'config';
+
+const API_PORT = process.env.API_PORT ? parseInt(process.env.API_PORT) : undefined;
 
 enum ExitStatus {
   Failure = 1,
@@ -12,7 +13,7 @@ enum ExitStatus {
 (async (): Promise<void> => {
   try {
     await loadEnvVariables();
-    const server = new Server(config.get('App.port'), new DbClientPrisma());
+    const server = new Server(API_PORT, new DbClientPrisma());
     await server.init();
     server.start();
 

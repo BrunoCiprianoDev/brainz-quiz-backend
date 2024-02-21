@@ -1,7 +1,6 @@
 import { ITokenGenerator } from '@src/domain/interfaces/adapters/tokenGenerator';
 import { IToken, IUserPublicData } from '@src/domain/util/models/userModels';
 import { sign } from 'jsonwebtoken';
-import config from 'config';
 import logger from '@src/shared/logger/logger';
 import { ValidationError } from '@src/domain/util/errors';
 import { verify } from 'jsonwebtoken';
@@ -16,10 +15,10 @@ export class TokenGenerator implements ITokenGenerator {
           id,
           role,
         },
-        config.get('App.security.tokenPayloadSecret') as string,
+        process.env.TOKEN_PAYLOAD_SECRET as string,
         {
           subject: id,
-          expiresIn: config.get('App.security.tokenPayloadExpires'),
+          expiresIn: process.env.TOKEN_PAYLOAD_EXPIRES_IN,
         },
       );
       return { token };
@@ -38,10 +37,10 @@ export class TokenGenerator implements ITokenGenerator {
           email,
           role,
         },
-        config.get('App.security.tokenForgotPassSercret') as string,
+        process.env.TOKEN_FORGOT_PASS_SECRET as string,
         {
           subject: id,
-          expiresIn: config.get('App.security.tokenForgotPassExpires'),
+          expiresIn: process.env.TOKEN_FORGOT_PASS_EXPIRES_IN,
         },
       );
       return { token };
@@ -55,7 +54,7 @@ export class TokenGenerator implements ITokenGenerator {
   public async getPayloadTokenResetPass(token: string): Promise<IUserPublicData> {
     try {
       const [, tokenLocal] = token.split(' ');
-      const payload = verify(tokenLocal, config.get('App.tokenPayloadSecret')) as IUserPublicData;
+      const payload = verify(tokenLocal, process.env.TOKEN_PAYLOAD_SECRET as string) as IUserPublicData;
       return payload;
     } catch (error) {
       throw new ValidationError(ERROR_MESSAGE_INVALID_TOKEN_RESET_MESSAGE);

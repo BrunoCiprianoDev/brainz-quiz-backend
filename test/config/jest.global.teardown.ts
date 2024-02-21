@@ -12,14 +12,13 @@ export default async function deleteSchema() {
   dotenvConfig({ path: '.env.test' });
 
   const url = process.env.DATABASE_URL;
-  const schema = process.env.DATABASE_SCHEMA;
 
   const client = new pg.Client({
     connectionString: url,
   });
 
   await client.connect();
-  await client.query(`DROP SCHEMA IF EXISTS "${schema}" CASCADE`);
+  await client.query(`DROP SCHEMA IF EXISTS "test_schema" CASCADE`);
   await client.end();
 
   loggerTests.info('Schema deleted.\n');

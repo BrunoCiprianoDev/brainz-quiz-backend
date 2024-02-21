@@ -2,14 +2,26 @@ import { IEmailSender } from '@src/domain/interfaces/adapters/emailSender';
 import logger from '@src/shared/logger/logger';
 import nodemailer from 'nodemailer';
 
-export const nodemailerSender = nodemailer.createTransport({
-  host: 'smtp.gmail.com',
-  port: 587,
-  auth: { user: process.env.SERVER_EMAIL, pass: process.env.APP_PASSWORD },
-});
-
 export class EmailSender implements IEmailSender {
   public async sendTokenForgotPass({ email, token }: { email: string; token: string }): Promise<void> {
+
+    const enviroment = process.env.ENVIROMENT;
+    const user = process.env.SERVER_EMAIL;
+    const pass = process.env.APP_PASSWORD;
+
+    if (enviroment !== 'production') {
+      if (!user || !pass) {
+        logger.warn('Email not sent because the SERVER_EMAIL and APP_PASSWORD parameters were not defined');
+        return;
+      }
+    }
+
+    const nodemailerSender = nodemailer.createTransport({
+      host: 'smtp.gmail.com',
+      port: 587,
+      auth: { user: process.env.SERVER_EMAIL, pass: process.env.APP_PASSWORD },
+    });
+
     await nodemailerSender
       .sendMail({
         from: process.env.SERVER_EMAIL,
