@@ -6,9 +6,9 @@ module.exports = {
   testMatch: ['<rootDir>/src/**/*.test.ts'],
   collectCoverage: true,
   coveragePathIgnorePatterns: [
-    '/node_modules/',
+    '/node_modules/', 
     '<rootDir>/src/main/*',
-    '<rootDir>/src/domain/util/errors/*',
+    '<rootDir>/src/domain/util/errors/*'
   ],
   testEnvironment: 'node',
   clearMocks: true,
@@ -16,7 +16,5 @@ module.exports = {
   moduleNameMapper: {
     '@src/(.*)': '<rootDir>/src/$1',
     '@test/(.*)': '<rootDir>/test/$1',
-    '@main/(.*)': '<rootDir>/src/main/$1',
-    '@domain/(.*)': '<rootDir>/src/domain/$1',
   },
 };

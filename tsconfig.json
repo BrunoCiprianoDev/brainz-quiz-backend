@@ -1,53 +1,36 @@
 {
-    "compilerOptions": {
-        "target": "ES2021",
-        "moduleResolution": "node",
-        "module": "commonjs",
-        "lib": [
-            "es2022"
-        ],
-        "sourceMap": true,
-        "outDir": "dist",
-        "strict": true,
-        "noImplicitAny": true,
-        "strictNullChecks": true,
-        "strictFunctionTypes": true,
-        "noImplicitThis": true,
-        "resolveJsonModule": true,
-        "alwaysStrict": true,
-        "removeComments": true,
-        "noImplicitReturns": true,
-        "esModuleInterop": true,
-        "allowSyntheticDefaultImports": true,
-        "baseUrl": "./",
-        "paths": {
-            "@src/*": [
-                "./src/*"
-            ],
-            "@test/*": [
-                "./test/*"
-            ],
-            "@domain/*": [
-                "./src/domain/*"
-            ],
-            "@main/*": [
-                "./src/main/*"
-            ],
-        },
-        "rootDirs": [
-            "./src",
-            "./test"
-        ],
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
-    },
-    "include": [
-        "./src/**/*.ts",
-        "./test/**/*.ts",
-        "test/jest.config.js"
+  "compilerOptions": {
+    "target": "ES2022", // Define a versão ECMAScript
+    "moduleResolution": "node", // Define como os módulos serão desenvolvidos
+    "module": "commonjs", // Define que os modulos serão compilados usando CommonJS
+    "lib": [
+      "es2022" //Lista de libs que serão incluidas na compilação
     ],
-    "exclude": [
-        "./node_modules/*",
-        "dist"
-    ],
+    "sourceMap": true, // Gera um arquivo de mapeamento de origem na compilação (Navegador ou em ferramentas DEV)
+    "outDir": "dist", // Diretório que o resultado da compilação serão armazenado
+    "strict": true, // Habilita todas as opções de verificação estrita, como "noImplicitAny", "strictNullChecks", "strictFunctionTypes" e "noImplicitThis".
+    "noImplicitAny": true, // Proíbe referências do tipo any
+    "strictNullChecks": true, //  Habilita a verificação estrita de nulos, onde valores null e undefined só podem ser atribuídos a tipos que os aceitem explicitamente.
+    "strictFunctionTypes": true, // Habilita a verificação estrita de tipos de função
+    "noImplicitThis": true, // Proíbe que o .this seja implicito
+    "resolveJsonModule": true, // Permite a importação de arquivos .json como módulos
+    "alwaysStrict": true, //Insere a 'user strict' a cada arquivo gerado
+    "removeComments": true, // Remove comentarios
+    "noImplicitReturns": true, // Garante que todas as funções tenha um caminho de retorno
+    "esModuleInterop": true, // Permite interoperabilidade entre módulos ES6 e CommonJS.
+    "allowSyntheticDefaultImports": true, // Permite que os tipos de módulo ES6 sejam tratados como módulos padrão.
+    "experimentalDecorators": true, //Habilita o suporte a decoradores de classe e métodos, uma funcionalidade experimental do JavaScript.
+    "emitDecoratorMetadata": true, // Habilita a geração de metadados do decorador para classes, útil para bibliotecas que precisam inspecionar o código em tempo de execução.
+  },
+  // Os atributos "include" e "exclude" especificam quais arquivos TypeScript devem ser incluídos ou excluídos do processo de compilação, respectivamente.
+  "include": [
+    "./src/**/*.ts",
+    "./test/**/*.ts",
+    "test/jest.config.js",
+    "src/domain/util/adapters/passwordEncrypt"
+  ],
+  "exclude": [
+    "./node_modules/*",
+    "dist"
+  ],
 }

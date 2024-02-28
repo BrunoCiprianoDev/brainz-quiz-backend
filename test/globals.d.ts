@@ -3,4 +3,4 @@ declare global {
   var testRequest: any;
 }
 
-export {};
+export { };
