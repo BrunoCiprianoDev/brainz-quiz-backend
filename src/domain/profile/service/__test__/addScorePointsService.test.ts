@@ -50,9 +50,8 @@ describe('Add score points profile tests', () => {
 
     jest.spyOn(mockedProfileRepository, 'findById').mockResolvedValue(null);
 
-    await (expect(addScorePointsService.execute({ id, points: 100 })).rejects.toBeInstanceOf(NotFoundError));
+    await expect(addScorePointsService.execute({ id, points: 100 })).rejects.toBeInstanceOf(NotFoundError);
     expect(mockedProfileRepository.findById).toHaveBeenCalledWith(id);
     expect(mockedProfileRepository.addScorePoins).toHaveBeenCalledTimes(0);
   });
-
 });

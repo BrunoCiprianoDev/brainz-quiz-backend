@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709151346290" clover="3.2.0">
-  <project timestamp="1709151346290" name="All files">
+<coverage generated="1709239841284" clover="3.2.0">
+  <project timestamp="1709239841285" name="All files">
     <metrics statements="287" coveredstatements="287" conditionals="73" coveredconditionals="73" methods="42" coveredmethods="42" elements="402" coveredelements="402" complexity="0" loc="287" ncloc="287" packages="7" files="23" classes="23"/>
     <package name="profile.service">
       <metrics statements="57" coveredstatements="57" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
