@@ -19,7 +19,7 @@ export class CreateProfileController extends ErrorHandlerControllers implements 
         userId: body.userId ?? '',
       };
       const result = await this.createProfileService.execute(data);
-      httpContext.send({ statusCode: 200, body: result });
+      httpContext.send({ statusCode: 201, body: result });
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
