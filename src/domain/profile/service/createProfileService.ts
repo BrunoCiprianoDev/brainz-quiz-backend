@@ -2,13 +2,13 @@ import { IFindUserByIdService } from '../../user/services/findUserByIdService';
 import { IuuidGenerator } from '../../util/adapters/uuidGenerator';
 import { BadRequestError } from '../../util/errors/appErrors';
 import { ErrorHandlerServices } from '../../util/errors/handlerError';
-import { Profile } from '../models/profile';
+import { IProfile } from '../models/profile';
 import { IProfileRepository } from '../repositories/profileRepository';
 
 export const ERROR_MESSAGE_THIS_USER_ALREADY_HAS_PROFILE = 'Esse usuário já possui um perfil cadastrado.';
 
 export interface ICreateProfileService {
-  execute(data: { name: string; userId: string }): Promise<Profile>;
+  execute(data: { name: string; userId: string }): Promise<IProfile>;
 }
 
 export class CreateProfileService extends ErrorHandlerServices implements ICreateProfileService {
@@ -20,7 +20,7 @@ export class CreateProfileService extends ErrorHandlerServices implements ICreat
     super();
   }
 
-  public async execute({ name, userId }: { name: string; userId: string }): Promise<Profile> {
+  public async execute({ name, userId }: { name: string; userId: string }): Promise<IProfile> {
     try {
       await this.findUserByIdService.execute(userId);
       if (await this.profileRepository.userAlreadyHaveProfile(userId)) {

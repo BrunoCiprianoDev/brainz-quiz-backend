@@ -1,12 +1,12 @@
 import { NotFoundError } from '../../util/errors/appErrors';
 import { ErrorHandlerServices } from '../../util/errors/handlerError';
-import { Profile } from '../models/profile';
+import { IProfile } from '../models/profile';
 import { IProfileRepository } from '../repositories/profileRepository';
 
 export const ERROR_MESSAGE_NOT_FOUND_PROFILE_BY_USER_ID = 'Perfil não encontrado pelo id do usuário';
 
 export interface IFindProfileByUserIdService {
-  execute(userId: string): Promise<Profile>;
+  execute(userId: string): Promise<IProfile>;
 }
 
 export class FindProfileByUserIdService extends ErrorHandlerServices implements IFindProfileByUserIdService {
@@ -14,7 +14,7 @@ export class FindProfileByUserIdService extends ErrorHandlerServices implements 
     super();
   }
 
-  public async execute(userId: string): Promise<Profile> {
+  public async execute(userId: string): Promise<IProfile> {
     try {
       const profile = await this.profileRepository.findByUserId(userId);
       if (!profile) {

@@ -1,10 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709252400041" clover="3.2.0">
-  <project timestamp="1709252400041" name="All files">
-    <metrics statements="326" coveredstatements="326" conditionals="93" coveredconditionals="93" methods="50" coveredmethods="50" elements="469" coveredelements="469" complexity="0" loc="326" ncloc="326" packages="8" files="27" classes="27"/>
+<coverage generated="1709418576807" clover="3.2.0">
+  <project timestamp="1709418576807" name="All files">
+    <metrics statements="326" coveredstatements="326" conditionals="93" coveredconditionals="92" methods="50" coveredmethods="50" elements="469" coveredelements="468" complexity="0" loc="326" ncloc="326" packages="8" files="27" classes="27"/>
     <package name="profile.controllers">
-      <metrics statements="39" coveredstatements="39" conditionals="20" coveredconditionals="20" methods="8" coveredmethods="8"/>
-      <file name="addScorePointsController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\controllers\addScorePointsController.ts">
+      <metrics statements="39" coveredstatements="39" conditionals="20" coveredconditionals="19" methods="8" coveredmethods="8"/>
+      <file name="addScorePointsController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/addScorePointsController.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="5" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="21" count="3" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="1" type="stmt"/>
+      </file>
+      <file name="createProfileController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/createProfileController.ts">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -17,20 +30,7 @@
         <line num="22" count="2" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
-      <file name="createProfileController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\controllers\createProfileController.ts">
-        <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
-        <line num="2" count="1" type="stmt"/>
-        <line num="9" count="1" type="stmt"/>
-        <line num="10" count="1" type="stmt"/>
-        <line num="11" count="1" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
-        <line num="24" count="1" type="stmt"/>
-      </file>
-      <file name="findProfileByUserIdController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\controllers\findProfileByUserIdController.ts">
+      <file name="findProfileByUserIdController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/findProfileByUserIdController.ts">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -42,7 +42,7 @@
         <line num="18" count="1" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
       </file>
-      <file name="updateNameProfileService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\controllers\updateNameProfileService.ts">
+      <file name="updateNameProfileService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/updateNameProfileService.ts">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -58,7 +58,7 @@
     </package>
     <package name="profile.service">
       <metrics statements="57" coveredstatements="57" conditionals="4" coveredconditionals="4" methods="8" coveredmethods="8"/>
-      <file name="addScorePointsService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\service\addScorePointsService.ts">
+      <file name="addScorePointsService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/service/addScorePointsService.ts">
         <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -75,7 +75,7 @@
         <line num="25" count="2" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="createProfileService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\service\createProfileService.ts">
+      <file name="createProfileService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/service/createProfileService.ts">
         <metrics statements="17" coveredstatements="17" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -95,7 +95,7 @@
         <line num="37" count="1" type="stmt"/>
         <line num="39" count="1" type="stmt"/>
       </file>
-      <file name="findProfileByUserIdService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\service\findProfileByUserIdService.ts">
+      <file name="findProfileByUserIdService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/service/findProfileByUserIdService.ts">
         <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -110,7 +110,7 @@
         <line num="23" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
-      <file name="updateNameProfileService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\profile\service\updateNameProfileService.ts">
+      <file name="updateNameProfileService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/service/updateNameProfileService.ts">
         <metrics statements="14" coveredstatements="14" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -130,7 +130,7 @@
     </package>
     <package name="user.controllers">
       <metrics statements="81" coveredstatements="81" conditionals="44" coveredconditionals="44" methods="16" coveredmethods="16"/>
-      <file name="authenticateController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\authenticateController.ts">
+      <file name="authenticateController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/authenticateController.ts">
         <metrics statements="10" coveredstatements="10" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -143,7 +143,7 @@
         <line num="22" count="2" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
-      <file name="createAdminController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\createAdminController.ts">
+      <file name="createAdminController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/createAdminController.ts">
         <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -157,7 +157,7 @@
         <line num="25" count="2" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="createStandardController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\createStandardController.ts">
+      <file name="createStandardController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/createStandardController.ts">
         <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -171,7 +171,7 @@
         <line num="25" count="2" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
       </file>
-      <file name="findAllUsersController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\findAllUsersController.ts">
+      <file name="findAllUsersController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/findAllUsersController.ts">
         <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -184,7 +184,7 @@
         <line num="23" count="2" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
-      <file name="findByIdUsersController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\findByIdUsersController.ts">
+      <file name="findByIdUsersController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/findByIdUsersController.ts">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -196,7 +196,7 @@
         <line num="18" count="1" type="stmt"/>
         <line num="20" count="2" type="stmt"/>
       </file>
-      <file name="getTokenUpdatePasswordController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\getTokenUpdatePasswordController.ts">
+      <file name="getTokenUpdatePasswordController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/getTokenUpdatePasswordController.ts">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -208,7 +208,7 @@
         <line num="21" count="2" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
       </file>
-      <file name="updatePasswordController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\updatePasswordController.ts">
+      <file name="updatePasswordController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/updatePasswordController.ts">
         <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -221,7 +221,7 @@
         <line num="24" count="2" type="stmt"/>
         <line num="26" count="1" type="stmt"/>
       </file>
-      <file name="updateRoleController.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\controllers\updateRoleController.ts">
+      <file name="updateRoleController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/controllers/updateRoleController.ts">
         <metrics statements="11" coveredstatements="11" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="2" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
@@ -238,7 +238,7 @@
     </package>
     <package name="user.models">
       <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
-      <file name="user.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\models\user.ts">
+      <file name="user.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/models/user.ts">
         <metrics statements="4" coveredstatements="4" conditionals="2" coveredconditionals="2" methods="1" coveredmethods="1"/>
         <line num="1" count="13" type="cond" truecount="2" falsecount="0"/>
         <line num="2" count="13" type="stmt"/>
@@ -248,7 +248,7 @@
     </package>
     <package name="user.services">
       <metrics statements="135" coveredstatements="135" conditionals="19" coveredconditionals="19" methods="14" coveredmethods="14"/>
-      <file name="authenticateService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\authenticateService.ts">
+      <file name="authenticateService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/authenticateService.ts">
         <metrics statements="18" coveredstatements="18" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -269,7 +269,7 @@
         <line num="36" count="1" type="stmt"/>
         <line num="38" count="2" type="stmt"/>
       </file>
-      <file name="createUserService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\createUserService.ts">
+      <file name="createUserService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/createUserService.ts">
         <metrics statements="32" coveredstatements="32" conditionals="5" coveredconditionals="5" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -304,7 +304,7 @@
         <line num="53" count="1" type="stmt"/>
         <line num="55" count="5" type="stmt"/>
       </file>
-      <file name="findAllUsersService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\findAllUsersService.ts">
+      <file name="findAllUsersService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/findAllUsersService.ts">
         <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -318,7 +318,7 @@
         <line num="28" count="1" type="stmt"/>
         <line num="30" count="1" type="stmt"/>
       </file>
-      <file name="findUserByIdService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\findUserByIdService.ts">
+      <file name="findUserByIdService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/findUserByIdService.ts">
         <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -333,7 +333,7 @@
         <line num="23" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
       </file>
-      <file name="getTokenUpdatePasswordService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\getTokenUpdatePasswordService.ts">
+      <file name="getTokenUpdatePasswordService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/getTokenUpdatePasswordService.ts">
         <metrics statements="15" coveredstatements="15" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -351,7 +351,7 @@
         <line num="33" count="1" type="stmt"/>
         <line num="35" count="1" type="stmt"/>
       </file>
-      <file name="updatePasswordService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\updatePasswordService.ts">
+      <file name="updatePasswordService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/updatePasswordService.ts">
         <metrics statements="23" coveredstatements="23" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
         <line num="3" count="1" type="stmt"/>
         <line num="4" count="1" type="stmt"/>
@@ -377,7 +377,7 @@
         <line num="44" count="1" type="stmt"/>
         <line num="46" count="4" type="stmt"/>
       </file>
-      <file name="updateRoleService.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\user\services\updateRoleService.ts">
+      <file name="updateRoleService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/user/services/updateRoleService.ts">
         <metrics statements="24" coveredstatements="24" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="1" count="1" type="stmt"/>
         <line num="2" count="1" type="stmt"/>
@@ -407,7 +407,7 @@
     </package>
     <package name="util.validators.emailValidator">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\validators\emailValidator\index.ts">
+      <file name="index.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/validators/emailValidator/index.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="2" type="stmt"/>
         <line num="2" count="8" type="stmt"/>
@@ -416,7 +416,7 @@
     </package>
     <package name="util.validators.enumValidator">
       <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\validators\enumValidator\index.ts">
+      <file name="index.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/validators/enumValidator/index.ts">
         <metrics statements="3" coveredstatements="3" conditionals="0" coveredconditionals="0" methods="1" coveredmethods="1"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="9" type="stmt"/>
@@ -425,7 +425,7 @@
     </package>
     <package name="util.validators.passwordValidator">
       <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
-      <file name="index.ts" path="C:\Users\ribei\OneDrive\Documentos\GitHub\brainz-quiz-backend\src\domain\util\validators\passwordValidator\index.ts">
+      <file name="index.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/util/validators/passwordValidator/index.ts">
         <metrics statements="4" coveredstatements="4" conditionals="4" coveredconditionals="4" methods="1" coveredmethods="1"/>
         <line num="1" count="3" type="stmt"/>
         <line num="2" count="11" type="cond" truecount="4" falsecount="0"/>

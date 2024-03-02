@@ -1,4 +1,4 @@
-import { Profile } from '../../../../domain/profile/models/profile';
+import { IProfile } from '../../../../domain/profile/models/profile';
 import { IProfileRepository } from '../../../../domain/profile/repositories/profileRepository';
 import BaseRepositoryPrisma from './baseRepositoryPrisma';
 
@@ -7,7 +7,7 @@ export class ProfileRepositoryPrisma extends BaseRepositoryPrisma implements IPr
     super();
   }
 
-  public async create(profile: Profile): Promise<void> {
+  public async create(profile: IProfile): Promise<void> {
     try {
       await this.dbClientInstance.profile.create({ data: profile });
     } catch (error) {
@@ -15,7 +15,7 @@ export class ProfileRepositoryPrisma extends BaseRepositoryPrisma implements IPr
     }
   }
 
-  public async findById(id: string): Promise<Profile | null> {
+  public async findById(id: string): Promise<IProfile | null> {
     try {
       return this.dbClientInstance.profile.findUnique({ where: { id } });
     } catch (error) {
@@ -23,7 +23,7 @@ export class ProfileRepositoryPrisma extends BaseRepositoryPrisma implements IPr
     }
   }
 
-  public async findByUserId(userId: string): Promise<Profile | null> {
+  public async findByUserId(userId: string): Promise<IProfile | null> {
     try {
       return this.dbClientInstance.profile.findFirst({ where: { userId } });
     } catch (error) {

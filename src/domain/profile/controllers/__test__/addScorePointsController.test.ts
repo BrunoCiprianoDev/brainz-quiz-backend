@@ -1,5 +1,5 @@
 import { IHttpContext } from '../../../util/adapters/httpContext';
-import { AppError, BadRequestError } from '../../../util/errors/appErrors';
+import { BadRequestError } from '../../../util/errors/appErrors';
 import { IAddScorePointsService } from '../../service/addScorePointsService';
 import { AddScorePointsController, IAddScorePointsController } from '../addScorePointsController';
 

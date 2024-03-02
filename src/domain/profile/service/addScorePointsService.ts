@@ -1,12 +1,12 @@
 import { NotFoundError } from '../../util/errors/appErrors';
 import { ErrorHandlerServices } from '../../util/errors/handlerError';
-import { Profile } from '../models/profile';
+import { IProfile } from '../models/profile';
 import { IProfileRepository } from '../repositories/profileRepository';
 
 export const ERROR_MESSAGE_NOT_FOUND_PROFILE_BY_ID = 'Perfil não encontrado.';
 
 export interface IAddScorePointsService {
-  execute(data: { id: string; points: number }): Promise<Profile>;
+  execute(data: { id: string; points: number }): Promise<IProfile>;
 }
 
 export class AddScorePointsService extends ErrorHandlerServices implements IAddScorePointsService {
@@ -14,7 +14,7 @@ export class AddScorePointsService extends ErrorHandlerServices implements IAddS
     super();
   }
 
-  public async execute({ id, points }: { id: string; points: number }): Promise<Profile> {
+  public async execute({ id, points }: { id: string; points: number }): Promise<IProfile> {
     try {
       const profile = await this.profileRepository.findById(id);
       if (!profile) {
