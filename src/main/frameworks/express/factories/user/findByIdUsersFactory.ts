@@ -3,8 +3,13 @@ import { FindUserByIdService } from '../../../../../domain/user/services/findUse
 import { UserRepositoryPrisma } from '../../../../infrastructure/prismaOrm/repositoriesImpl/userRepositoryPrisma';
 
 export function findByIdUsersFactory() {
-  const userRepository = new UserRepositoryPrisma();
-  const findUserByIdService = new FindUserByIdService(userRepository);
+  const findUserByIdService = findUserByIdServiceConstructor();
   const findByIdUsersController = new FindByIdUsersController(findUserByIdService);
   return findByIdUsersController;
+}
+
+export function findUserByIdServiceConstructor() {
+  const userRepository = new UserRepositoryPrisma();
+  const findUserByIdService = new FindUserByIdService(userRepository);
+  return findUserByIdService;
 }
