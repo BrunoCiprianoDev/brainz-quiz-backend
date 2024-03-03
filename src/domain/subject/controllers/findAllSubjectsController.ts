@@ -13,7 +13,6 @@ export class FindAllSubjectsController extends ErrorHandlerControllers implement
 
   public async execute(httpContext: IHttpContext): Promise<void> {
     try {
-
       const query = httpContext.getRequest().query ?? null;
       let page: number = 1;
       let size: number = 5;
@@ -32,7 +31,7 @@ export class FindAllSubjectsController extends ErrorHandlerControllers implement
       }
 
       const data = {
-        contains: query?.contains as string ?? '',
+        contains: (query?.contains as string) ?? '',
         page: page,
         size: size,
         isDeleted: isDeleted,

@@ -18,7 +18,7 @@ export class Server implements IServer {
   public constructor(
     private port = 3000,
     private dbClient: IDbClient,
-  ) { }
+  ) {}
 
   public async start(): Promise<void> {
     await this.init();

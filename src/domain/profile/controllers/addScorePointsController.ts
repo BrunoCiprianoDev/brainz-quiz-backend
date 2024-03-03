@@ -13,9 +13,9 @@ export class AddScorePointsController extends ErrorHandlerControllers implements
 
   public async execute(httpContext: IHttpContext): Promise<void> {
     try {
-      let points: number = 0
+      let points: number = 0;
 
-      const body = httpContext.getRequest().body as { id: string, points: number | undefined } | null;
+      const body = httpContext.getRequest().body as { id: string; points: number | undefined } | null;
 
       if (body?.points !== undefined && !isNaN(Number(body.points))) {
         points = Number(body.points);
@@ -23,7 +23,7 @@ export class AddScorePointsController extends ErrorHandlerControllers implements
 
       const data = {
         id: body?.id ?? '',
-        points
+        points,
       };
 
       const result = await this.addScorePointsService.execute(data);

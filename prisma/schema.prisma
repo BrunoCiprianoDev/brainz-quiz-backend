@@ -30,3 +30,11 @@ model Profile {
 
   @@map("profiles")
 }
+
+model Subject {
+  id          String  @id @default(uuid())
+  description String
+  isDeleted   Boolean @default(false)
+
+  @@map("subjects")
+}

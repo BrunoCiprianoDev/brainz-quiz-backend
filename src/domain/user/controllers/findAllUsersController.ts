@@ -36,6 +36,5 @@ export class FindAllUsersController extends ErrorHandlerControllers implements I
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
-
   }
 }
