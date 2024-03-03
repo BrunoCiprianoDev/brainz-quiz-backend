@@ -14,15 +14,28 @@ export class FindAllUsersController extends ErrorHandlerControllers implements I
   public async execute(httpContext: IHttpContext): Promise<void> {
     try {
       const query = httpContext.getRequest().query ?? null;
+      let page: number | undefined = 1;
+      let size: number = 5;
+
+      if (query?.page !== undefined && !isNaN(Number(query.page))) {
+        page = Number(query.page);
+      }
+
+      if (query?.size !== undefined && !isNaN(Number(query.size))) {
+        size = Number(query.size);
+      }
+
       const findAllUsers = {
-        page: query?.page ?? 1,
-        size: query?.size ?? 5,
+        page,
+        size,
         contains: query?.contains ?? '',
       } as IFindAllUsersData;
+
       const result = await this.findAllUsersService.execute(findAllUsers);
       httpContext.send({ statusCode: 200, body: result });
     } catch (error) {
       httpContext.send(this.handleClientErrors(error));
     }
+
   }
 }

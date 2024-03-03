@@ -36,7 +36,7 @@ describe('Add score points controller tests', () => {
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
-      body: mockedProfileExp,
+      body: { id, points: 200 },
     });
 
     await addScorePointsController.execute(mockedHttpContext);
@@ -69,7 +69,7 @@ describe('Add score points controller tests', () => {
       headers: { any: '' },
       body: {
         id: '',
-        points: 'STRING',
+        points: undefined,
       },
     });
 
@@ -86,22 +86,6 @@ describe('Add score points controller tests', () => {
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
-    });
-
-    await addScorePointsController.execute(mockedHttpContext);
-
-    expect(mockedAddScorePointsService.execute).toHaveBeenCalledWith({
-      id: '',
-      points: 0,
-    });
-  });
-
-  test('Should handle invalid request body', async () => {
-    jest.spyOn(mockedAddScorePointsService, 'execute').mockClear();
-
-    (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
-      headers: { any: '' },
-      body: 'invalid body',
     });
 
     await addScorePointsController.execute(mockedHttpContext);

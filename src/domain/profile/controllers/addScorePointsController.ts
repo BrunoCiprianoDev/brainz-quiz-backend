@@ -13,11 +13,19 @@ export class AddScorePointsController extends ErrorHandlerControllers implements
 
   public async execute(httpContext: IHttpContext): Promise<void> {
     try {
-      const body = (httpContext.getRequest().body as { id: string; points: number }) ?? '';
+      let points: number = 0
+
+      const body = httpContext.getRequest().body as { id: string, points: number | undefined } | null;
+
+      if (body?.points !== undefined && !isNaN(Number(body.points))) {
+        points = Number(body.points);
+      }
+
       const data = {
-        id: body.id ?? '',
-        points: typeof body.points === 'number' ? body.points : 0,
+        id: body?.id ?? '',
+        points
       };
+
       const result = await this.addScorePointsService.execute(data);
       httpContext.send({ statusCode: 200, body: result });
     } catch (error) {

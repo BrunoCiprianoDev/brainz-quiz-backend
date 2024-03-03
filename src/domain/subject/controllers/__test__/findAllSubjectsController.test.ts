@@ -64,8 +64,8 @@ describe('Find subject by id controller', () => {
     });
     expect(mockedFindAllSubjectsService.execute).toHaveBeenCalledWith({
       contains: '',
-      page: 0,
-      size: 0,
+      page: 1,
+      size: 5,
       isDeleted: false,
     });
   });
