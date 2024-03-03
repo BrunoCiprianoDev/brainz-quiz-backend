@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709472704606" clover="3.2.0">
-  <project timestamp="1709472704606" name="All files">
-    <metrics statements="379" coveredstatements="379" conditionals="102" coveredconditionals="101" methods="58" coveredmethods="58" elements="539" coveredelements="538" complexity="0" loc="379" ncloc="379" packages="9" files="31" classes="31"/>
+<coverage generated="1709495964519" clover="3.2.0">
+  <project timestamp="1709495964519" name="All files">
+    <metrics statements="418" coveredstatements="418" conditionals="126" coveredconditionals="125" methods="66" coveredmethods="66" elements="610" coveredelements="609" complexity="0" loc="418" ncloc="418" packages="10" files="35" classes="35"/>
     <package name="profile.controllers">
       <metrics statements="39" coveredstatements="39" conditionals="20" coveredconditionals="19" methods="8" coveredmethods="8"/>
       <file name="addScorePointsController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/addScorePointsController.ts">
@@ -10,11 +10,11 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="15" count="5" type="stmt"/>
-        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="5" type="stmt"/>
-        <line num="21" count="5" type="stmt"/>
-        <line num="22" count="4" type="stmt"/>
+        <line num="15" count="6" type="stmt"/>
+        <line num="16" count="6" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="6" type="stmt"/>
+        <line num="21" count="6" type="stmt"/>
+        <line num="22" count="5" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
       <file name="createProfileController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/createProfileController.ts">
@@ -126,6 +126,60 @@
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="subject.controllers">
+      <metrics statements="39" coveredstatements="39" conditionals="24" coveredconditionals="24" methods="8" coveredmethods="8"/>
+      <file name="createSubjectController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/controllers/createSubjectController.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="3" type="stmt"/>
+        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="21" count="1" type="stmt"/>
+      </file>
+      <file name="findAllSubjectsController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/controllers/findAllSubjectsController.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
+        <line num="30" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+      </file>
+      <file name="findSubjectByIdController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/controllers/findSubjectByIdController.ts">
+        <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="2" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="2" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="20" count="1" type="stmt"/>
+      </file>
+      <file name="updateSubjectController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/controllers/updateSubjectController.ts">
+        <metrics statements="10" coveredstatements="10" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="16" count="3" type="stmt"/>
+        <line num="17" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="18" count="3" type="stmt"/>
+        <line num="23" count="3" type="stmt"/>
+        <line num="24" count="2" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
       </file>
     </package>
     <package name="subject.services">
