@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1709418576807" clover="3.2.0">
-  <project timestamp="1709418576807" name="All files">
-    <metrics statements="326" coveredstatements="326" conditionals="93" coveredconditionals="92" methods="50" coveredmethods="50" elements="469" coveredelements="468" complexity="0" loc="326" ncloc="326" packages="8" files="27" classes="27"/>
+<coverage generated="1709472704606" clover="3.2.0">
+  <project timestamp="1709472704606" name="All files">
+    <metrics statements="379" coveredstatements="379" conditionals="102" coveredconditionals="101" methods="58" coveredmethods="58" elements="539" coveredelements="538" complexity="0" loc="379" ncloc="379" packages="9" files="31" classes="31"/>
     <package name="profile.controllers">
       <metrics statements="39" coveredstatements="39" conditionals="20" coveredconditionals="19" methods="8" coveredmethods="8"/>
       <file name="addScorePointsController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/addScorePointsController.ts">
@@ -10,11 +10,11 @@
         <line num="9" count="1" type="stmt"/>
         <line num="10" count="1" type="stmt"/>
         <line num="11" count="1" type="stmt"/>
-        <line num="15" count="3" type="stmt"/>
-        <line num="16" count="3" type="cond" truecount="2" falsecount="0"/>
-        <line num="17" count="3" type="stmt"/>
-        <line num="21" count="3" type="stmt"/>
-        <line num="22" count="2" type="stmt"/>
+        <line num="15" count="5" type="stmt"/>
+        <line num="16" count="5" type="cond" truecount="2" falsecount="0"/>
+        <line num="17" count="5" type="stmt"/>
+        <line num="21" count="5" type="stmt"/>
+        <line num="22" count="4" type="stmt"/>
         <line num="24" count="1" type="stmt"/>
       </file>
       <file name="createProfileController.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/profile/controllers/createProfileController.ts">
@@ -126,6 +126,74 @@
         <line num="24" count="1" type="stmt"/>
         <line num="25" count="1" type="stmt"/>
         <line num="27" count="1" type="stmt"/>
+      </file>
+    </package>
+    <package name="subject.services">
+      <metrics statements="53" coveredstatements="53" conditionals="9" coveredconditionals="9" methods="8" coveredmethods="8"/>
+      <file name="createSubjectService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/services/createSubjectService.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="3" coveredconditionals="3" methods="2" coveredmethods="2"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="16" count="1" type="stmt"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="3" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="32" count="1" type="stmt"/>
+        <line num="33" count="1" type="stmt"/>
+        <line num="35" count="1" type="stmt"/>
+      </file>
+      <file name="findAllSubjectsService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/services/findAllSubjectsService.ts">
+        <metrics statements="11" coveredstatements="11" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="23" count="2" type="stmt"/>
+        <line num="24" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="1" type="stmt"/>
+      </file>
+      <file name="findSubjectByIdService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/services/findSubjectByIdService.ts">
+        <metrics statements="12" coveredstatements="12" conditionals="1" coveredconditionals="1" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="12" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="18" count="2" type="stmt"/>
+        <line num="19" count="2" type="stmt"/>
+        <line num="20" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
+        <line num="25" count="1" type="stmt"/>
+      </file>
+      <file name="updateSubjectService.ts" path="/home/anon/Documentos/Repositorios/brainz-quiz-backend/src/domain/subject/services/updateSubjectService.ts">
+        <metrics statements="15" coveredstatements="15" conditionals="4" coveredconditionals="4" methods="2" coveredmethods="2"/>
+        <line num="1" count="1" type="stmt"/>
+        <line num="2" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="3" type="stmt"/>
+        <line num="20" count="3" type="cond" truecount="3" falsecount="0"/>
+        <line num="21" count="1" type="stmt"/>
+        <line num="23" count="2" type="cond" truecount="1" falsecount="0"/>
+        <line num="24" count="1" type="stmt"/>
+        <line num="26" count="1" type="stmt"/>
+        <line num="27" count="1" type="stmt"/>
+        <line num="29" count="2" type="stmt"/>
       </file>
     </package>
     <package name="user.controllers">

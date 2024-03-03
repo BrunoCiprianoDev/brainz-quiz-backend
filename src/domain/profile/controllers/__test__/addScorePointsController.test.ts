@@ -62,6 +62,43 @@ describe('Add score points controller tests', () => {
     });
   });
 
+  test('Should handle score parameter when is not instance of number', async () => {
+    jest.spyOn(mockedAddScorePointsService, 'execute').mockClear();
+
+    (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
+      headers: { any: '' },
+      body: {
+        id: '',
+        points: 'STRING'
+      }
+    });
+
+    await addScorePointsController.execute(mockedHttpContext);
+
+    expect(mockedAddScorePointsService.execute).toHaveBeenCalledWith({
+      id: '',
+      points: 0,
+    });
+  });
+
+  test('Should handle score parameter when is not found', async () => {
+    jest.spyOn(mockedAddScorePointsService, 'execute').mockClear();
+
+    (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
+      headers: { any: '' },
+      body: {
+        id: '',
+      }
+    });
+
+    await addScorePointsController.execute(mockedHttpContext);
+
+    expect(mockedAddScorePointsService.execute).toHaveBeenCalledWith({
+      id: '',
+      points: 0,
+    });
+  });
+
   test('Should handle errors', async () => {
     jest.spyOn(mockedAddScorePointsService, 'execute').mockRejectedValue(new BadRequestError('Error message'));
 
