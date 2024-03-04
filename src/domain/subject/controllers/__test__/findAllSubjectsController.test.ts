@@ -35,6 +35,35 @@ describe('Find subject by id controller', () => {
 
     (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
       headers: { any: '' },
+      query: { contains: '', page: 1, size: 2, isDeleted: 'false' },
+    });
+
+    await findAllSubjectsController.execute(mockedHttpContext);
+
+    expect(mockedHttpContext.send).toHaveBeenCalledWith({ statusCode: 200, body: subjectExp });
+    expect(mockedFindAllSubjectsService.execute).toHaveBeenCalledWith({
+      contains: '',
+      page: 1,
+      size: 2,
+      isDeleted: false,
+    });
+  });
+
+
+  test('Should return subject by id successfully (when isDeleted typeof boolean)', async () => {
+    const description = 'SUBJECT_DESCRIPTION';
+    const subjectExp = [
+      {
+        id: '4ed12231-45dd-435f-875d-98588212dc72',
+        description,
+        isDeleted: false,
+      },
+    ] as ISubject[];
+
+    jest.spyOn(mockedFindAllSubjectsService, 'execute').mockResolvedValue(subjectExp);
+
+    (mockedHttpContext.getRequest as jest.Mock).mockReturnValue({
+      headers: { any: '' },
       query: { contains: '', page: 1, size: 2, isDeleted: false },
     });
 
