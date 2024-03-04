@@ -28,6 +28,8 @@ export class FindAllSubjectsController extends ErrorHandlerControllers implement
 
       if (typeof query?.isDeleted === 'boolean') {
         isDeleted = query.isDeleted;
+      } else if (typeof query?.isDeleted === 'string') {
+        isDeleted = query.isDeleted.toLowerCase() === 'true';
       }
 
       const data = {
