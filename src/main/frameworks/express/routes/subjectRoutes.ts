@@ -14,9 +14,9 @@ subjectRoutes.post('/', authAdminMiddleware, (request: Request, response: Respon
 subjectRoutes.put('/', authAdminMiddleware, (request: Request, response: Response) => {
   updateSubjectFactory().execute(new ExpressHttpContext(request, response));
 });
-subjectRoutes.get('/findById', authAdminMiddleware, (request: Request, response: Response) => {
+subjectRoutes.get('/findById', (request: Request, response: Response) => {
   findSubjectByIdFactory().execute(new ExpressHttpContext(request, response));
 });
-subjectRoutes.get('/findAll', authAdminMiddleware, (request: Request, response: Response) => {
+subjectRoutes.get('/findAll', (request: Request, response: Response) => {
   findAllSubjectsFactory().execute(new ExpressHttpContext(request, response));
 });

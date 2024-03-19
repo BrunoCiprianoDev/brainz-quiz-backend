@@ -38,3 +38,12 @@ model Subject {
 
   @@map("subjects")
 }
+
+model Level {
+  id          String  @id @default(uuid())
+  description String
+  points      Int
+  isDeleted   Boolean @default(false)
+
+  @@map("levels")
+}
